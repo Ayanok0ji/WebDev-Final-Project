@@ -1,0 +1,185 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #23272a;
+  background: white;
+}
+
+header {
+  width: 100%;
+  padding: 20px 5%;
+  background: white;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.navbar img {
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #23272a;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.login-button {
+  text-decoration: none;
+  background: black;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  background: #333;
+}
+
+.privacy-container {
+  width: 780px;
+  max-width: 90%;
+  margin: 80px auto;
+}
+
+h1 {
+  font-size: 58px;
+  line-height: 1;
+  text-transform: uppercase;
+  margin-top: 50px;
+  margin-bottom: 35px;
+}
+
+.date {
+  font-size: 22px;
+  margin: 12px 0;
+}
+
+.contents {
+  margin-top: 35px;
+  margin-bottom: 50px;
+}
+
+.contents a {
+  display: block;
+  color: #5865f2;
+  text-decoration: none;
+  margin: 14px 0;
+  font-size: 16px;
+}
+
+.contents a:hover {
+  text-decoration: underline;
+}
+
+section {
+  margin-top: 55px;
+}
+
+section h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+section p {
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+footer {
+  background: #23272a;
+  color: white;
+  padding: 60px 8%;
+  margin-top: 80px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-column h3 {
+  margin-bottom: 20px;
+}
+
+.footer-column a {
+  display: block;
+  color: #ddd;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+
+  .nav-links {
+    display: none;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  .privacy-container {
+    margin-top: 50px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 500px) {
+
+  header {
+    padding: 15px 20px;
+  }
+
+  .login-button {
+    padding: 11px 17px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .date {
+    font-size: 18px;
+  }
+
+  section h2 {
+    font-size: 27px;
+  }
+
+  section p {
+    font-size: 16px;
+  }
+}
