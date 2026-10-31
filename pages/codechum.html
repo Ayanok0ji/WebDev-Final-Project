@@ -2,295 +2,301 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codechum</title>
-    <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../css/codechum.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codechum</title>
+  <meta name="description"
+    content="Codechum server page - a Discord clone made for our Web Design and Development final project.">
+  <link rel="icon" type="image/x-icon" href="../assets/images/discord-favicon.ico">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/codechum.css">
 </head>
 
 <body>
-    <div class="app">
+  <div class="app">
 
-        <!-- server sidebar -->
-        <nav class="server-rail" aria-label="Servers sidebar">
-            <a href="home.html" class="server-icon home">
-                <div class="pill"></div>
-                <img src="../assets/icons/clyde.svg" alt="Discord">
-            </a>
+    <!-- server sidebar -->
+    <nav class="server-rail" aria-label="Servers sidebar">
+      <a href="home.html" class="server-icon home">
+        <div class="pill"></div>
+        <img src="../assets/icons/clyde.svg" alt="Discord">
+      </a>
 
-            <div class="rail-divider"></div>
+      <div class="rail-divider"></div>
 
-            <a href="codechum.html" class="server-icon active">
-                <div class="pill"></div>
-                <img src="../assets/images/codechum.png" alt="Codechum">
-            </a>
-            <div class="server-icon">
-                <div class="pill"></div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf1oDGqabA_FsXxIaqRWY5Y1151SkisrTnsM8NH1QIDFVqaAYvORTmsK0N&s=10" alt="server">
-                <span class="badge-rail">6</span>
-            </div>
-            <div class="server-icon">
-                <div class="pill"></div>
-                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/500px-Roblox_%282025%29_%28App_Icon%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="server">
-                <span class="badge-rail">1</span>
-            </div>
-            <div class="server-icon">
-                <div class="pill"></div>
-                <img src="https://img.icons8.com/color/1200/valorant.jpg" alt="server">
-                <span class="badge-rail">2</span>
-            </div>
-            <div class="server-icon">
-                <div class="pill"></div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC8oFNGxh9W2rNNyHDeCLy7Qn40Tj06kCwa6FHAkcjcjYDt1Jk2_PKx7E&s=10" alt="server">
-                <span class="badge-rail">54</span>
-            </div>
+      <a href="codechum.html" class="server-icon active">
+        <div class="pill"></div>
+        <img src="../assets/images/codechum.png" alt="Codechum">
+      </a>
+      <div class="server-icon">
+        <div class="pill"></div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf1oDGqabA_FsXxIaqRWY5Y1151SkisrTnsM8NH1QIDFVqaAYvORTmsK0N&s=10" alt="server">
+        <span class="badge-rail">6</span>
+      </div>
+      <div class="server-icon">
+        <div class="pill"></div>
+        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/500px-Roblox_%282025%29_%28App_Icon%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="server">
+        <span class="badge-rail">1</span>
+      </div>
+      <div class="server-icon">
+        <div class="pill"></div>
+        <img src="https://img.icons8.com/color/1200/valorant.jpg" alt="server">
+        <span class="badge-rail">2</span>
+      </div>
+      <div class="server-icon">
+        <div class="pill"></div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC8oFNGxh9W2rNNyHDeCLy7Qn40Tj06kCwa6FHAkcjcjYDt1Jk2_PKx7E&s=10" alt="server">
+        <span class="badge-rail">54</span>
+      </div>
 
-            <!-- add server and explore -->
-            <div class="server-icon add-server">
-                <img src="../assets/icons/ui-add-server-green.svg" alt="Add a Server" class="icon">
-            </div>
-            <div class="server-icon explore">
-                <img src="../assets/icons/ui-explore-green.svg" alt="Explore" class="icon">
-            </div>
-        </nav>
+      <!-- add server and explore -->
+      <div class="server-icon add-server">
+        <img src="../assets/icons/ui-add-server-green.svg" alt="Add a Server" class="icon">
+      </div>
+      <div class="server-icon explore">
+        <img src="../assets/icons/ui-explore-green.svg" alt="Explore" class="icon">
+      </div>
+    </nav>
 
-        <!-- channel sidebar -->
-        <aside class="channel-list" aria-label="Channels">
+    <!-- channel sidebar -->
+    <aside class="channel-list" aria-label="Channels">
 
-            <!-- mobile top bar -->
-            <div class="mobile-top-bar">
-                <div class="top-left">
-                    <img src="../assets/icons/ui-globe-language-24x24.svg" alt="Codechum" class="icon">
-                    <span>Codechum</span>
-                </div>
-                <div class="top-icons">
-                    <span title="Inbox">
+      <!-- mobile top bar -->
+      <div class="mobile-top-bar">
+        <div class="top-left">
+          <img src="../assets/icons/ui-globe-language-24x24.svg" alt="Codechum" class="icon">
+          <span>Codechum</span>
+        </div>
+        <div class="top-icons">
+          <span title="Inbox">
                         <img src="../assets/icons/ui-inbox-24x24.svg" alt="Inbox" class="icon">
                     </span>
-                    <span title="Help">
+          <span title="Help">
                         <img src="../assets/icons/ui-help-24x24.svg" alt="Help" class="icon">
                     </span>
-                </div>
-            </div>
+        </div>
+      </div>
 
-            <!-- server name header -->
-            <div class="server-name">
-                <span>Codechum</span>
-                <span class="server-arrow">⌄</span>
-                <span class="server-invite" title="Invite People">
+      <!-- server name header -->
+      <div class="server-name">
+        <span>Codechum</span>
+        <span class="server-arrow">⌄</span>
+        <span class="server-invite" title="Invite People">
                     <img src="../assets/icons/ui-user-plus-add-friend-24x24.svg" alt="Invite" class="icon">
                 </span>
-                <button type="button" class="sidebar-close-btn" aria-label="Close Sidebar" onclick="document.querySelector('.app').classList.remove('show-sidebar')">&times;</button>
-            </div>
+        <button type="button" class="sidebar-close-btn" aria-label="Close Sidebar" onclick="document.querySelector('.app').classList.remove('show-sidebar')">&times;</button>
+      </div>
 
-            <!-- channel list -->
-            <div class="channels">
-                <div class="channel">
-                    <img src="../assets/icons/ui-event-calendar-24x24.svg" alt="Events" class="channel-icon">
-                    <span>Events</span>
-                </div>
+      <!-- channel list -->
+      <div class="channels">
+        <div class="channel">
+          <img src="../assets/icons/ui-event-calendar-24x24.svg" alt="Events" class="channel-icon">
+          <span>Events</span>
+        </div>
 
-                <div class="channel-line"></div>
+        <div class="channel-line"></div>
 
-                <div class="channel">
-                    <img src="../assets/icons/ui-announcement-megaphone-24x24.svg" alt="Announcement" class="channel-icon">
-                    <span>announcement</span>
-                </div>
+        <div class="channel" id="channel-0" onclick="switchChannel(0)">
+          <img src="../assets/icons/ui-announcement-megaphone-24x24.svg" alt="Announcement" class="channel-icon">
+          <span>announcement</span>
+        </div>
 
-                <div class="channel active">
-                    <img src="../assets/icons/ui-check-24x24.svg" alt="Rules" class="channel-icon">
-                    <span>rules-and-info</span>
-                </div>
+        <div class="channel active" id="channel-1" onclick="switchChannel(1)">
+          <img src="../assets/icons/ui-check-24x24.svg" alt="Rules" class="channel-icon">
+          <span>rules-and-info</span>
+        </div>
 
-                <div class="channel">
-                    <span class="hash">#</span>
-                    <span>roles</span>
-                </div>
+        <div class="channel" id="channel-2" onclick="switchChannel(2)">
+          <span class="hash">#</span>
+          <span>roles</span>
+        </div>
 
-                <div class="channel">
-                    <span class="hash">#</span>
-                    <span>welcome</span>
-                </div>
+        <div class="channel" id="channel-3" onclick="switchChannel(3)">
+          <span class="hash">#</span>
+          <span>welcome</span>
+        </div>
 
-                <!-- text channels -->
-                <div class="category">
-                    <span>Text Channels</span>
-                    <span class="category-arrow">⌄</span>
-                </div>
+        <!-- text channels -->
+        <div class="category">
+          <span>Text Channels</span>
+          <span class="category-arrow">⌄</span>
+        </div>
 
-                <div class="channel">
-                    <span class="hash">#</span>
-                    <span>general</span>
-                </div>
+        <div class="channel" id="channel-4" onclick="switchChannel(4)">
+          <span class="hash">#</span>
+          <span>general</span>
+        </div>
 
-                <!-- help channels -->
-                <div class="category">
-                    <span>Help</span>
-                    <span class="category-arrow">⌄</span>
-                </div>
+        <!-- help channels -->
+        <div class="category">
+          <span>Help</span>
+          <span class="category-arrow">⌄</span>
+        </div>
 
-                <div class="channel">
-                    <span class="hash">#</span>
-                    <span>coding-help</span>
-                </div>
+        <div class="channel" id="channel-5" onclick="switchChannel(5)">
+          <span class="hash">#</span>
+          <span>coding-help</span>
+        </div>
 
-                <div class="channel">
-                    <span class="hash">#</span>
-                    <span>language-discussion</span>
-                </div>
+        <div class="channel" id="channel-6" onclick="switchChannel(6)">
+          <span class="hash">#</span>
+          <span>language-discussion</span>
+        </div>
 
-                <!-- support channels -->
-                <div class="category">
-                    <span>Support and Feedback</span>
-                    <span class="category-arrow">⌄</span>
-                </div>
+        <!-- support channels -->
+        <div class="category">
+          <span>Support and Feedback</span>
+          <span class="category-arrow">⌄</span>
+        </div>
 
-                <div class="channel">
-                    <span class="hash">#</span>
-                    <span>bug-reports</span>
-                </div>
+        <div class="channel" id="channel-7" onclick="switchChannel(7)">
+          <span class="hash">#</span>
+          <span>bug-reports</span>
+        </div>
 
-                <!-- voice channels -->
-                <div class="category">
-                    <span class="category-arrow">⌄</span>
-                    <span>Voice Channels</span>
-                </div>
+        <!-- voice channels -->
+        <div class="category">
+          <span class="category-arrow">⌄</span>
+          <span>Voice Channels</span>
+        </div>
 
-                <div class="channel">
-                    <img src="../assets/icons/ui-voice-channel-speaker-24x24.svg" alt="Voice" class="channel-icon">
-                    <span>General</span>
-                </div>
-            </div>
+        <div class="channel">
+          <img src="../assets/icons/ui-voice-channel-speaker-24x24.svg" alt="Voice" class="channel-icon">
+          <span>General</span>
+        </div>
+      </div>
 
-            <!-- user bar -->
-            <div class="server-user">
-                <div class="avatar-wrap">
-                    <img class="avatar" src="../assets/images/profile.jpg" alt="profile">
-                    <span class="status idle"></span>
-                </div>
-                <div class="user-text">
-                    <span class="name">Froggy</span>
-                    <span class="subtext">Idle</span>
-                </div>
-                <!-- mic -->
-                <span class="user-icon muted" title="Unmute">
-                    <img src="../assets/icons/ui-mic-off-red-24x24.svg" alt="Mute" class="icon">
+      <!-- user bar -->
+      <div class="server-user">
+        <div class="avatar-wrap">
+          <img class="avatar" src="../assets/images/profile.jpg" alt="profile">
+          <span class="status idle"></span>
+        </div>
+        <div class="user-text">
+          <span class="name">Froggy</span>
+          <span class="subtext">Idle</span>
+        </div>
+        <!-- mic -->
+        <span class="user-icon muted" id="mute-button" title="Mute / Unmute" onclick="toggleMute()">
+                    <img id="mute-icon" src="../assets/icons/ui-mic-off-red-24x24.svg" alt="Mute" class="icon">
                 </span>
-                <!-- deafen -->
-                <span class="user-icon deafened" title="Undeafen">
-                    <img src="../assets/icons/ui-deafen-off-red-24x24.svg" alt="Deafen" class="icon">
+        <!-- deafen -->
+        <span class="user-icon deafened" id="deafen-button" title="Deafen / Undeafen" onclick="toggleDeafen()">
+                    <img id="deafen-icon" src="../assets/icons/ui-deafen-off-red-24x24.svg" alt="Deafen" class="icon">
                 </span>
-                <!-- settings -->
-                <span class="user-icon" title="User Settings">
+        <!-- settings -->
+        <span class="user-icon" title="User Settings">
                     <img src="../assets/icons/ui-settings-gear-24x24.svg" alt="Settings" class="icon">
                 </span>
-            </div>
-        </aside>
+      </div>
+    </aside>
 
-        <!-- chat area -->
-        <main class="server-chat">
+    <!-- chat area -->
+    <main class="server-chat">
 
-            <!-- mobile top bar -->
-            <div class="mobile-top-bar">
-                <div class="top-left">
-                    <img src="../assets/icons/ui-globe-language-24x24.svg" alt="Codechum" class="icon">
-                    <span>Codechum</span>
-                </div>
-                <div class="top-icons">
-                    <span title="Inbox">
+      <!-- mobile top bar -->
+      <div class="mobile-top-bar">
+        <div class="top-left">
+          <img src="../assets/icons/ui-globe-language-24x24.svg" alt="Codechum" class="icon">
+          <span>Codechum</span>
+        </div>
+        <div class="top-icons">
+          <span title="Inbox">
                         <img src="../assets/icons/ui-inbox-24x24.svg" alt="Inbox" class="icon">
                     </span>
-                    <span title="Help">
+          <span title="Help">
                         <img src="../assets/icons/ui-help-24x24.svg" alt="Help" class="icon">
                     </span>
-                </div>
-            </div>
+        </div>
+      </div>
 
-            <!-- channel header -->
-            <header class="server-header">
-                <!-- mobile menu button -->
-                <button type="button" class="mobile-menu-btn" aria-label="Toggle navigation" onclick="document.querySelector('.app').classList.toggle('show-sidebar')">
+      <!-- channel header -->
+      <header class="server-header">
+        <!-- mobile menu button -->
+        <button type="button" class="mobile-menu-btn" aria-label="Toggle navigation" onclick="document.querySelector('.app').classList.toggle('show-sidebar')">
                     <img src="../assets/icons/ui-menu-hamburger-24x24.svg" alt="Menu" class="icon">
                 </button>
-                <span class="header-hash">#</span>
-                <span class="channel-name">rules-and-info</span>
+        <span class="header-hash">#</span>
+        <span class="channel-name" id="channel-name">rules-and-info</span>
 
-                <!-- header icons -->
-                <div class="server-tools">
-                    <span class="tool-icon" title="Threads">
+        <!-- header icons -->
+        <div class="server-tools">
+          <span class="tool-icon" title="Threads">
                         <img src="../assets/icons/ui-thread-replies-24x24.svg" alt="Threads" class="icon">
                     </span>
 
-                    <span class="tool-icon" title="Notifications">
+          <span class="tool-icon" title="Notifications">
                         <img src="../assets/icons/ui-bell-24x24.svg" alt="Notifications" class="icon">
                     </span>
 
-                    <span class="tool-icon" title="Pinned Messages">
+          <span class="tool-icon" title="Pinned Messages">
                         <img src="../assets/icons/ui-pin-24x24.svg" alt="Pinned Messages" class="icon">
                     </span>
 
-                    <span class="tool-icon" title="Member List">
+          <span class="tool-icon" title="Member List">
                         <img src="../assets/icons/ui-members-24x24.svg" alt="Member List" class="icon">
                     </span>
 
-                    <!-- search -->
-                    <div class="server-search">
-                        <input type="text" id="search-input" placeholder="Search Codechum" onkeyup="showmessages()">
-                        <img src="../assets/icons/ui-search-24x24.svg" alt="Search" class="icon">
-                    </div>
+          <!-- search -->
+          <div class="server-search">
+            <input type="text" id="search-input" placeholder="Search Codechum" onkeyup="showMessages()" aria-label="Search Codechum">
+            <img src="../assets/icons/ui-search-24x24.svg" alt="Search" class="icon">
+          </div>
 
-                    <span class="help" title="Help">?</span>
-                </div>
-            </header>
+          <span class="help" title="Help">?</span>
+        </div>
+      </header>
 
-            <!-- welcome message -->
-            <section class="server-body">
-                <div class="welcome">
-                    <div class="big-hash">#</div>
-                    <h1>Welcome to #rules-and-info!</h1>
-                    <p>This is the start of the #rules-and-info channel.</p>
-                </div>
-            </section>
+      <!-- welcome message -->
+      <section class="server-body" id="chat-body">
+        <div class="welcome">
+          <div class="big-hash">#</div>
+          <h1 id="welcome-title">Welcome to #rules-and-info!</h1>
+          <p id="welcome-text">This is the start of the #rules-and-info channel.</p>
+        </div>
+        <div class="cc-list" id="messages"></div>
+      </section>
 
-            <!-- message bar -->
-            <form class="message-row" onsubmit="event.preventDefault();">
-                <!-- plus button -->
-                <span class="message-plus" title="Add Attachment">
+      <!-- message bar -->
+      <form class="message-row" onsubmit="sendMessage(); return false;">
+        <!-- plus button -->
+        <span class="message-plus" title="Add Attachment">
                     <img src="../assets/icons/ui-plus-24x24.svg" alt="Add Attachment" class="icon">
                 </span>
-                <input type="text" placeholder="Message #rules-and-info">
+        <input type="text" id="message-input" placeholder="Message #rules-and-info" autocomplete="off" aria-label="Send a message">
 
-                <!-- message icons -->
-                <div class="message-icons">
-                    <span class="message-icon desktop-only" title="Gift">
+        <!-- message icons -->
+        <div class="message-icons">
+          <span class="message-icon desktop-only" title="Gift">
                         <img src="../assets/icons/ui-gift-nitro-24x24.svg" alt="Gift" class="icon">
                     </span>
 
-                    <span class="gif desktop-only" title="GIF">GIF</span>
+          <span class="gif desktop-only" title="GIF">GIF</span>
 
-                    <span class="message-icon desktop-only" title="Upload Image">
+          <span class="message-icon desktop-only" title="Upload Image">
                         <img src="../assets/icons/ui-image-picture-24x24.svg" alt="Upload Image" class="icon">
                     </span>
 
-                    <span class="message-icon" title="Emoji">
+          <span class="message-icon" title="Emoji">
                         <img src="../assets/icons/ui-emoji-smile-24x24.svg" alt="Emoji" class="icon">
                     </span>
 
-                    <span class="message-icon" title="Apps">
+          <span class="message-icon" title="Apps">
                         <img src="../assets/icons/ui-apps-grid-24x24.svg" alt="Apps" class="icon">
                     </span>
 
-                    <span class="input-divider"></span>
+          <span class="input-divider"></span>
 
-                    <button type="submit" class="message-send" title="Send">
+          <button type="submit" class="message-send" title="Send">
                         <img src="../assets/icons/ui-send-24x24.svg" alt="Send" class="icon">
                     </button>
-                </div>
-            </form>
+        </div>
+      </form>
 
-        </main>
-    </div>
+    </main>
+  </div>
+  <script src="../js/codechum.js"></script>
+
 </body>
 
 </html>

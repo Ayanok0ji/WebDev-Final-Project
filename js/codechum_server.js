@@ -2,77 +2,85 @@ var channels = [
   {
     name: "announcement",
     messages: [
-      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Welcome to the Codechum server!", time: "08:00" }
+      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Welcome to the Codechum server!", time: "08:00", likes: 3 }
     ]
   },
   {
     name: "rules-and-info",
     messages: [
-      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Rule 1: Be respectful to everyone.", time: "08:10" },
-      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Rule 2: No spamming.", time: "08:11" }
+      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Rule 1: Be respectful to everyone.", time: "08:10", likes: 5 },
+      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Rule 2: No spamming.", time: "08:11", likes: 2 }
     ]
   },
   {
     name: "roles",
     messages: [
-      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Ask a moderator for a new role.", time: "08:20" }
+      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Ask a moderator for a new role.", time: "08:20", likes: 0 }
     ]
   },
   {
     name: "welcome",
     messages: [
-      { author: "Eunice", avatar: "../assets/images/pf3.jpg", text: "Hi everyone! I am new here.", time: "09:15" },
-      { author: "Mr. Bean", avatar: "../assets/images/mrb.jpg", text: "Welcome Eunice!", time: "09:16" }
+      { author: "Eunice", avatar: "../assets/images/pf3.jpg", text: "Hi everyone! I am new here.", time: "09:15", likes: 1 },
+      { author: "Mr. Bean", avatar: "../assets/images/mrb.jpg", text: "Welcome Eunice!", time: "09:16", likes: 4 }
     ]
   },
   {
     name: "general",
     messages: [
-      { author: "Kitty", avatar: "../assets/images/cat.jpg", text: "Good morning everyone!", time: "10:00" }
+      { author: "Kitty", avatar: "../assets/images/cat.jpg", text: "Good morning everyone!", time: "10:00", likes: 2 }
     ]
   },
   {
     name: "coding-help",
     messages: [
-      { author: "Chaa", avatar: "../assets/images/pf5.png", text: "How do I use a for loop?", time: "11:30" },
-      { author: "Dynosure", avatar: "../assets/images/dyno.webp", text: "Check W3Schools, it is very helpful!", time: "11:32" }
+      { author: "Chaa", avatar: "../assets/images/pf5.png", text: "How do I use a for loop?", time: "11:30", likes: 0 },
+      { author: "Dynosure", avatar: "../assets/images/dyno.webp", text: "Check W3Schools, it is very helpful!", time: "11:32", likes: 6 }
     ]
   },
   {
     name: "language-discussion",
     messages: [
-      { author: "Jarren", avatar: "../assets/images/pf4.png", text: "Python or Java for beginners?", time: "13:00" }
+      { author: "Jarren", avatar: "../assets/images/pf4.png", text: "Python or Java for beginners?", time: "13:00", likes: 1 }
     ]
   },
   {
     name: "bug-reports",
     messages: [
-      { author: "Chaa", avatar: "../assets/images/pf5.png", text: "The submit button freezes on my phone.", time: "14:45" }
+      { author: "Chaa", avatar: "../assets/images/pf5.png", text: "The submit button freezes on my phone.", time: "14:45", likes: 0 }
     ]
   }
 ];
 
 var currentChannel = 1;
-
 var isMuted = true;
 var isDeafened = true;
 
-
 function showmessages() {
   var list = channels[currentChannel].messages;
+  var search = document.getElementById("search-input").value.toLowerCase();
   var html = "";
 
   for (var i = 0; i < list.length; i++) {
-    html += '<div class="cc-msg">';
-    html += '<img class="cc-avatar" src="' + list[i].avatar + '" alt="">';
-    html += '<div>';
-    html += '<div class="cc-head">';
-    html += '<span class="cc-author">' + list[i].author + '</span>';
-    html += '<span class="cc-time">' + list[i].time + '</span>';
-    html += '</div>';
-    html += '<p class="cc-text">' + list[i].text + '</p>';
-    html += '</div>';
-    html += '</div>';
+    var allText = (list[i].author + " " + list[i].text).toLowerCase();
+
+    if (allText.indexOf(search) != -1) {
+      html += '<article class="cc-msg">';
+      html += '<img class="cc-avatar" src="' + list[i].avatar + '" alt="' + list[i].author + '">';
+      html += '<div>';
+      html += '<div class="cc-head">';
+      html += '<span class="cc-author">' + list[i].author + '</span>';
+      html += '<span class="cc-time">' + list[i].time + '</span>';
+      html += '</div>';
+      html += '<p class="cc-text">' + list[i].text + '</p>';
+      html += '<button type="button" class="cc-like" onclick="likeMessage(' + i + ')">&#128077; ' + list[i].likes + '</button>';
+      html += '</div>';
+      html += '</article>';
+    }
+  }
+
+  if (html == "") {
+    html = '<p class="cc-text">No messages found.</p>';
   }
 
   document.getElementById("messages").innerHTML = html;
@@ -104,11 +112,14 @@ function sendmessage() {
     author: "Froggy",
     avatar: "../assets/images/profile.jpg",
     text: text,
-    time: getTime()
+    time: getTime(),
+    likes: 0
   });
 
-  input.value = "";  
-  showMessages();    
+  input.value = "";
+  document.getElementById("search-input").value = "";
+  showMessages();
+}
 
 function switchchannel(index) {
   currentChannel = index;
@@ -119,6 +130,8 @@ function switchchannel(index) {
   document.getElementById("welcome-text").innerHTML = "This is the start of the #" + channelName + " channel.";
   document.getElementById("message-input").placeholder = "Message #" + channelName;
 
+  document.getElementById("search-input").value = "";
+
   for (var i = 0; i < channels.length; i++) {
     document.getElementById("channel-" + i).className = "channel";
   }
@@ -128,41 +141,44 @@ function switchchannel(index) {
   showMessages();
 }
 
+function likemessage(index) {
+  var chat = document.getElementById("chat-body");
+  var position = chat.scrollTop;
+
+  channels[currentChannel].messages[index].likes++;
+
+  showMessages();
+  chat.scrollTop = position;
+}
 
 function togglemute() {
   var button = document.getElementById("mute-button");
   var icon = document.getElementById("mute-icon");
 
   if (isMuted == true) {
-
     isMuted = false;
     button.className = "user-icon";
     icon.src = "../assets/icons/ui-mic-24x24.svg";
   } else {
-
     isMuted = true;
     button.className = "user-icon muted";
     icon.src = "../assets/icons/ui-mic-off-red-24x24.svg";
   }
 }
 
-
 function toggledeafen() {
   var button = document.getElementById("deafen-button");
   var icon = document.getElementById("deafen-icon");
 
   if (isDeafened == true) {
-
     isDeafened = false;
     button.className = "user-icon";
     icon.src = "../assets/icons/ui-headphones-24x24.svg";
   } else {
-
     isDeafened = true;
     button.className = "user-icon deafened";
     icon.src = "../assets/icons/ui-deafen-off-red-24x24.svg";
   }
 }
-
 
 showMessages();
