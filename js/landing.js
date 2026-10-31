@@ -6,6 +6,7 @@
     const prefersReductionMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const store = {
-        get(key) { try { return localStorage.getItem(key)}}
+        get(key) { try { return localStorage.getItem(key); } catch (e) { return null; } },
+        set(key, val) {} 
     }
 })
