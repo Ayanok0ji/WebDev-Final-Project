@@ -23,7 +23,7 @@
             <h2 id="login-heading">Welcome back!</h2>
             <p class="subtitle">We're so excited to see you again!</p>
 
-            <form action="home.html" method="get">
+            <form action="home.html" method="get" onsubmit="return checkLogin()">
                 <!-- email -->
                 <div class="form-group">
                     <label for="login-email">Email or Phone Number <span class="required" aria-hidden="true">*</span></label>
@@ -38,10 +38,11 @@
 
                 <!-- forgot password -->
                 <div class="forgot-wrapper">
-                    <a href="#">Forgot your password?</a>
+                    <a href="#" id="toggle-password" onclick="togglePassword(); return false;">Show password</a> &nbsp;|&nbsp; <a href="#">Forgot your password?</a>
                 </div>
 
                 <!-- submit button -->
+                <p id="login-error" class="error"></p>
                 <button type="submit">Log In</button>
 
                 <!-- register link -->
