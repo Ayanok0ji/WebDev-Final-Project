@@ -192,7 +192,7 @@ function likemessage(index) {
   showmessages();
 }
 
-//
+// toggle state for mute
 function togglemute() {
   var button = document.getElementById("mute-button");
   var icon = document.getElementById("mute-icon");
@@ -207,6 +207,8 @@ function togglemute() {
     icon.src = "../assets/icons/ui-mic-off-red-24x24.svg";
   }
 }
+
+// toggle state for deafen
 function toggledeafen() {
   var button = document.getElementById("deafen-button");
   var icon = document.getElementById("deafen-icon");
@@ -222,4 +224,5 @@ function toggledeafen() {
   }
 }
 
+// fire show messages to bring the messages in the codechum server page
 showmessages();
