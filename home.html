@@ -57,6 +57,7 @@
         <aside class="dm-list" aria-label="Direct Messages">
             <div class="search-bar">
                 <input type="text" placeholder="Find or start a conversation..." readonly aria-label="Search conversations">
+                <button type="button" class="sidebar-close-btn" aria-label="Close Sidebar" onclick="document.querySelector('.app').classList.remove('show-sidebar')">&times;</button>
             </div>
 
             <!-- Buttons -->
@@ -290,7 +291,7 @@
         <!-- Chat Main Area -->
         <main class="chat-column" role="main">
             <header class="chat-header">
-                <button type="button" class="mobile-toggle-btn" aria-label="Toggle navigation" onclick="document.querySelector('.app').classList.toggle('sidebar-open')">
+                <button type="button" class="mobile-menu-btn" aria-label="Toggle navigation" onclick="document.querySelector('.app').classList.toggle('show-sidebar')">
                     <img class="icon" src="assets/icons/ui-forum-chat-squares-24x24.svg" alt="Menu">
                 </button>
                 <img class="icon dm-hash" src="assets/icons/ui-at-mention-24x24.svg" alt="@">

@@ -58,6 +58,7 @@
                 <span class="server-arrow" aria-label="Server Options">
                     <img class="icon arrow-icon" src="assets/icons/ui-chevron-down-24x24.svg" alt="Dropdown">
                 </span>
+                <button type="button" class="sidebar-close-btn" aria-label="Close Channels" onclick="document.querySelector('.app').classList.remove('show-sidebar')">&times;</button>
             </div>
             <div class="channels">
                 <div class="channel">
@@ -147,7 +148,7 @@
         <!-- Server Chat Area -->
         <main class="server-chat" role="main">
             <header class="server-header">
-                <button type="button" class="mobile-toggle-btn" aria-label="Toggle navigation" onclick="document.querySelector('.app').classList.toggle('sidebar-open')">
+                <button type="button" class="mobile-menu-btn" aria-label="Toggle navigation" onclick="document.querySelector('.app').classList.toggle('show-sidebar')">
                     <img class="icon" src="assets/icons/ui-forum-chat-squares-24x24.svg" alt="Menu">
                 </button>
                 <span class="header-hash">#</span>

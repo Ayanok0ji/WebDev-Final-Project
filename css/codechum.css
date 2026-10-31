@@ -301,16 +301,15 @@
 
 .server-body {
     flex: 1;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     overflow-y: auto;
-    padding: 16px;
+    padding: 24px 16px;
 }
 
 .welcome {
-    position: absolute;
-    left: 16px;
-    bottom: 25px;
-    right: 16px;
+    margin-top: auto;
 }
 
 .big-hash {
@@ -431,10 +430,15 @@
 }
 
 /* =========================================================
-   RESPONSIVENESS (Tablet, Mobile)
-========================================================= */
+   RESPONSIVE DESIGN FOR CODECHUM (DISCORD STYLE)
+   ========================================================= */
 
-@media (max-width: 900px) {
+/* 1. TABLET (1024px and below) */
+@media (max-width: 1024px) {
+    .server-rail {
+        width: 64px;
+    }
+
     .channel-list {
         width: 200px;
     }
@@ -445,52 +449,70 @@
         display: none;
     }
 
-    .server-search {
-        width: 130px;
+    .server-search input {
+        width: 100px;
     }
 }
 
-@media (max-width: 680px) {
-    .mobile-toggle-btn {
+/* 2. MOBILE (768px and below) */
+@media (max-width: 768px) {
+    /* Show menu button in server header */
+    .mobile-menu-btn {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 6px;
+        margin-right: 6px;
+        border-radius: 4px;
     }
 
-    /* Mobile drawer slide-in */
+    .mobile-menu-btn:hover {
+        background: #35373c;
+    }
+
+    /* Close button in server name header */
+    .sidebar-close-btn {
+        display: flex;
+        font-size: 20px;
+        line-height: 1;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+
+    .sidebar-close-btn:hover {
+        background: #35373c;
+    }
+
+    /* BY DEFAULT ON MOBILE: Show Server Chat full screen, hide Channel List and Server Rail */
     .server-rail,
     .channel-list {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        z-index: 95;
-        transform: translateX(-100%);
-        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        display: none;
     }
 
-    .server-rail {
-        left: 0;
+    .server-chat {
+        width: 100%;
+        flex: 1;
+    }
+
+    /* WHEN SIDEBAR IS TOGGLED (.show-sidebar on .app):
+       Show Servers and Channels full screen, hide Chat */
+    .app.show-sidebar .server-rail {
+        display: flex;
         width: 72px;
+        flex-shrink: 0;
     }
 
-    .channel-list {
-        left: 72px;
-        width: 240px;
-        max-width: calc(100vw - 72px);
-        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.4);
+    .app.show-sidebar .channel-list {
+        display: flex;
+        flex: 1;
+        width: auto;
     }
 
-    .app.sidebar-open .server-rail,
-    .app.sidebar-open .channel-list {
-        transform: translateX(0);
+    .app.show-sidebar .server-chat {
+        display: none;
     }
 
-    .app.sidebar-open .sidebar-backdrop {
-        display: block;
-    }
-
+    /* Mobile Server Header */
     .server-header {
-        padding: 0 12px;
+        padding: 0 10px;
         gap: 6px;
     }
 
@@ -500,36 +522,33 @@
     }
 
     .server-tools {
-        gap: 10px;
+        gap: 8px;
     }
 
     .server-search {
-        width: 100px;
+        width: 110px;
         padding: 0 6px;
     }
 
+    /* Mobile Server Body & Welcome Message */
     .server-body {
-        padding: 12px;
-    }
-
-    .welcome {
-        left: 12px;
-        bottom: 12px;
-        right: 12px;
+        padding: 16px 12px;
     }
 
     .big-hash {
         width: 52px;
         height: 52px;
         font-size: 34px;
+        margin-bottom: 8px;
     }
 
     .welcome h1 {
         font-size: 22px;
     }
 
+    /* Mobile Message Input Row */
     .message-row {
-        margin: 0 8px 14px 8px;
+        margin: 0 8px 12px 8px;
         padding: 0 10px;
         gap: 8px;
     }
@@ -539,13 +558,14 @@
     }
 }
 
-@media (max-width: 400px) {
+/* 3. SMALL MOBILE (480px and below) */
+@media (max-width: 480px) {
     .server-search {
         display: none;
     }
 
     .channel-name {
-        max-width: 100px;
+        max-width: 110px;
     }
 
     .message-icons .apps,

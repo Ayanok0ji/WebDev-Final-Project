@@ -54,7 +54,7 @@ svg {
 .input-icons span:hover .icon,
 .panel-icon:hover .icon,
 .plus-icon:hover .icon,
-.mobile-toggle-btn:hover .icon,
+.mobile-menu-btn:hover .icon,
 .profile-toggle-icon:hover .icon {
     opacity: 1;
 }
@@ -67,17 +67,16 @@ svg {
     overflow: hidden;
 }
 
-/* Mobile backdrop */
-.sidebar-backdrop {
+/* Mobile buttons (hidden on desktop) */
+.mobile-menu-btn,
+.sidebar-close-btn {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 90;
-    backdrop-filter: blur(2px);
+    background: transparent;
+    border: none;
+    color: #dbdee1;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ---------- server rail ---------- */
@@ -208,6 +207,8 @@ svg {
     padding: 10px;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
 }
 
 .search-bar input {
@@ -584,21 +585,6 @@ svg {
     background: #313338;
 }
 
-.mobile-toggle-btn {
-    display: none;
-    background: transparent;
-    border: none;
-    color: #dbdee1;
-    padding: 6px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 4px;
-}
-
-.mobile-toggle-btn:hover {
-    background: #35373c;
-}
-
 .dm-hash {
     width: 22px;
     height: 22px;
@@ -940,44 +926,33 @@ svg {
 }
 
 /* =========================================================
-   RESPONSIVENESS (Desktop, Tablet, Mobile)
-========================================================= */
+   RESPONSIVE DESIGN (DISCORD STYLE - SIMPLE & BASIC)
+   ========================================================= */
 
-/* Large screens (> 1200px): Standard 4-column layout */
-
-/* Medium / Tablet screens (<= 1200px) */
-@media (max-width: 1200px) {
+/* 1. TABLET SCREENS (1024px and below) */
+@media (max-width: 1024px) {
+    /* Hide the right profile panel to give chat more room */
     .profile-panel {
-        display: none;
+        display: none !important;
     }
 
-    .app.profile-open .profile-panel {
-        display: flex;
-        position: fixed;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        z-index: 100;
-        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.4);
+    /* Keep sidebars visible but slightly more compact */
+    .server-rail {
+        width: 64px;
     }
-}
 
-/* Small Tablet (<= 900px) */
-@media (max-width: 900px) {
     .dm-list {
         width: 210px;
     }
 
+    /* Hide non-essential header icons */
     .header-icons span[title="Start Video Call"],
     .header-icons span[title="Pinned Messages"],
     .header-icons span[title="Inbox"],
     .header-icons span[title="Help"],
+    .profile-toggle-icon,
     .header-divider {
         display: none;
-    }
-
-    .header-icons {
-        gap: 12px;
     }
 
     .header-search input {
@@ -985,48 +960,66 @@ svg {
     }
 }
 
-/* Mobile Screens (<= 680px) */
-@media (max-width: 680px) {
-    .mobile-toggle-btn {
+/* 2. MOBILE SCREENS (768px and below) */
+@media (max-width: 768px) {
+    /* Show menu button in chat header */
+    .mobile-menu-btn {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 6px;
+        margin-right: 6px;
+        border-radius: 4px;
     }
 
-    /* Server rail and DMs drawer for mobile */
+    .mobile-menu-btn:hover {
+        background: #35373c;
+    }
+
+    /* Close button inside sidebar search bar */
+    .sidebar-close-btn {
+        display: flex;
+        font-size: 20px;
+        line-height: 1;
+        padding: 4px 8px;
+        margin-left: 6px;
+        border-radius: 4px;
+    }
+
+    .sidebar-close-btn:hover {
+        background: #35373c;
+    }
+
+    /* BY DEFAULT ON MOBILE: Show Chat full screen, hide Sidebars */
     .server-rail,
     .dm-list {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        z-index: 95;
-        transform: translateX(-100%);
-        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        display: none;
     }
 
-    .server-rail {
-        left: 0;
+    .chat-column {
+        width: 100%;
+        flex: 1;
+    }
+
+    /* WHEN SIDEBAR IS TOGGLED (.show-sidebar on .app):
+       Show Servers and DMs full screen, hide Chat */
+    .app.show-sidebar .server-rail {
+        display: flex;
         width: 72px;
+        flex-shrink: 0;
     }
 
-    .dm-list {
-        left: 72px;
-        width: 240px;
-        max-width: calc(100vw - 72px);
-        box-shadow: 4px 0 16px rgba(0, 0, 0, 0.4);
+    .app.show-sidebar .dm-list {
+        display: flex;
+        flex: 1;
+        width: auto;
     }
 
-    .app.sidebar-open .server-rail,
-    .app.sidebar-open .dm-list {
-        transform: translateX(0);
+    .app.show-sidebar .chat-column {
+        display: none;
     }
 
-    .app.sidebar-open .sidebar-backdrop {
-        display: block;
-    }
-
+    /* Mobile Chat Header */
     .chat-header {
-        padding: 0 12px;
+        padding: 0 10px;
         gap: 6px;
     }
 
@@ -1039,29 +1032,32 @@ svg {
         gap: 8px;
     }
 
-    .header-search {
-        padding: 0 6px;
-    }
-
     .header-search input {
         width: 60px;
     }
 
+    /* Mobile Chat Body */
     .chat-body {
-        padding: 16px 14px 0 14px;
-    }
-
-    .big-name {
-        font-size: 24px;
+        padding: 16px 12px 0;
     }
 
     .big-avatar {
-        width: 64px;
-        height: 64px;
+        width: 60px;
+        height: 60px;
     }
 
+    .big-name {
+        font-size: 22px;
+    }
+
+    .mutual-row {
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+
+    /* Mobile Chat Input */
     .chat-input-row {
-        margin: 0 8px 14px 8px;
+        margin: 0 8px 12px;
         padding: 0 10px;
         gap: 8px;
     }
@@ -1076,14 +1072,14 @@ svg {
     }
 }
 
-/* Very Small Mobile (< 400px) */
-@media (max-width: 400px) {
+/* 3. SMALL MOBILE SCREENS (480px and below) */
+@media (max-width: 480px) {
     .header-search {
         display: none;
     }
 
     .chat-name {
-        max-width: 110px;
+        max-width: 120px;
     }
 
     .input-icons span[title="Apps"],
