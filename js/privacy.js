@@ -1,87 +1,99 @@
+
 const topButton = document.createElement("button");
 
 topButton.className = "back-to-top";
 topButton.innerHTML = "↑";
 topButton.title = "Back to top";
+topButton.type = "button";
 
 document.body.appendChild(topButton);
 
-window.addEventListener("scroll", () => {
 
-  if (window.scrollY > 400) {
-    topButton.classList.add("show");
-  } else {
-    topButton.classList.remove("show");
-  }
+window.addEventListener("scroll", function() {
+
+    if (window.scrollY > 400) {
+        topButton.classList.add("show");
+    } else {
+        topButton.classList.remove("show");
+    }
+
+});
+
+
+topButton.addEventListener("click", function() {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 });
 
-topButton.addEventListener("click", () => {
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-
-});
 
 const sections = document.querySelectorAll(
-  ".privacy-container section[id]"
+    ".privacy-container section[id]"
 );
 
 const contentsLinks = document.querySelectorAll(
-  ".contents a"
+    ".contents a"
 );
 
-const observer = new IntersectionObserver((entries) => {
 
-  entries.forEach(entry => {
+const observer = new IntersectionObserver(function(entries) {
 
-    if (entry.isIntersecting) {
+    entries.forEach(function(entry) {
 
-      contentsLinks.forEach(link => {
-        link.classList.remove("active");
-      });
+        if (entry.isIntersecting) {
 
-      const activeLink = document.querySelector(
-        `.contents a[href="#${entry.target.id}"]`
-      );
+            contentsLinks.forEach(function(link) {
+                link.classList.remove("active");
+            });
 
-      if (activeLink) {
-        activeLink.classList.add("active");
-      }
+            const activeLink = document.querySelector(
+                '.contents a[href="#' + entry.target.id + '"]'
+            );
 
-    }
+            if (activeLink) {
+                activeLink.classList.add("active");
+            }
 
-  });
+        }
+
+    });
 
 }, {
-  rootMargin: "-15% 0px -70% 0px"
+    rootMargin: "-15% 0px -70% 0px"
 });
 
-sections.forEach(section => {
-  observer.observe(section);
+
+sections.forEach(function(section) {
+    observer.observe(section);
 });
 
-contentsLinks.forEach(link => {
 
-  link.addEventListener("click", (event) => {
+contentsLinks.forEach(function(link) {
 
-    event.preventDefault();
+    link.addEventListener("click", function(event) {
 
-    const target = document.querySelector(
-      link.getAttribute("href")
-    );
+        const href = link.getAttribute("href");
 
-    if (target) {
+        if (href && href.startsWith("#")) {
 
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+            const target = document.querySelector(href);
 
-    }
+            if (target) {
 
-  });
+                event.preventDefault();
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        }
+
+    });
 
 });
