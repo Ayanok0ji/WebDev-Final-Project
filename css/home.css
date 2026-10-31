@@ -19,44 +19,14 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* =========================================================
+   UNIVERSAL SVG & ICON STYLING
+   ========================================================= */
 svg {
-    width: 20px;
-    height: 20px;
-    display: block;
-}
-
-.icon {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    vertical-align: middle;
-    opacity: 0.72;
-    transition: opacity 0.15s ease, filter 0.15s ease;
-    object-fit: contain;
-}
-
-.rail-icon {
     width: 24px;
     height: 24px;
     display: block;
-    object-fit: contain;
-    transition: filter 0.15s ease;
-}
-
-.icon:hover,
-.nav-item:hover .icon,
-.dm-item:hover .icon,
-.voice-btn:hover .icon,
-.voice-controls span:hover .icon,
-.icon-wrap:hover .icon,
-.user-icon:hover .icon,
-.header-icons span:hover .icon,
-.input-icons span:hover .icon,
-.panel-icon:hover .icon,
-.plus-icon:hover .icon,
-.mobile-menu-btn:hover .icon,
-.profile-toggle-icon:hover .icon {
-    opacity: 1;
+    flex-shrink: 0;
 }
 
 .app {
@@ -67,7 +37,7 @@ svg {
     overflow: hidden;
 }
 
-/* Mobile buttons (hidden on desktop) */
+/* Mobile buttons (hidden on desktop & tablet) */
 .mobile-menu-btn,
 .sidebar-close-btn {
     display: none;
@@ -112,14 +82,21 @@ svg {
     justify-content: center;
     background: #313338;
     text-decoration: none;
-    transition: border-radius 0.15s ease, background 0.15s ease;
+    transition: border-radius 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
 
-.server-icon img {
+/* Avatars fill the circular icon */
+.server-icon > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: inherit;
+}
+
+/* Vector icons inside server buttons stay 24px */
+.server-icon svg {
+    width: 24px;
+    height: 24px;
 }
 
 .server-icon.home {
@@ -177,20 +154,10 @@ svg {
     color: #23a55a;
 }
 
-.server-icon.add-server .rail-icon,
-.server-icon.explore .rail-icon {
-    filter: brightness(0) saturate(100%) invert(56%) sepia(50%) saturate(664%) hue-rotate(96deg) brightness(93%) contrast(87%);
-}
-
 .server-icon.add-server:hover,
 .server-icon.explore:hover {
     background: #23a55a;
     color: #fff;
-}
-
-.server-icon.add-server:hover .rail-icon,
-.server-icon.explore:hover .rail-icon {
-    filter: brightness(0) invert(1);
 }
 
 /* ---------- dm list ---------- */
@@ -255,10 +222,11 @@ svg {
 
 .nav-icon img,
 .nav-icon svg {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
     display: block;
+    flex-shrink: 0;
 }
 
 .nav-label {
@@ -297,6 +265,11 @@ svg {
 
 .add-icon:hover {
     color: #dbdee1;
+}
+
+.add-icon svg {
+    width: 16px;
+    height: 16px;
 }
 
 /* dm rows */
@@ -432,20 +405,21 @@ svg {
     text-overflow: ellipsis;
     display: flex;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
 }
 
 .voice-mini {
     width: 14px;
     height: 14px;
-    filter: brightness(0) saturate(100%) invert(56%) sepia(50%) saturate(664%) hue-rotate(96deg) brightness(93%) contrast(87%);
-    opacity: 1;
+    color: #23a55a;
+    flex-shrink: 0;
 }
 
 .pin-icon {
     margin-left: auto;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
+    color: #949ba4;
     flex-shrink: 0;
     transform: rotate(35deg);
 }
@@ -467,8 +441,8 @@ svg {
 .voice-icon {
     width: 18px;
     height: 18px;
-    filter: brightness(0) saturate(100%) invert(56%) sepia(50%) saturate(664%) hue-rotate(96deg) brightness(93%) contrast(87%);
-    opacity: 1;
+    color: #23a55a;
+    flex-shrink: 0;
 }
 
 .voice-text {
@@ -492,16 +466,28 @@ svg {
 .voice-btn {
     cursor: pointer;
     color: #949ba4;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.voice-btn.hangup .icon {
-    filter: brightness(0) saturate(100%) invert(38%) sepia(68%) saturate(3015%) hue-rotate(334deg) brightness(98%) contrast(92%);
-    opacity: 1;
+.voice-btn:hover {
+    color: #dbdee1;
+}
+
+.voice-btn.hangup {
+    color: #f23f42;
+}
+
+.voice-btn.hangup:hover {
+    color: #ff5e61;
+}
+
+.voice-btn svg {
+    width: 18px;
+    height: 18px;
 }
 
 .voice-controls {
@@ -523,6 +509,12 @@ svg {
 
 .voice-controls span:hover {
     background: #35373c;
+    color: #dbdee1;
+}
+
+.voice-controls svg {
+    width: 18px;
+    height: 18px;
 }
 
 /* ---------- user panel ---------- */
@@ -546,9 +538,9 @@ svg {
     color: #949ba4;
 }
 
-.icon-wrap,
 .user-panel .icon {
     cursor: pointer;
+    color: #b5bac1;
     padding: 4px;
     border-radius: 4px;
     display: flex;
@@ -556,9 +548,14 @@ svg {
     justify-content: center;
 }
 
-.icon-wrap:hover,
 .user-panel .icon:hover {
     background: #35373c;
+    color: #dbdee1;
+}
+
+.user-panel .icon svg {
+    width: 20px;
+    height: 20px;
 }
 
 /* ---------- chat column ---------- */
@@ -586,9 +583,10 @@ svg {
 }
 
 .dm-hash {
-    width: 22px;
-    height: 22px;
-    opacity: 0.6;
+    width: 24px;
+    height: 24px;
+    color: #949ba4;
+    flex-shrink: 0;
 }
 
 .chat-name {
@@ -608,12 +606,20 @@ svg {
     color: #b5bac1;
 }
 
-.header-icons > span,
-.profile-toggle-icon {
+.header-icons > span {
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.header-icons > span:hover {
+    color: #dbdee1;
+}
+
+.header-icons svg {
+    width: 24px;
+    height: 24px;
 }
 
 .header-divider {
@@ -643,6 +649,12 @@ svg {
 }
 
 .header-search input::placeholder {
+    color: #949ba4;
+}
+
+.header-search svg {
+    width: 16px;
+    height: 16px;
     color: #949ba4;
 }
 
@@ -776,6 +788,15 @@ svg {
     justify-content: center;
 }
 
+.plus-icon:hover {
+    color: #dbdee1;
+}
+
+.plus-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
 .chat-input-row input {
     flex: 1;
     background: transparent;
@@ -803,6 +824,15 @@ svg {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.input-icons span:hover {
+    color: #dbdee1;
+}
+
+.input-icons svg {
+    width: 24px;
+    height: 24px;
 }
 
 /* ---------- profile view ---------- */
@@ -837,6 +867,11 @@ svg {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.panel-icon svg {
+    width: 16px;
+    height: 16px;
 }
 
 .profile-avatar-wrap {
@@ -894,6 +929,12 @@ svg {
     gap: 6px;
 }
 
+.mutual-line svg {
+    width: 16px;
+    height: 16px;
+    color: #949ba4;
+}
+
 .profile-info h3 {
     font-size: 12px;
     text-transform: uppercase;
@@ -945,12 +986,11 @@ svg {
         width: 210px;
     }
 
-    /* Hide non-essential header icons */
+    /* Hide non-essential header icons on tablet */
     .header-icons span[title="Start Video Call"],
     .header-icons span[title="Pinned Messages"],
     .header-icons span[title="Inbox"],
     .header-icons span[title="Help"],
-    .profile-toggle-icon,
     .header-divider {
         display: none;
     }
@@ -972,6 +1012,11 @@ svg {
 
     .mobile-menu-btn:hover {
         background: #35373c;
+    }
+
+    .mobile-menu-btn svg {
+        width: 24px;
+        height: 24px;
     }
 
     /* Close button inside sidebar search bar */
@@ -1083,7 +1128,7 @@ svg {
     }
 
     .input-icons span[title="Apps"],
-    .input-icons span[title="Gift Nitro"] {
+    .input-icons span[title="Gift"] {
         display: none;
     }
 }
