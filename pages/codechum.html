@@ -245,19 +245,19 @@
 
         <!-- header icons -->
         <div class="server-tools">
-          <span class="tool-icon" title="Threads">
+          <span class="tool-icon" title="Threads" onclick="toast('Threads are not available yet')">
             <img src="../assets/icons/ui-thread-replies-24x24.svg" alt="Threads" class="icon">
           </span>
 
-          <span class="tool-icon" title="Notifications">
+          <span class="tool-icon" title="Notifications" onclick="toast('Notification settings coming soon')">
             <img src="../assets/icons/ui-bell-24x24.svg" alt="Notifications" class="icon">
           </span>
 
-          <span class="tool-icon" title="Pinned Messages">
+          <span class="tool-icon" title="Pinned Messages" onclick="toast('No pinned messages')">
             <img src="../assets/icons/ui-pin-24x24.svg" alt="Pinned Messages" class="icon">
           </span>
 
-          <span class="tool-icon" title="Member List">
+          <span class="tool-icon" title="Member List" onclick="toast('Member list coming soon')">
             <img src="../assets/icons/ui-members-24x24.svg" alt="Member List" class="icon">
           </span>
 
@@ -268,7 +268,7 @@
             <img src="../assets/icons/ui-search-24x24.svg" alt="Search" class="icon">
           </div>
 
-          <span class="help" title="Help">?</span>
+          <span class="help" title="Help" onclick="toast('Help center coming soon')">?</span>
         </div>
       </header>
 
@@ -317,30 +317,33 @@
       <form class="message-row" id="message-row" onsubmit="return sendmessage(event);">
 
         <!-- plus button -->
-        <span class="message-plus" title="Add Attachment">
+        <span class="message-plus" title="Add Attachment" onclick="triggerFileInput()">
           <img src="../assets/icons/ui-plus-24x24.svg" alt="Add Attachment" class="icon">
         </span>
+
+        <!-- file input -->
+        <input type="file" id="file-input" style="display: none;" onchange="handleFileUpload()">
 
         <input type="text" id="message-input" placeholder="Message #rules-and-info"
           autocomplete="off" aria-label="Send a message">
 
         <!-- message icons -->
         <div class="message-icons">
-          <span class="message-icon desktop-only" title="Gift">
+          <span class="message-icon desktop-only" title="Gift" onclick="toast('Gifting is not available yet')">
             <img src="../assets/icons/ui-gift-nitro-24x24.svg" alt="Gift" class="icon">
           </span>
 
-          <span class="gif desktop-only" title="GIF">GIF</span>
+          <span class="gif desktop-only" title="GIF" onclick="toast('GIF picker coming soon')">GIF</span>
 
-          <span class="message-icon desktop-only" title="Upload Image">
+          <span class="message-icon desktop-only" title="Upload Image" onclick="triggerFileInput()">
             <img src="../assets/icons/ui-image-picture-24x24.svg" alt="Upload Image" class="icon">
           </span>
 
-          <span class="message-icon" title="Emoji">
+          <span class="message-icon composer-emoji-btn" title="Emoji" onclick="toggleComposerEmoji(event)">
             <img src="../assets/icons/ui-emoji-smile-24x24.svg" alt="Emoji" class="icon">
           </span>
 
-          <span class="message-icon" title="Apps">
+          <span class="message-icon desktop-only" title="Apps" onclick="toast('Apps are not available yet')">
             <img src="../assets/icons/ui-apps-grid-24x24.svg" alt="Apps" class="icon">
           </span>
 
@@ -356,6 +359,15 @@
       <div class="no-permission" id="no-permission">
         You do not have permission to send messages in this channel.
       </div>
+
+      <!-- reaction picker popover -->
+      <div class="emoji-pop" id="reaction-picker"></div>
+
+      <!-- composer emoji picker popover -->
+      <div class="emoji-pop" id="composer-emoji-picker"></div>
+
+      <!-- toast -->
+      <div class="toast" id="toast"></div>
 
     </main>
   </div>
