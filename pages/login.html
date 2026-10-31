@@ -33,12 +33,15 @@
                 <!-- password -->
                 <div class="form-group">
                     <label for="login-password">Password <span class="required" aria-hidden="true">*</span></label>
-                    <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+                    <div class="password-box">
+                        <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+                        <img id="toggle-password" class="eye-icon" src="../assets/icons/ui-eye-show-24x24.svg" alt="Show password" onclick="togglepassword()">
+                    </div>
                 </div>
 
                 <!-- forgot password -->
                 <div class="forgot-wrapper">
-                    <a href="#" id="toggle-password" onclick="togglepassword(); return false;">Show password</a> &nbsp;|&nbsp; <a href="#">Forgot your password?</a>
+                    <a href="#">Forgot your password?</a>
                 </div>
 
                 <!-- submit button -->

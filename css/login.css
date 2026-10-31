@@ -208,6 +208,28 @@ button:active {
     font-size: 14px;
 }
 
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 44px;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.eye-icon:hover {
+    opacity: 1;
+}
+
 /* mobile view */
 @media (max-width: 768px) {
     body {
