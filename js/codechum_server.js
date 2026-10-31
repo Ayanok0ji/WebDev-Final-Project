@@ -199,5 +199,5 @@ function toggledeafen() {
   }
 }
 
-// send message from variable channels
+// fire the function showmessages to show the messages on every channels
 showmessages();
