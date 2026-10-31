@@ -27,10 +27,12 @@ function togglepassword() {
 
     if (box.type == "password") {
         box.type = "text";
-        icon.src = "../assets/icons/"
+        icon.src = "../assets/icons/ui-eye-off-hide-24x24.svg";
+        icon.alt = "Hide password";
     } else {
         box.type = "password";
-        link.innerHTML = "Show password";
+        icon.src = "../assets/icons/ui-eye-show-24x24.svg";
+        icon.alt = "Show password";
     }
 }
 
