@@ -1,54 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discord Login</title>
-  <link rel="stylesheet" href="css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Login</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
-<header class="header-logo">
-  <a href="home.html" aria-label="Discord Home">
-    <img class="logo" src="assets/logo.svg" alt="Discord Logo">
-  </a>
-</header>
+    <!-- Discord logo in top left corner -->
+    <header class="header-logo">
+        <a href="home.html" aria-label="Discord Home">
+            <img class="logo" src="assets/logo.svg" alt="Discord Logo">
+        </a>
+    </header>
 
-<main class="login-box" role="main">
-  <section class="login-form" aria-labelledby="login-heading">
-    <h2 id="login-heading">Welcome back!</h2>
-    <p class="subtitle">We're so excited to see you again!</p>
+    <!-- Main login card container -->
+    <main class="login-box" role="main">
 
-    <form action="home.html" method="get">
-      <div class="form-group">
-        <label for="login-email">Email or Phone Number <span class="required" aria-hidden="true">*</span></label>
-        <input id="login-email" name="email" type="text" autocomplete="username" required>
-      </div>
+        <!-- Left side: Login form inputs and submit button -->
+        <section class="login-form" aria-labelledby="login-heading">
+            <h2 id="login-heading">Welcome back!</h2>
+            <p class="subtitle">We're so excited to see you again!</p>
 
-      <div class="form-group">
-        <label for="login-password">Password <span class="required" aria-hidden="true">*</span></label>
-        <input id="login-password" name="password" type="password" autocomplete="current-password" required>
-      </div>
+            <form action="home.html" method="get">
+                <!-- Email or phone number input field -->
+                <div class="form-group">
+                    <label for="login-email">Email or Phone Number <span class="required" aria-hidden="true">*</span></label>
+                    <input id="login-email" name="email" type="text" autocomplete="username" required>
+                </div>
 
-      <div class="forgot-wrapper">
-        <a href="#">Forgot your password?</a>
-      </div>
+                <!-- Password input field -->
+                <div class="form-group">
+                    <label for="login-password">Password <span class="required" aria-hidden="true">*</span></label>
+                    <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+                </div>
 
-      <button type="submit">Log In</button>
+                <!-- Forgot password link -->
+                <div class="forgot-wrapper">
+                    <a href="#">Forgot your password?</a>
+                </div>
 
-      <p class="register">Need an account? <a href="register.html">Register</a></p>
-    </form>
-  </section>
+                <!-- Submit login button -->
+                <button type="submit">Log In</button>
 
-  <aside class="qr-box" aria-label="QR Code Login">
-    <div class="qr-code-wrapper">
-      <img class="qr-img" src="assets/images/pogi_mo_seb.png" alt="Scan QR code">
-    </div>
-    <h2 class="meow"><b>Log in with QR Code</b></h2>
-    <p class="scan">Scan this with the <b>Discord mobile app</b> to log in instantly.</p>
-    <a class="passkey" href="#">Or, sign in with passkey</a>
-  </aside>
-</main>
-  
+                <!-- Link to registration page -->
+                <p class="register">Need an account? <a href="register.html">Register</a></p>
+            </form>
+        </section>
+
+        <!-- Right side: QR code box for Discord mobile app -->
+        <aside class="qr-box" aria-label="QR Code Login">
+            <div class="qr-code-wrapper">
+                <img class="qr-img" src="assets/images/pogi_mo_seb.png" alt="Scan QR code">
+            </div>
+            <h2 class="meow"><b>Log in with QR Code</b></h2>
+            <p class="scan">Scan this with the <b>Discord mobile app</b> to log in instantly.</p>
+            <a class="passkey" href="#">Or, sign in with passkey</a>
+        </aside>
+
+    </main>
+
 </body>
 </html>

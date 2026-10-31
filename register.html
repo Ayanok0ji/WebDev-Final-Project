@@ -8,37 +8,44 @@
 </head>
 <body>
 
+    <!-- Discord logo in top left corner -->
     <header class="header-logo">
         <a href="home.html" aria-label="Discord Home">
             <img class="logo" src="assets/logo.svg" alt="Discord Logo">
         </a>
     </header>
 
+    <!-- Main registration box container -->
     <main class="box" role="main">
 
         <h2>Create an account</h2>
 
         <form action="login.html" method="get">
+            <!-- Email input field -->
             <div class="form-group">
                 <label for="reg-email">EMAIL <span class="required" aria-hidden="true">*</span></label>
                 <input id="reg-email" name="email" type="email" autocomplete="email" required>
             </div>
 
+            <!-- Display name input field (optional) -->
             <div class="form-group">
                 <label for="reg-display-name">DISPLAY NAME</label>
                 <input id="reg-display-name" name="display_name" type="text" autocomplete="nickname">
             </div>
 
+            <!-- Username input field -->
             <div class="form-group">
                 <label for="reg-username">USERNAME <span class="required" aria-hidden="true">*</span></label>
                 <input id="reg-username" name="username" type="text" autocomplete="username" required>
             </div>
 
+            <!-- Password input field -->
             <div class="form-group">
                 <label for="reg-password">PASSWORD <span class="required" aria-hidden="true">*</span></label>
                 <input id="reg-password" name="password" type="password" autocomplete="new-password" required>
             </div>
 
+            <!-- Date of birth select dropdowns -->
             <div class="form-group">
                 <label id="dob-label">DATE OF BIRTH <span class="required" aria-hidden="true">*</span></label>
 
@@ -137,13 +144,17 @@
                 </div>
             </div>
             
+            <!-- Submit continue button -->
             <button type="submit">Continue</button>
+
+            <!-- Terms of service and privacy agreement text -->
             <p>
                 By registering, you agree to Discord's
                 <a href="terms.html">Terms of Service</a> and
                 <a href="privacy.html">Privacy Policy</a>.
             </p>
 
+            <!-- Link back to login page -->
             <a href="login.html" class="already-account">Already have an account?</a>
         </form>
 

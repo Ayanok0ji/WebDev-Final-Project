@@ -1,254 +1,269 @@
+/* Reset box-sizing for all elements */
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
+/* Custom Discord font */
 @font-face {
-  font-family: gg;
-  src: url("../assets/fonts/ggsans-normal.woff2");
+    font-family: gg;
+    src: url("../assets/fonts/ggsans-normal.woff2");
 }
 
+/* Page body styling and background image */
 body {
-  margin: 0;
-  min-height: 100vh;
-  background: url("../assets/background.svg") center/cover no-repeat;
-  font-family: gg, "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 16px;
-  position: relative;
+    margin: 0;
+    min-height: 100vh;
+    background: url("../assets/background.svg") center/cover no-repeat;
+    font-family: gg, "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+    position: relative;
 }
 
+/* Discord logo positioned in top left */
 .header-logo {
-  position: absolute;
-  top: 48px;
-  left: 48px;
+    position: absolute;
+    top: 48px;
+    left: 48px;
 }
 
 .logo {
-  display: block;
+    display: block;
 }
 
+/* Main dark card container holding the form and QR box */
 .login-box {
-  width: 100%;
-  max-width: 784px;
-  padding: 32px;
-  background: #313338;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
-  display: flex;
-  gap: 32px;
+    width: 100%;
+    max-width: 784px;
+    padding: 32px;
+    background: #313338;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 32px;
 }
 
+/* Left column: Login form inputs */
 .login-form {
-  width: 416px;
-  flex: 1 1 416px;
+    width: 416px;
+    flex: 1 1 416px;
 }
 
 h2 {
-  color: white;
-  font-size: 24px;
-  text-align: center;
-  margin: 0;
-  font-weight: 600;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+    font-weight: 600;
 }
 
 .subtitle {
-  color: #dbdee1;
-  text-align: center;
-  margin: 8px 0 20px;
-  font-size: 16px;
+    color: #dbdee1;
+    text-align: center;
+    margin: 8px 0 20px;
+    font-size: 16px;
 }
 
+/* Form input group and labels */
 .form-group {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 label {
-  display: block;
-  color: #b5bac1;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  margin-bottom: 8px;
+    display: block;
+    color: #b5bac1;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
 }
 
 label span,
 label .required {
-  color: #fa777c;
+    color: #fa777c;
 }
 
+/* Text and password inputs */
 input {
-  width: 100%;
-  height: 44px;
-  padding: 10px;
-  background: #1e1f22;
-  color: white;
-  border: 1px solid #1e1f22;
-  border-radius: 4px;
-  outline: none;
-  font-size: 16px;
-  font-family: inherit;
-  transition: border-color 0.15s ease;
+    width: 100%;
+    height: 44px;
+    padding: 10px;
+    background: #1e1f22;
+    color: white;
+    border: 1px solid #1e1f22;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    font-family: inherit;
+    transition: border-color 0.15s ease;
 }
 
 input:focus {
-  border-color: #00a8fc;
+    border-color: #00a8fc;
 }
 
+/* Forgot password link row */
 .forgot-wrapper {
-  margin-top: 4px;
-  margin-bottom: 20px;
+    margin-top: 4px;
+    margin-bottom: 20px;
 }
 
 a {
-  color: #00a8fc;
-  text-decoration: none;
-  font-size: 14px;
+    color: #00a8fc;
+    text-decoration: none;
+    font-size: 14px;
 }
 
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
+/* Blue login button */
 button {
-  width: 100%;
-  height: 44px;
-  background: #5865f2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: inherit;
-  cursor: pointer;
-  transition: background-color 0.15s ease;
+    width: 100%;
+    height: 44px;
+    background: #5865f2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
 }
 
 button:hover {
-  background: #4752c4;
+    background: #4752c4;
 }
 
 button:active {
-  background: #3c45a5;
+    background: #3c45a5;
 }
 
+/* Link to register page */
 .register {
-  color: #949ba4;
-  font-size: 14px;
-  margin-top: 8px;
-  margin-bottom: 0;
+    color: #949ba4;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 0;
 }
 
+/* Right column: QR code login */
 .qr-box {
-  width: 240px;
-  flex: 0 0 240px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+    width: 240px;
+    flex: 0 0 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .qr-code-wrapper {
-  background: #ffffff;
-  padding: 8px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .qr-img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  display: block;
-  border-radius: 4px;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
 }
 
 .meow {
-  color: #dbdee1;
-  font-size: 20px;
-  font-weight: 600;
-  margin: 24px 0 8px;
+    color: #dbdee1;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 24px 0 8px;
 }
 
 .scan {
-  color: #b5bac1;
-  font-size: 15px;
-  line-height: 20px;
-  margin: 0;
+    color: #b5bac1;
+    font-size: 15px;
+    line-height: 20px;
+    margin: 0;
 }
 
 .scan b {
-  color: #dbdee1;
+    color: #dbdee1;
 }
 
 .passkey {
-  margin-top: 15px;
-  font-size: 14px;
-}
-
-/* Tablet & Mobile Responsiveness */
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;
-    justify-content: center;
-    padding: 32px 16px;
-  }
-
-  .header-logo {
-    position: static;
-    margin-bottom: 24px;
-    align-self: center;
-  }
-
-  .login-box {
-    max-width: 480px;
-    justify-content: center;
-  }
-
-  .login-form {
-    width: 100%;
-    flex: 1 1 100%;
-  }
-
-  .qr-box {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    padding: 16px 12px;
-  }
-
-  .header-logo {
-    margin-bottom: 16px;
-  }
-
-  .login-box {
-    padding: 24px 18px;
-    border-radius: 8px;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
-
-  .subtitle {
+    margin-top: 15px;
     font-size: 14px;
-    margin-bottom: 16px;
-  }
+}
 
-  .form-group {
-    margin-bottom: 16px;
-  }
+/* Responsive styles for tablet and mobile */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        justify-content: center;
+        padding: 32px 16px;
+    }
 
-  input,
-  button {
-    height: 44px;
-    font-size: 16px;
-  }
+    /* Move logo from absolute position to normal flow */
+    .header-logo {
+        position: static;
+        margin-bottom: 24px;
+        align-self: center;
+    }
+
+    .login-box {
+        max-width: 480px;
+        justify-content: center;
+    }
+
+    .login-form {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+
+    /* Hide QR code on mobile devices */
+    .qr-box {
+        display: none;
+    }
+}
+
+/* Extra small mobile phone screens */
+@media (max-width: 480px) {
+    body {
+        padding: 16px 12px;
+    }
+
+    .header-logo {
+        margin-bottom: 16px;
+    }
+
+    .login-box {
+        padding: 24px 18px;
+        border-radius: 8px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    input,
+    button {
+        height: 44px;
+        font-size: 16px;
+    }
 }

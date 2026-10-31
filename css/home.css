@@ -1,14 +1,17 @@
+/* Reset default browser margins and set box-sizing */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Discord custom font */
 @font-face {
     font-family: "gg sans";
     src: url("../assets/fonts/ggsans-normal.woff2");
 }
 
+/* Body setup and dark theme background */
 body {
     background: #1e1f22;
     color: #dbdee1;
@@ -19,9 +22,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* =========================================================
-   UNIVERSAL SVG & ICON STYLING
-   ========================================================= */
+/* Default SVG icon sizing */
 svg {
     width: 24px;
     height: 24px;
@@ -29,6 +30,7 @@ svg {
     flex-shrink: 0;
 }
 
+/* Main app container */
 .app {
     display: flex;
     height: 100vh;
@@ -49,7 +51,7 @@ svg {
     justify-content: center;
 }
 
-/* ---------- server rail ---------- */
+/* Left server rail sidebar */
 .server-rail {
     width: 72px;
     background: #1e1f22;
@@ -160,7 +162,7 @@ svg {
     color: #fff;
 }
 
-/* ---------- dm list ---------- */
+/* Direct messages sidebar */
 .dm-list {
     width: 240px;
     background: #2b2d31;
@@ -200,7 +202,7 @@ svg {
     padding: 0 8px 8px 8px;
 }
 
-/* nav items */
+/* Navigation tabs (Friends, Requests, Nitro, Shop, Quests) */
 .nav-item {
     display: flex;
     align-items: center;
@@ -272,7 +274,7 @@ svg {
     height: 16px;
 }
 
-/* dm rows */
+/* Direct message friend chat rows */
 .dm-item {
     display: flex;
     align-items: center;
@@ -424,7 +426,7 @@ svg {
     transform: rotate(35deg);
 }
 
-/* ---------- voice panel ---------- */
+/* Voice connected channel status box */
 .voice-panel {
     background: #232428;
     padding: 8px 8px;
@@ -517,7 +519,7 @@ svg {
     height: 18px;
 }
 
-/* ---------- user panel ---------- */
+/* Bottom logged-in user profile bar */
 .user-panel {
     background: #232428;
     padding: 8px;
@@ -558,7 +560,7 @@ svg {
     height: 20px;
 }
 
-/* ---------- chat column ---------- */
+/* Main chat conversation column */
 .chat-column {
     flex: 1;
     display: flex;
@@ -835,7 +837,7 @@ svg {
     height: 24px;
 }
 
-/* ---------- profile view ---------- */
+/* Right side user profile panel */
 .profile-panel {
     width: 300px;
     background: #2b2d31;
@@ -966,11 +968,9 @@ svg {
     background: #3f4147;
 }
 
-/* =========================================================
-   RESPONSIVE DESIGN (DISCORD STYLE - SIMPLE & BASIC)
-   ========================================================= */
+/* Responsive styles for tablet and mobile */
 
-/* 1. TABLET SCREENS (1024px and below) */
+/* Tablet view (1024px and below) */
 @media (max-width: 1024px) {
     /* Hide the right profile panel to give chat more room */
     .profile-panel {
@@ -1000,7 +1000,7 @@ svg {
     }
 }
 
-/* 2. MOBILE SCREENS (768px and below) */
+/* Mobile phone view (768px and below) */
 @media (max-width: 768px) {
     /* Show menu button in chat header */
     .mobile-menu-btn {
@@ -1033,7 +1033,7 @@ svg {
         background: #35373c;
     }
 
-    /* BY DEFAULT ON MOBILE: Show Chat full screen, hide Sidebars */
+    /* Show chat full screen by default on mobile */
     .server-rail,
     .dm-list {
         display: none;
@@ -1044,8 +1044,7 @@ svg {
         flex: 1;
     }
 
-    /* WHEN SIDEBAR IS TOGGLED (.show-sidebar on .app):
-       Show Servers and DMs full screen, hide Chat */
+    /* When mobile sidebar toggle is active */
     .app.show-sidebar .server-rail {
         display: flex;
         width: 72px;
@@ -1117,7 +1116,7 @@ svg {
     }
 }
 
-/* 3. SMALL MOBILE SCREENS (480px and below) */
+/* Small mobile screens (480px and below) */
 @media (max-width: 480px) {
     .header-search {
         display: none;

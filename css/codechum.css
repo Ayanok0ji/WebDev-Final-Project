@@ -1,12 +1,20 @@
+/* Server sidebar link styling */
 .server-icon {
     text-decoration: none;
 }
 
-.server-symbol {
-    font-size: 28px;
-    color: #23a559;
+/* Codechum server icon active white pill indicator */
+.server-icon.active {
+    background: #5865f2;
+    border-radius: 16px;
 }
 
+.server-icon.active .pill {
+    height: 40px;
+    opacity: 1;
+}
+
+/* Channel sidebar on the left */
 .channel-list {
     width: 240px;
     background: #2b2d31;
@@ -16,38 +24,43 @@
     height: 100%;
 }
 
+/* Server title bar at top of channels */
 .server-name {
     height: 48px;
     padding: 0 16px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    color: white;
+    font-weight: 700;
     font-size: 15px;
-    font-weight: 600;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, .2);
+    color: white;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 1.5px 0 rgba(0, 0, 0, .05);
     cursor: pointer;
-    transition: background-color 0.15s ease;
+    background: #2b2d31;
+    flex-shrink: 0;
 }
 
 .server-name:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: #35373c;
 }
 
 .server-arrow {
-    color: #b5bac1;
-    font-size: 18px;
+    margin-left: auto;
+    font-size: 14px;
+    color: #949ba4;
 }
 
+/* Channels scrollable list */
 .channels {
     flex: 1;
-    padding: 10px 8px;
     overflow-y: auto;
+    padding: 8px 8px 0;
 }
 
+/* Individual channel row */
 .channel {
     height: 34px;
     padding: 0 8px;
+    margin-bottom: 2px;
     display: flex;
     align-items: center;
     gap: 7px;
@@ -69,6 +82,7 @@
     color: white;
 }
 
+/* Channel hash and icons */
 .channel-icon {
     width: 20px;
     height: 20px;
@@ -106,6 +120,7 @@
     background: #3f4147;
 }
 
+/* Category section titles (Text Channels, Voice Channels) */
 .category {
     margin-top: 16px;
     margin-bottom: 3px;
@@ -125,6 +140,7 @@
     font-size: 12px;
 }
 
+/* Logged-in user bar at bottom */
 .server-user {
     height: 52px;
     padding: 6px 8px;
@@ -159,6 +175,7 @@
     text-overflow: ellipsis;
 }
 
+/* User buttons: mute, deafen, settings */
 .user-icon {
     padding: 4px;
     color: #b5bac1;
@@ -179,6 +196,7 @@
     height: 18px;
 }
 
+/* Main chat column on right side */
 .server-chat {
     flex: 1;
     min-width: 0;
@@ -188,6 +206,7 @@
     height: 100%;
 }
 
+/* Top header bar inside server chat */
 .server-header {
     height: 48px;
     padding: 0 16px;
@@ -215,6 +234,7 @@
     text-overflow: ellipsis;
 }
 
+/* Header utility buttons on right side */
 .server-tools {
     margin-left: auto;
     display: flex;
@@ -257,6 +277,7 @@
     background: #dbdee1;
 }
 
+/* Header search input */
 .server-search {
     width: 180px;
     height: 28px;
@@ -289,6 +310,7 @@
     flex-shrink: 0;
 }
 
+/* Chat feed container */
 .server-body {
     flex: 1;
     display: flex;
@@ -298,6 +320,7 @@
     padding: 24px 16px;
 }
 
+/* Welcome banner inside empty channel */
 .welcome {
     margin-top: auto;
 }
@@ -330,6 +353,7 @@
     font-size: 14px;
 }
 
+/* Message input bar at bottom */
 .message-row {
     height: 44px;
     margin: 0 16px 24px;
@@ -375,6 +399,7 @@
     color: #6d6f78;
 }
 
+/* Action icons inside message row */
 .message-icons {
     display: flex;
     align-items: center;
@@ -428,7 +453,7 @@
     color: #fff;
 }
 
-/* Mobile toggle buttons (hidden on desktop) */
+/* Mobile menu toggle buttons (hidden on desktop) */
 .mobile-menu-btn,
 .sidebar-close-btn {
     display: none;
@@ -438,11 +463,9 @@
     cursor: pointer;
 }
 
-/* =========================================================
-   RESPONSIVE DESIGN FOR CODECHUM (DISCORD STYLE)
-   ========================================================= */
+/* Responsive styles */
 
-/* 1. TABLET (1024px and below) */
+/* Tablet view */
 @media (max-width: 1024px) {
     .server-rail {
         width: 64px;
@@ -452,6 +475,7 @@
         width: 200px;
     }
 
+    /* Hide extra header icons to keep clean */
     .server-tools .tool-icon:nth-child(1),
     .server-tools .tool-icon:nth-child(3),
     .server-tools .help {
@@ -463,7 +487,7 @@
     }
 }
 
-/* 2. MOBILE (768px and below) */
+/* Mobile phone view */
 @media (max-width: 768px) {
     /* Show menu button in server header */
     .mobile-menu-btn {
@@ -482,7 +506,7 @@
         height: 24px;
     }
 
-    /* Close button in server name header */
+    /* Close button in server title header */
     .sidebar-close-btn {
         display: flex;
         font-size: 20px;
@@ -495,7 +519,7 @@
         background: #35373c;
     }
 
-    /* BY DEFAULT ON MOBILE: Show Server Chat full screen, hide Channel List and Server Rail */
+    /* On mobile, show chat by default and hide sidebar */
     .server-rail,
     .channel-list {
         display: none;
@@ -506,8 +530,7 @@
         flex: 1;
     }
 
-    /* WHEN SIDEBAR IS TOGGLED (.show-sidebar on .app):
-       Show Servers and Channels full screen, hide Chat */
+    /* When user taps mobile menu button to view channels */
     .app.show-sidebar .server-rail {
         display: flex;
         width: 72px;
@@ -524,7 +547,7 @@
         display: none;
     }
 
-    /* Mobile Server Header */
+    /* Mobile header adjustments */
     .server-header {
         padding: 0 10px;
         gap: 6px;
@@ -544,7 +567,7 @@
         padding: 0 6px;
     }
 
-    /* Mobile Server Body & Welcome Message */
+    /* Mobile chat body adjustments */
     .server-body {
         padding: 16px 12px;
     }
@@ -560,7 +583,7 @@
         font-size: 22px;
     }
 
-    /* Mobile Message Input Row */
+    /* Mobile message row input */
     .message-row {
         margin: 0 8px 12px 8px;
         padding: 0 10px;
@@ -572,7 +595,7 @@
     }
 }
 
-/* 3. SMALL MOBILE (480px and below) */
+/* Small mobile phone view */
 @media (max-width: 480px) {
     .server-search {
         display: none;
