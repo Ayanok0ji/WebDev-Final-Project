@@ -31,33 +31,75 @@ body {
 /* svg and icon images */
 svg,
 img.icon,
-.icon img,
-.top-left img,
-.top-icons img,
-.header-icons img,
-.input-icons img,
-.message-icons img,
-.server-tools img,
-.voice-controls img,
-.voice-btn img,
-.section-actions img,
-.channel-icon,
-.panel-icon img,
-.mobile-menu-btn img {
-    width: 24px;
-    height: 24px;
+.icon img {
+    width: 20px;
+    height: 20px;
     display: block;
     flex-shrink: 0;
     object-fit: contain;
 }
 
-.server-icon.add-server img,
-.server-icon.explore img {
-    width: 24px;
-    height: 24px;
+/* header icons */
+.header-icons img,
+.top-icons img,
+.top-left img,
+.server-tools img,
+.mobile-menu-btn img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
     object-fit: contain;
 }
 
+/* chat input icons */
+.input-icons img,
+.message-icons img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+/* voice panel icons */
+.voice-controls img,
+.voice-btn img,
+.panel-icon img {
+    width: 18px;
+    height: 18px;
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.voice-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+/* small icons */
+.section-actions img,
+.action-icon img,
+.header-search img,
+.server-search img,
+.pin-icon,
+.mutual-line img {
+    width: 16px;
+    height: 16px;
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.voice-mini {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+/* plus button in message input */
 .plus-icon img,
 .message-plus img {
     width: 18px;
@@ -65,34 +107,17 @@ img.icon,
     object-fit: contain;
 }
 
-.header-search img,
-.server-search img {
-    width: 16px;
-    height: 16px;
+/* server rail icons */
+.server-icon.add-server img,
+.server-icon.explore img {
+    width: 20px;
+    height: 20px;
     object-fit: contain;
 }
 
-.action-icon img {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-}
-
-.pin-icon {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-}
-
-.chevron-mini {
-    width: 14px;
-    height: 14px;
-    object-fit: contain;
-}
-
-.voice-mini {
-    width: 14px;
-    height: 14px;
+.server-icon.home img {
+    width: 26px;
+    height: 18px;
     object-fit: contain;
 }
 
@@ -1362,9 +1387,11 @@ img.icon,
         background: #35373c;
     }
 
-    .mobile-menu-btn svg {
-        width: 24px;
-        height: 24px;
+    .mobile-menu-btn svg,
+    .mobile-menu-btn img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
     }
 
     /* close button */

@@ -4,18 +4,25 @@ img.icon,
 .top-left img,
 .top-icons img,
 .server-tools img,
-.message-icons img,
 .mobile-menu-btn img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.message-icons img {
+    width: 20px;
+    height: 20px;
     display: block;
     flex-shrink: 0;
     object-fit: contain;
 }
 
 .channel-icon {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     display: block;
     flex-shrink: 0;
     object-fit: contain;
@@ -39,28 +46,22 @@ img.icon,
     object-fit: contain;
 }
 
-.chevron-mini {
-    width: 14px;
-    height: 14px;
-    object-fit: contain;
-}
-
 /* server icon */
 .server-icon {
     text-decoration: none;
 }
 
 .server-icon.home img {
-    width: 28px;
-    height: 22px;
+    width: 26px;
+    height: 18px;
     object-fit: contain;
     border-radius: 0;
 }
 
 .server-icon.add-server img,
 .server-icon.explore img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     object-fit: contain;
     border-radius: 0;
 }
@@ -654,8 +655,8 @@ img.icon,
 
     .mobile-menu-btn svg,
     .mobile-menu-btn img {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
         object-fit: contain;
     }
 
