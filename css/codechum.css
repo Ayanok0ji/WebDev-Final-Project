@@ -49,6 +49,23 @@
     color: #949ba4;
 }
 
+.server-invite {
+    margin-left: 8px;
+    color: #949ba4;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.server-invite:hover {
+    color: #dbdee1;
+}
+
+.server-invite svg {
+    width: 18px;
+    height: 18px;
+}
+
 /* channels list */
 .channels {
     flex: 1;
@@ -194,6 +211,18 @@
 .user-icon svg {
     width: 18px;
     height: 18px;
+}
+
+.server-user .user-icon.muted,
+.server-user .user-icon.deafened {
+    background: #3b242a;
+    color: #f23f43;
+}
+
+.server-user .user-icon.muted:hover,
+.server-user .user-icon.deafened:hover {
+    background: #472b32;
+    color: #f23f43;
 }
 
 /* chat column */
@@ -453,6 +482,30 @@
     color: #fff;
 }
 
+.message-send {
+    background: none;
+    border: none;
+    color: #5865f2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.message-send:hover {
+    color: #4752c4;
+}
+
+.message-send svg {
+    width: 22px;
+    height: 22px;
+}
+
+.desktop-only {
+    display: flex;
+}
+
 /* mobile buttons */
 .mobile-menu-btn,
 .sidebar-close-btn {
@@ -544,21 +597,31 @@
 
     .server-header {
         padding: 0 10px;
-        gap: 6px;
-    }
-
-    .channel-name {
-        max-width: 130px;
-        font-size: 15px;
-    }
-
-    .server-tools {
         gap: 8px;
     }
 
-    .server-search {
-        width: 110px;
-        padding: 0 6px;
+    .channel-name {
+        max-width: 200px;
+        font-size: 16px;
+    }
+
+    /* hide desktop tools on mobile */
+    .server-tools .tool-icon[title="Threads"],
+    .server-tools .tool-icon[title="Notifications"],
+    .server-tools .tool-icon[title="Pinned Messages"],
+    .server-tools .server-search,
+    .server-tools .help {
+        display: none;
+    }
+
+    /* show member list on mobile */
+    .server-tools .tool-icon[title="Member List"] {
+        display: flex;
+        color: #dbdee1;
+    }
+
+    .desktop-only {
+        display: none !important;
     }
 
     .server-body {
