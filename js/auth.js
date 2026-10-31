@@ -57,4 +57,14 @@ function checkRegister() {
         error.innerHTML = "You must be at least 13 years old.";
         return false;
     }
+
+    for (var i = 0; i < users.length; i++) {
+        if (email == users[i].email || username == users[i].username) {
+            error.innerHTML = "Email or username is already taken.";
+            return false;
+        }
+    }
+
+    alert("Account created! You can now log in.");
+    return true;
 }
