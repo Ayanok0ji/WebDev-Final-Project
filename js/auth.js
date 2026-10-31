@@ -22,7 +22,19 @@ function checklogin() {
 
 // show password toggle
 function togglepassword() {
-    
+    var box = document.getElementById("login-password");
+    var icon = document.getElementById("toggle-password");
+
+    if (box.type == "password") {
+        box.type = "text";
+        icon.src = "../assets/icons/ui-eye-off-hide-24x24.svg";
+        icon.alt = "Hide password";
+    } else {
+        box.type = "password";
+        icon.src = "../assets/icons/ui-eye-show-24x24.svg";
+        icon.alt = "Show password";
+    }
+}
 
 // registration system
 function checkregister() {

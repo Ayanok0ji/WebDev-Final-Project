@@ -1,6 +1,3 @@
-
-// CREATE BACK TO TOP BUTTON
-
 const topButton = document.createElement("button");
 
 topButton.className = "back-to-top";
@@ -8,9 +5,6 @@ topButton.innerHTML = "↑";
 topButton.title = "Back to top";
 
 document.body.appendChild(topButton);
-
-
-// SHOW BUTTON WHEN SCROLLING
 
 window.addEventListener("scroll", () => {
   if (window.scrollY > 400) {
