@@ -1,3 +1,43 @@
+/* image icon styles */
+img.icon,
+.icon img,
+.top-left img,
+.top-icons img,
+.server-tools img,
+.message-icons img,
+.channel-icon,
+.mobile-menu-btn img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.server-invite img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.message-plus img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.server-search img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.chevron-mini {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
 /* server icon */
 .server-icon {
     text-decoration: none;
@@ -61,9 +101,11 @@
     color: #dbdee1;
 }
 
-.server-invite svg {
+.server-invite svg,
+.server-invite img {
     width: 18px;
     height: 18px;
+    object-fit: contain;
 }
 
 /* channels list */
@@ -208,9 +250,11 @@
     color: #dbdee1;
 }
 
-.user-icon svg {
+.user-icon svg,
+.user-icon img {
     width: 18px;
     height: 18px;
+    object-fit: contain;
 }
 
 .server-user .user-icon.muted,
@@ -286,9 +330,11 @@
     color: #dbdee1;
 }
 
-.tool-icon svg {
+.tool-icon svg,
+.tool-icon img {
     width: 20px;
     height: 20px;
+    object-fit: contain;
 }
 
 .help {
@@ -335,11 +381,13 @@
     color: #949ba4;
 }
 
-.server-search svg {
+.server-search svg,
+.server-search img {
     width: 16px;
     height: 16px;
     color: #949ba4;
     flex-shrink: 0;
+    object-fit: contain;
 }
 
 /* chat feed */
@@ -452,9 +500,11 @@
     color: #dbdee1;
 }
 
-.message-icon svg {
+.message-icon svg,
+.message-icon img {
     width: 22px;
     height: 22px;
+    object-fit: contain;
 }
 
 .gif {
@@ -504,9 +554,11 @@
     color: #4752c4;
 }
 
-.message-send svg {
+.message-send svg,
+.message-send img {
     width: 22px;
     height: 22px;
+    object-fit: contain;
 }
 
 .desktop-only {
@@ -562,9 +614,11 @@
         background: #35373c;
     }
 
-    .mobile-menu-btn svg {
+    .mobile-menu-btn svg,
+    .mobile-menu-btn img {
         width: 24px;
         height: 24px;
+        object-fit: contain;
     }
 
     .sidebar-close-btn {

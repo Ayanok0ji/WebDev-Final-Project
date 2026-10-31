@@ -28,12 +28,72 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* svg default */
-svg {
+/* svg and icon images */
+svg,
+img.icon,
+.icon img,
+.top-left img,
+.top-icons img,
+.header-icons img,
+.input-icons img,
+.message-icons img,
+.server-tools img,
+.voice-controls img,
+.voice-btn img,
+.section-actions img,
+.channel-icon,
+.panel-icon img,
+.mobile-menu-btn img {
     width: 24px;
     height: 24px;
     display: block;
     flex-shrink: 0;
+    object-fit: contain;
+}
+
+.server-icon.add-server img,
+.server-icon.explore img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.plus-icon img,
+.message-plus img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.header-search img,
+.server-search img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.action-icon img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.pin-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.chevron-mini {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+.voice-mini {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
 }
 
 /* app container */
@@ -1066,9 +1126,11 @@ svg {
     color: #4752c4;
 }
 
-.input-send svg {
+.input-send svg,
+.input-send img {
     width: 22px;
     height: 22px;
+    object-fit: contain;
 }
 
 /* profile panel */
@@ -1165,10 +1227,11 @@ svg {
     gap: 6px;
 }
 
-.mutual-line svg {
+.mutual-line svg,
+.mutual-line img {
     width: 16px;
     height: 16px;
-    color: #949ba4;
+    object-fit: contain;
 }
 
 .profile-info h3 {
