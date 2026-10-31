@@ -3,8 +3,9 @@
 
     const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-    const prefersReductionMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    /* ---------- tiny safe storage helper ---------- */
     const store = {
         get(key) { try { return localStorage.getItem(key); } catch (e) { return null; } },
         set(key, val) {
@@ -12,6 +13,7 @@
         }
     };
 
+    /* ---------- injected styles (menu, toast, reveal, focus) ---------- */
     function injectStyles() {
         const css = `
             .nav-toggle {
@@ -101,6 +103,7 @@
         document.head.appendChild(style);
     }
 
+    /* ---------- toast ---------- */
     let toastEl, toastTimer;
     function showToast(message) {
         if (!toastEl) {
@@ -116,6 +119,7 @@
         toastTimer = setTimeout(() => toastEl.classList.remove('show'), 2400);
     }
 
+    /* ---------- sticky header shadow + back to top ---------- */
     function initScrollUI() {
         const header = $('.site-header');
         const topBtn = document.createElement('button');
@@ -142,6 +146,7 @@
         update();
     }
 
+    /* ---------- mobile menu ---------- */
     function initMobileMenu() {
         const actions = $('.nav-actions');
         const menuList = $('.nav-menu');
@@ -179,6 +184,7 @@
         window.addEventListener('resize', () => { if (window.innerWidth > 900) setOpen(false); });
     }
 
+    /* ---------- smooth scroll + placeholder links ---------- */
     function initLinks() {
         const header = $('.site-header');
 
@@ -193,6 +199,7 @@
             e.preventDefault();
 
             if (!target) {
+                // Section doesn't exist yet (e.g. #about, #jobs)
                 showToast(`“${link.textContent.trim()}” page is coming soon.`);
                 return;
             }
@@ -203,9 +210,11 @@
             history.replaceState(null, '', hash);
         });
 
+        // Footer social links open in a new tab – make that safe
         $$('a[target="_blank"]').forEach(a => a.setAttribute('rel', 'noopener noreferrer'));
     }
 
+    /* ---------- highlight nav link for the section in view ---------- */
     function initActiveNav() {
         const sections = [$('#download'), $('#features')].filter(Boolean);
         if (!('IntersectionObserver' in window) || !sections.length) return;
@@ -216,6 +225,7 @@
                 if (!entry.isIntersecting) return;
                 const id = '#' + entry.target.id;
                 links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id &&
+                    // "Nitro / Discover / Blog / Careers" all point at #features; only mark the first
                     links.find(l => l.getAttribute('href') === id) === a));
             });
         }, { rootMargin: '-40% 0px -50% 0px' });
@@ -223,6 +233,7 @@
         sections.forEach(s => observer.observe(s));
     }
 
+    /* ---------- reveal feature cards when scrolled into view ---------- */
     function initReveal() {
         const cards = $$('.feature-card');
         if (prefersReducedMotion || !('IntersectionObserver' in window)) return;
@@ -239,6 +250,7 @@
         cards.forEach(c => observer.observe(c));
     }
 
+    /* ---------- only play videos that are on screen ---------- */
     function initVideos() {
         const videos = $$('.feature-media video');
         if (!videos.length) return;
@@ -254,7 +266,7 @@
                 const v = entry.target;
                 if (entry.isIntersecting) {
                     const p = v.play();
-                    if (p && p.catch) p.catch(() => {  });
+                    if (p && p.catch) p.catch(() => { /* autoplay blocked – ignore */ });
                 } else {
                     v.pause();
                 }
@@ -262,11 +274,13 @@
         }, { threshold: 0.35 });
         videos.forEach(v => observer.observe(v));
 
+        // Pause everything when the tab is hidden
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) videos.forEach(v => v.pause());
         });
     }
 
+    /* ---------- detect OS and update download button ---------- */
     function detectPlatform() {
         const ua = navigator.userAgent || '';
         const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
@@ -296,11 +310,13 @@
         const label = lang === 'fil'
             ? `I-download para sa ${currentPlatform}`
             : `Download for ${currentPlatform}`;
+        // keep the <img> icon, replace only the text node
         const textNode = Array.from(btn.childNodes).find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
         if (textNode) textNode.textContent = '\n                        ' + label + '\n                    ';
         else btn.append(label);
     }
 
+    /* ---------- language switcher (English / Filipino) ---------- */
     const TRANSLATIONS = {
         'en-US': {},
         fil: {
@@ -318,6 +334,7 @@
 
     function applyLanguage(lang) {
         const dict = TRANSLATIONS[lang] || {};
+        // Restore English first, then apply the chosen dictionary
         originals.forEach((text, el) => { el.textContent = text; });
         Object.keys(TRANSLATIONS.fil).forEach(sel => {
             const el = $(sel);
@@ -344,6 +361,7 @@
         });
     }
 
+    /* ---------- hero characters: gentle parallax on mouse move ---------- */
     function initHeroParallax() {
         const art = $('.hero-art');
         if (!art || prefersReducedMotion || !window.matchMedia('(hover: hover)').matches) return;
@@ -382,6 +400,7 @@
         layers.forEach(({ el }) => { el.style.willChange = 'transform'; });
     }
 
+    /* ---------- footer social links: hover label for keyboard/touch users ---------- */
     function initSocials() {
         $$('.footer-social-link').forEach(link => {
             const name = link.getAttribute('title');
@@ -389,6 +408,7 @@
         });
     }
 
+    /* ---------- init ---------- */
     function init() {
         injectStyles();
         initScrollUI();
