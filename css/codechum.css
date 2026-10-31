@@ -1,4 +1,4 @@
-/* image icon styles */
+/* icons */
 img.icon,
 .icon img,
 .top-left img,
@@ -756,7 +756,7 @@ img.icon,
         font-size: 22px;
     }
 
-    /* mobile message bar - ALWAYS VISIBLE */
+    /* mobile message bar */
     .message-row {
         margin: 0 8px 8px 8px;
         padding: 0 10px;

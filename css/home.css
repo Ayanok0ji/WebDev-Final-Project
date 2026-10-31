@@ -28,7 +28,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* svg and icon images */
+/* icons */
 svg,
 img.icon,
 .icon img {
@@ -99,7 +99,7 @@ img.icon,
     object-fit: contain;
 }
 
-/* plus button in message input */
+/* plus button */
 .plus-icon img,
 .message-plus img {
     width: 18px;
@@ -1486,7 +1486,7 @@ img.icon,
         margin-bottom: 16px;
     }
 
-    /* mobile message bar - ALWAYS VISIBLE */
+    /* mobile message bar */
     .chat-input-row {
         margin: 0 8px 8px;
         padding: 0 10px;
@@ -1522,7 +1522,6 @@ img.icon,
         max-width: 180px;
     }
 
-    /* keep apps and emoji visible on small phone */
     .input-icons {
         gap: 6px;
     }
