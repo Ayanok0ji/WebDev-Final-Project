@@ -52,7 +52,7 @@ var channels = [
   }
 ];
 
-// load save messages
+// load saved messages
 var savedMessages = localStorage.getItem("codechumMessages");
 
 if (savedMessages) {
@@ -108,6 +108,12 @@ var isMuted = true;
 var isDeafened = true;
 var currentUser = "Froggy";
 var replyTo = null;
+var replyToken = 0;
+var activeReactionIndex = -1;
+var toastTimer = null;
+
+var POPULAR_EMOJIS = ["👍", "❤️", "😂", "😮", "🎉", "🔥", "👀", "💀", "✨", "🚀", "💯", "👏"];
+var COMPOSER_EMOJIS = ["😀", "😂", "😍", "🥺", "😎", "😭", "👍", "👋", "🔥", "❤️", "🎉", "👀", "😴", "🤔", "😡", "🙏", "💯", "✨"];
 
 // save messages
 function savemessages() {
@@ -154,17 +160,19 @@ function showmessages() {
     if (allText.indexOf(search) != -1) {
       html += '<article class="cc-msg">';
 
+      // show replied message with curved spine
+      if (list[i].replyTo) {
+        html += '<div class="cc-reply">';
+        html += '<span class="cc-reply-author">@' + safeText(list[i].replyTo.author) + '</span>';
+        html += '<span class="cc-reply-text">' + safeText(list[i].replyTo.text) + '</span>';
+        html += '</div>';
+      }
+
+      html += '<div class="cc-msg-main">';
+
       html += '<img class="cc-avatar" src="' + list[i].avatar + '" onerror="this.onerror=null; this.src=\'../assets/images/profile.jpg\'" alt="' + safeText(list[i].author) + '">';
 
       html += '<div class="cc-content">';
-
-      // show replied message
-      if (list[i].replyTo) {
-        html += '<div class="cc-reply">';
-        html += '<span>' + safeText(list[i].replyTo.author) + '</span>';
-        html += '<p>' + safeText(list[i].replyTo.text) + '</p>';
-        html += '</div>';
-      }
 
       html += '<div class="cc-head">';
       html += '<span class="cc-author">' + safeText(list[i].author) + '</span>';
@@ -188,19 +196,30 @@ function showmessages() {
           '" onclick="toggleReaction(' + i + ',' + r + ')" ' +
           (permissions[currentChannel].react ? "" : "disabled") + '>';
 
-        html += reaction.emoji + ' ' + reaction.count;
+        html += reaction.emoji + ' <span class="cc-reaction-count">' + reaction.count + '</span>';
         html += '</button>';
       }
 
       if (permissions[currentChannel].react) {
-        html += '<button type="button" class="cc-add-reaction" onclick="addReaction(' + i + ')">+</button>';
+        html += '<button type="button" class="cc-add-reaction" title="Add Reaction" onclick="openReactionPicker(event, ' + i + ')">+</button>';
       }
 
+      html += '</div>'; // cc-reactions
+      html += '</div>'; // cc-content
+      html += '</div>'; // cc-msg-main
+
+      // message hover actions
+      html += '<div class="cc-actions">';
+      if (permissions[currentChannel].react) {
+        html += '<button type="button" class="cc-action-btn" title="Add Reaction" onclick="openReactionPicker(event, ' + i + ')">';
+        html += '<img src="../assets/icons/ui-emoji-smile-24x24.svg" alt="React">';
+        html += '</button>';
+      }
+      html += '<button type="button" class="cc-action-btn" title="Reply" onclick="replymessage(' + i + ')">';
+      html += '<img src="../assets/icons/ui-reply-arrow-24x24.svg" alt="Reply">';
+      html += '</button>';
       html += '</div>';
 
-      html += '<button type="button" class="cc-reply-button" onclick="replymessage(' + i + ')">Reply</button>';
-
-      html += '</div>';
       html += '</article>';
     }
   }
@@ -279,62 +298,98 @@ function sendmessage(event) {
 
   // automatic reply in public channels
   if (channelNumber >= 3) {
-    automaticreply(text, channelNumber);
+    scheduleReply(text, channelNumber);
   }
 
   return false;
 }
 
-// automatic reply system
-function automaticreply(text, channelNumber) {
-  var replies = [
-    {
-      author: "Kitty",
-      avatar: "../assets/images/cat.jpg",
-      text: "That's interesting!"
-    },
-    {
-      author: "Chaa",
-      avatar: "../assets/images/smb.png",
-      text: "I agree with you!"
-    },
-    {
-      author: "Dynosure",
-      avatar: "../assets/images/dyno.webp",
-      text: "Thanks for sharing!"
-    },
-    {
-      author: "Jarren",
-      avatar: "../assets/images/jd.png",
-      text: "Can you explain more?"
-    }
+// automatic reply system like home and contact
+function scheduleReply(userText, channelNumber) {
+  var token = ++replyToken;
+  var targetChannel = channelNumber;
+
+  var members = [
+    { author: "Kitty", avatar: "../assets/images/cat.jpg" },
+    { author: "Chaa", avatar: "../assets/images/smb.png" },
+    { author: "Dynosure", avatar: "../assets/images/dyno.webp" },
+    { author: "Jarren", avatar: "../assets/images/jd.png" },
+    { author: "Mr. Bean", avatar: "../assets/images/mrb.jpg" }
   ];
 
-  var random = Math.floor(Math.random() * replies.length);
-  var reply = replies[random];
+  var member = members[Math.floor(Math.random() * members.length)];
+
+  var replies = [
+    "haha nice!",
+    "I agree with that!",
+    "Wait, let me check that.",
+    "Good question!",
+    "Check W3Schools or MDN, it helps a lot!",
+    "Working on that right now.",
+    "Thanks for sharing!",
+    "Can you show your code?",
+    "That looks good to me!",
+    "lol true",
+    "👀"
+  ];
+
+  var replyText = replies[Math.floor(Math.random() * replies.length)];
 
   setTimeout(function () {
-    channels[channelNumber].messages.push({
-      author: reply.author,
-      avatar: reply.avatar,
-      text: reply.text,
-      time: gettime(),
-      reactions: [],
-      replyTo: {
-        author: currentUser,
-        text: text
-      }
-    });
-
-    savemessages();
-
-    if (currentChannel == channelNumber) {
-      showmessages();
-
-      var chat = document.getElementById("chat-body");
-      chat.scrollTop = chat.scrollHeight;
+    if (token != replyToken || currentChannel != targetChannel) {
+      return;
     }
-  }, 2000);
+
+    // show typing indicator
+    var chatBody = document.getElementById("chat-body");
+    var oldTyping = document.getElementById("typing-indicator");
+    if (oldTyping) {
+      oldTyping.remove();
+    }
+
+    var typing = document.createElement("div");
+    typing.className = "typing";
+    typing.id = "typing-indicator";
+    typing.textContent = member.author + " is typing...";
+    chatBody.appendChild(typing);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    setTimeout(function () {
+      if (token != replyToken) {
+        var el = document.getElementById("typing-indicator");
+        if (el) el.remove();
+        return;
+      }
+
+      var el = document.getElementById("typing-indicator");
+      if (el) el.remove();
+
+      var newMsg = {
+        author: member.author,
+        avatar: member.avatar,
+        text: replyText,
+        time: gettime(),
+        reactions: []
+      };
+
+      // quote user sometimes
+      if (Math.random() > 0.4) {
+        newMsg.replyTo = {
+          author: currentUser,
+          text: userText
+        };
+      }
+
+      channels[targetChannel].messages.push(newMsg);
+      savemessages();
+
+      if (currentChannel == targetChannel) {
+        showmessages();
+        var chat = document.getElementById("chat-body");
+        chat.scrollTop = chat.scrollHeight;
+      }
+    }, 1200 + Math.random() * 800);
+  }, 500);
 }
 
 // switching channel system
@@ -345,6 +400,14 @@ function switchchannel(index) {
   }
 
   currentChannel = index;
+  replyToken++;
+
+  // cancel old typing indicator
+  var typing = document.getElementById("typing-indicator");
+  if (typing) {
+    typing.remove();
+  }
+
   var channelName = channels[index].name;
 
   document.getElementById("channel-name").innerHTML = channelName;
@@ -355,25 +418,46 @@ function switchchannel(index) {
   document.getElementById("search-input").value = "";
 
   cancelreply();
+  closeReactionPicker();
 
-  for (var i = 0; i < channels.length; i++) {
-    document.getElementById("channel-" + i).className = "channel";
+  var composerPicker = document.getElementById("composer-emoji-picker");
+  if (composerPicker) {
+    composerPicker.classList.remove("open");
   }
 
-  document.getElementById("channel-" + index).className = "channel active";
+  // close sidebar on mobile screen
+  var app = document.querySelector(".app");
+  if (app) {
+    app.classList.remove("show-sidebar");
+  }
+
+  for (var i = 0; i < channels.length; i++) {
+    var ch = document.getElementById("channel-" + i);
+    if (ch) ch.className = "channel";
+  }
+
+  var activeCh = document.getElementById("channel-" + index);
+  if (activeCh) activeCh.className = "channel active";
 
   showmessages();
   updatechatpermission();
   updatepermissionstatus();
+
+  var chat = document.getElementById("chat-body");
+  if (chat) {
+    chat.scrollTop = chat.scrollHeight;
+  }
 }
 
 // hide channels without view permission
 function updatechannels() {
   for (var i = 0; i < channels.length; i++) {
+    var ch = document.getElementById("channel-" + i);
+    if (!ch) continue;
     if (permissions[i].view == true) {
-      document.getElementById("channel-" + i).style.display = "flex";
+      ch.style.display = "flex";
     } else {
-      document.getElementById("channel-" + i).style.display = "none";
+      ch.style.display = "none";
     }
   }
 
@@ -395,26 +479,59 @@ function updatechannels() {
   }
 }
 
-// add reaction
-function addReaction(index) {
+// open reaction picker popover
+function openReactionPicker(event, index) {
+  event.stopPropagation();
+
   if (permissions[currentChannel].react == false) {
     return;
   }
 
-  var emoji = prompt("Choose an emoji: 👍 ❤️ 😂 😮 🎉 🔥");
+  activeReactionIndex = index;
 
-  if (emoji == null || emoji.trim() == "") {
+  var picker = document.getElementById("reaction-picker");
+  if (!picker) return;
+
+  var rect = event.currentTarget.getBoundingClientRect();
+  var top = rect.top - 58;
+  if (top < 10) {
+    top = rect.bottom + 6;
+  }
+
+  var left = rect.left - 60;
+  if (left < 10) {
+    left = 10;
+  }
+  if (left + 230 > window.innerWidth) {
+    left = window.innerWidth - 240;
+  }
+
+  picker.style.top = top + "px";
+  picker.style.left = left + "px";
+  picker.classList.add("open");
+}
+
+// close reaction picker
+function closeReactionPicker() {
+  activeReactionIndex = -1;
+  var picker = document.getElementById("reaction-picker");
+  if (picker) {
+    picker.classList.remove("open");
+  }
+}
+
+// choose reaction emoji
+function chooseReaction(emoji) {
+  if (activeReactionIndex < 0) {
     return;
   }
 
-  emoji = emoji.trim();
-
-  var message = channels[currentChannel].messages[index];
-  var found = false;
-
+  var message = channels[currentChannel].messages[activeReactionIndex];
   if (!message.reactions) {
     message.reactions = [];
   }
+
+  var found = false;
 
   for (var i = 0; i < message.reactions.length; i++) {
     if (message.reactions[i].emoji == emoji) {
@@ -445,9 +562,10 @@ function addReaction(index) {
 
   savemessages();
   showmessages();
+  closeReactionPicker();
 }
 
-// remove or add reaction
+// toggle existing reaction
 function toggleReaction(messageIndex, reactionIndex) {
   if (permissions[currentChannel].react == false) {
     return;
@@ -480,12 +598,15 @@ function replymessage(index) {
     text: message.text
   };
 
-  document.getElementById("reply-preview").innerHTML =
+  var preview = document.getElementById("reply-preview");
+  preview.innerHTML =
     '<div class="reply-preview-content">' +
-    '<span>Replying to <b>' + safeText(message.author) + '</b></span>' +
-    '<p>' + safeText(message.text) + '</p>' +
-    '<button type="button" onclick="cancelreply()">×</button>' +
+    '<span>Replying to <b>@' + safeText(message.author) + '</b></span>' +
+    '<button type="button" class="reply-cancel-btn" onclick="cancelreply()" title="Cancel reply">×</button>' +
     '</div>';
+
+  var row = document.getElementById("message-row");
+  if (row) row.classList.add("with-reply");
 
   document.getElementById("message-input").focus();
 }
@@ -494,6 +615,77 @@ function replymessage(index) {
 function cancelreply() {
   replyTo = null;
   document.getElementById("reply-preview").innerHTML = "";
+
+  var row = document.getElementById("message-row");
+  if (row) row.classList.remove("with-reply");
+}
+
+// toggle composer emoji popover
+function toggleComposerEmoji(event) {
+  event.stopPropagation();
+  var pop = document.getElementById("composer-emoji-picker");
+  if (!pop) return;
+
+  var btn = event.currentTarget;
+  var rect = btn.getBoundingClientRect();
+  pop.style.bottom = (window.innerHeight - rect.top + 8) + "px";
+  pop.style.right = Math.max(8, window.innerWidth - rect.right) + "px";
+  pop.classList.toggle("open");
+}
+
+// insert emoji to message input
+function insertComposerEmoji(emoji) {
+  var input = document.getElementById("message-input");
+  if (input.disabled) return;
+  input.value += emoji;
+  input.focus();
+}
+
+// trigger file upload
+function triggerFileInput() {
+  if (permissions[currentChannel].send == false) return;
+  document.getElementById("file-input").click();
+}
+
+// handle file upload
+function handleFileUpload() {
+  var fileInput = document.getElementById("file-input");
+  if (fileInput.files && fileInput.files[0]) {
+    var fileName = fileInput.files[0].name;
+    var newMessage = {
+      author: currentUser,
+      avatar: "../assets/images/profile.jpg",
+      text: "📎 " + fileName,
+      time: gettime(),
+      reactions: [],
+      replyTo: replyTo
+    };
+
+    channels[currentChannel].messages.push(newMessage);
+    cancelreply();
+    showmessages();
+    savemessages();
+
+    var chat = document.getElementById("chat-body");
+    chat.scrollTop = chat.scrollHeight;
+
+    if (currentChannel >= 3) {
+      scheduleReply("uploaded " + fileName, currentChannel);
+    }
+  }
+  fileInput.value = "";
+}
+
+// toast notification
+function toast(msg) {
+  var t = document.getElementById("toast");
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () {
+    t.classList.remove("show");
+  }, 2200);
 }
 
 // open channel permissions
@@ -561,7 +753,72 @@ function toggledeafen() {
   }
 }
 
-// fire show messages to bring the messages in the codechum server page
+// setup emoji pickers
+function setupEmojiPickers() {
+  var reactPicker = document.getElementById("reaction-picker");
+  if (reactPicker && reactPicker.innerHTML === "") {
+    for (var i = 0; i < POPULAR_EMOJIS.length; i++) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = POPULAR_EMOJIS[i];
+      btn.onclick = (function (em) {
+        return function () {
+          chooseReaction(em);
+        };
+      })(POPULAR_EMOJIS[i]);
+      reactPicker.appendChild(btn);
+    }
+  }
+
+  var composerPicker = document.getElementById("composer-emoji-picker");
+  if (composerPicker && composerPicker.innerHTML === "") {
+    for (var j = 0; j < COMPOSER_EMOJIS.length; j++) {
+      var cBtn = document.createElement("button");
+      cBtn.type = "button";
+      cBtn.textContent = COMPOSER_EMOJIS[j];
+      cBtn.onclick = (function (em) {
+        return function () {
+          insertComposerEmoji(em);
+        };
+      })(COMPOSER_EMOJIS[j]);
+      composerPicker.appendChild(cBtn);
+    }
+  }
+}
+
+// close popups when clicking outside
+document.addEventListener("click", function (e) {
+  var reactPicker = document.getElementById("reaction-picker");
+  if (reactPicker && reactPicker.classList.contains("open")) {
+    if (!reactPicker.contains(e.target) && !e.target.closest(".cc-action-btn") && !e.target.closest(".cc-add-reaction")) {
+      closeReactionPicker();
+    }
+  }
+
+  var composerPicker = document.getElementById("composer-emoji-picker");
+  if (composerPicker && composerPicker.classList.contains("open")) {
+    if (!composerPicker.contains(e.target) && !e.target.closest(".composer-emoji-btn")) {
+      composerPicker.classList.remove("open");
+    }
+  }
+});
+
+// cancel reply and close popups on escape
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    if (replyTo != null) {
+      cancelreply();
+    }
+    closeReactionPicker();
+    var composerPicker = document.getElementById("composer-emoji-picker");
+    if (composerPicker) {
+      composerPicker.classList.remove("open");
+    }
+  }
+});
+
+// start
+setupEmojiPickers();
 updatechannels();
 showmessages();
 updatechatpermission();
