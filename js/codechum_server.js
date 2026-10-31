@@ -1,53 +1,54 @@
+
 var channels = [
   {
     name: "announcement",
     messages: [
-      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Welcome to the Codechum server!", time: "08:00", likes: 3 }
+      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Welcome to the Codechum server!", time: "08:00", likes: 3, liked: false }
     ]
   },
   {
     name: "rules-and-info",
     messages: [
-      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Rule 1: Be respectful to everyone.", time: "08:10", likes: 5 },
-      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Rule 2: No spamming.", time: "08:11", likes: 2 }
+      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Rule 1: Be respectful to everyone.", time: "08:10", likes: 5, liked: false },
+      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Rule 2: No spamming.", time: "08:11", likes: 2, liked: false }
     ]
   },
   {
     name: "roles",
     messages: [
-      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Ask a moderator for a new role.", time: "08:20", likes: 0 }
+      { author: "Admin", avatar: "../assets/images/pf2.png", text: "Ask a moderator for a new role.", time: "08:20", likes: 0, liked: false }
     ]
   },
   {
     name: "welcome",
     messages: [
-      { author: "Eunice", avatar: "../assets/images/pf3.jpg", text: "Hi everyone! I am new here.", time: "09:15", likes: 1 },
-      { author: "Mr. Bean", avatar: "../assets/images/mrb.jpg", text: "Welcome Eunice!", time: "09:16", likes: 4 }
+      { author: "Eunice", avatar: "../assets/images/pf3.jpg", text: "Hi everyone! I am new here.", time: "09:15", likes: 1, liked: false },
+      { author: "Mr. Bean", avatar: "../assets/images/mrb.jpg", text: "Welcome Eunice!", time: "09:16", likes: 4, liked: false }
     ]
   },
   {
     name: "general",
     messages: [
-      { author: "Kitty", avatar: "../assets/images/cat.jpg", text: "Good morning everyone!", time: "10:00", likes: 2 }
+      { author: "Kitty", avatar: "../assets/images/cat.jpg", text: "Good morning everyone!", time: "10:00", likes: 2, liked: false }
     ]
   },
   {
     name: "coding-help",
     messages: [
-      { author: "Chaa", avatar: "../assets/images/pf5.png", text: "How do I use a for loop?", time: "11:30", likes: 0 },
-      { author: "Dynosure", avatar: "../assets/images/dyno.webp", text: "Check W3Schools, it is very helpful!", time: "11:32", likes: 6 }
+      { author: "Chaa", avatar: "../assets/images/pf5.png", text: "How do I use a for loop?", time: "11:30", likes: 0, liked: false },
+      { author: "Dynosure", avatar: "../assets/images/dyno.webp", text: "Check W3Schools, it is very helpful!", time: "11:32", likes: 6, liked: false }
     ]
   },
   {
     name: "language-discussion",
     messages: [
-      { author: "Jarren", avatar: "../assets/images/pf4.png", text: "Python or Java for beginners?", time: "13:00", likes: 1 }
+      { author: "Jarren", avatar: "../assets/images/pf4.png", text: "Python or Java for beginners?", time: "13:00", likes: 1, liked: false }
     ]
   },
   {
     name: "bug-reports",
     messages: [
-      { author: "Chaa", avatar: "../assets/images/pf5.png", text: "The submit button freezes on my phone.", time: "14:45", likes: 0 }
+      { author: "Chaa", avatar: "../assets/images/pf5.png", text: "The submit button freezes on my phone.", time: "14:45", likes: 0, liked: false }
     ]
   }
 ];
@@ -66,14 +67,14 @@ function showmessages() {
 
     if (allText.indexOf(search) != -1) {
       html += '<article class="cc-msg">';
-      html += '<img class="cc-avatar" src="' + list[i].avatar + '" alt="' + list[i].author + '">';
+      html += '<img class="cc-avatar" src="' + list[i].avatar + '" onerror="this.onerror=null; this.src=\'../assets/images/profile.jpg\'" alt="' + list[i].author + '">';
       html += '<div>';
       html += '<div class="cc-head">';
       html += '<span class="cc-author">' + list[i].author + '</span>';
       html += '<span class="cc-time">' + list[i].time + '</span>';
       html += '</div>';
       html += '<p class="cc-text">' + list[i].text + '</p>';
-      html += '<button type="button" class="cc-like" onclick="likemessage(' + i + ')">&#128077; ' + list[i].likes + '</button>';
+      html += '<button type="button" class="cc-like ' + (list[i].liked ? "liked" : "") + '" onclick="likemessage(' + i + ')">&#128077; ' + list[i].likes + '</button>';
       html += '</div>';
       html += '</article>';
     }
@@ -84,9 +85,6 @@ function showmessages() {
   }
 
   document.getElementById("messages").innerHTML = html;
-
-  var chat = document.getElementById("chat-body");
-  chat.scrollTop = chat.scrollHeight;
 }
 
 function gettime() {
@@ -100,7 +98,9 @@ function gettime() {
   return now.getHours() + ":" + minutes;
 }
 
-function sendmessage() {
+function sendmessage(event) {
+  event.preventDefault();
+
   var input = document.getElementById("message-input");
   var text = input.value.trim();
 
@@ -112,13 +112,18 @@ function sendmessage() {
     author: "Froggy",
     avatar: "../assets/images/profile.jpg",
     text: text,
-    time: getTime(),
-    likes: 0
+    time: gettime(),
+    likes: 0,
+    liked: false
   });
 
   input.value = "";
   document.getElementById("search-input").value = "";
+
   showmessages();
+
+  var chat = document.getElementById("chat-body");
+  chat.scrollTop = chat.scrollHeight;
 }
 
 function switchchannel(index) {
@@ -142,13 +147,17 @@ function switchchannel(index) {
 }
 
 function likemessage(index) {
-  var chat = document.getElementById("chat-body");
-  var position = chat.scrollTop;
+  var message = channels[currentChannel].messages[index];
 
-  channels[currentChannel].messages[index].likes++;
+  if (message.liked == true) {
+    message.likes--;
+    message.liked = false;
+  } else {
+    message.likes++;
+    message.liked = true;
+  }
 
   showmessages();
-  chat.scrollTop = position;
 }
 
 function togglemute() {

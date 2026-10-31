@@ -681,6 +681,12 @@ img.icon,
   color: white;
 }
 
+.cc-like.liked {
+  background: #4752c4;
+  border-color: #5865f2;
+  color: white;
+}
+
 /* Small screens */
 @media (max-width: 480px) {
   .cc-avatar {

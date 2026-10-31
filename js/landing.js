@@ -193,7 +193,6 @@
             e.preventDefault();
 
             if (!target) {
-                // Section doesn't exist yet (e.g. #about, #jobs)
                 showToast(`“${link.textContent.trim()}” page is coming soon.`);
                 return;
             }
@@ -204,7 +203,6 @@
             history.replaceState(null, '', hash);
         });
 
-        // Footer social links open in a new tab – make that safe
         $$('a[target="_blank"]').forEach(a => a.setAttribute('rel', 'noopener noreferrer'));
     }
 
@@ -218,7 +216,6 @@
                 if (!entry.isIntersecting) return;
                 const id = '#' + entry.target.id;
                 links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id &&
-                    // "Nitro / Discover / Blog / Careers" all point at #features; only mark the first
                     links.find(l => l.getAttribute('href') === id) === a));
             });
         }, { rootMargin: '-40% 0px -50% 0px' });
@@ -257,7 +254,7 @@
                 const v = entry.target;
                 if (entry.isIntersecting) {
                     const p = v.play();
-                    if (p && p.catch) p.catch(() => { /* autoplay blocked – ignore */ });
+                    if (p && p.catch) p.catch(() => {  });
                 } else {
                     v.pause();
                 }
@@ -265,7 +262,6 @@
         }, { threshold: 0.35 });
         videos.forEach(v => observer.observe(v));
 
-        // Pause everything when the tab is hidden
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) videos.forEach(v => v.pause());
         });
