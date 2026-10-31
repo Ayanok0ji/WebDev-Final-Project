@@ -118,7 +118,7 @@ function sendmessage() {
 
   input.value = "";
   document.getElementById("search-input").value = "";
-  showMessages();
+  showmessages();
 }
 
 function switchchannel(index) {
@@ -138,7 +138,7 @@ function switchchannel(index) {
 
   document.getElementById("channel-" + index).className = "channel active";
 
-  showMessages();
+  showmessages();
 }
 
 function likemessage(index) {
@@ -147,7 +147,7 @@ function likemessage(index) {
 
   channels[currentChannel].messages[index].likes++;
 
-  showMessages();
+  showmessages();
   chat.scrollTop = position;
 }
 
