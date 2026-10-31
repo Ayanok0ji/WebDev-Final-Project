@@ -52,10 +52,35 @@ var channels = [
   }
 ];
 
+// load save messages
+var savedMessages = localStorage.getItem("codechumMessages");
+
+if (savedMessages) {
+  var savedData = JSON.parse(savedMessages);
+
+  for (var i = 0; i < channels.length; i++) {
+    if (savedData[i]) {
+      channels[i].messages = savedData[i];
+    }
+  }
+}
+
+// save messages
+function savemessages() {
+  var data = [];
+
+  for (var i = 0; i < channels.length; i++) {
+    data.push(channels[i].messages);
+  }
+
+  localStorage.setItem("codechumMessages", JSON.stringify(data));
+}
+
 var currentChannel = 1;
 var isMuted = true;
 var isDeafened = true;
 
+// show messages
 function showmessages() {
   var list = channels[currentChannel].messages;
   var search = document.getElementById("search-input").value.toLowerCase();
@@ -85,6 +110,8 @@ function showmessages() {
 
   document.getElementById("messages").innerHTML = html;
 }
+
+// fallback to get current time
 function gettime() {
   var now = new Date();
   var minutes = now.getMinutes();
@@ -96,6 +123,7 @@ function gettime() {
   return now.getHours() + ":" + minutes;
 }
 
+// send message system
 function sendmessage(event) {
   event.preventDefault();
 
@@ -119,6 +147,7 @@ function sendmessage(event) {
   document.getElementById("search-input").value = "";
 
   showmessages();
+  savemessages();
 
   var chat = document.getElementById("chat-body");
   chat.scrollTop = chat.scrollHeight;
@@ -126,6 +155,7 @@ function sendmessage(event) {
   return false;
 }
 
+// switching channel system
 function switchchannel(index) {
   currentChannel = index;
   var channelName = channels[index].name;
@@ -146,6 +176,7 @@ function switchchannel(index) {
   showmessages();
 }
 
+// like react
 function likemessage(index) {
   var message = channels[currentChannel].messages[index];
 
@@ -157,8 +188,11 @@ function likemessage(index) {
     message.liked = true;
   }
 
+  savemessages();
   showmessages();
 }
+
+//
 function togglemute() {
   var button = document.getElementById("mute-button");
   var icon = document.getElementById("mute-icon");
@@ -187,4 +221,5 @@ function toggledeafen() {
     icon.src = "../assets/icons/ui-deafen-off-red-24x24.svg";
   }
 }
+
 showmessages();
