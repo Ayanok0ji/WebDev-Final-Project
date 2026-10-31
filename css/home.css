@@ -11,11 +11,17 @@
     src: url("../assets/fonts/ggsans-normal.woff2");
 }
 
-/* body */
+/* html & body */
+html {
+    height: 100%;
+}
+
 body {
     background: #1e1f22;
     color: #dbdee1;
-    height: 100vh;
+    height: 100%;
+    min-height: 100%;
+    height: 100dvh;
     overflow: hidden;
     font-family: "gg sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     font-size: 16px;
@@ -33,10 +39,74 @@ svg {
 /* app container */
 .app {
     display: flex;
-    height: 100vh;
+    height: 100%;
+    min-height: 100%;
+    height: 100dvh;
     width: 100%;
     position: relative;
     overflow: hidden;
+}
+
+/* mobile top bar */
+.mobile-top-bar {
+    display: none;
+    height: 42px;
+    min-height: 42px;
+    background: #1e1f22;
+    padding: 0 12px;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+}
+
+.mobile-top-bar .top-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #f2f3f5;
+}
+
+.mobile-top-bar .top-left svg {
+    width: 22px;
+    height: 22px;
+    color: #dbdee1;
+}
+
+.mobile-top-bar .top-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: #b5bac1;
+}
+
+.mobile-top-bar .top-icons span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mobile-top-bar .top-icons svg {
+    width: 22px;
+    height: 22px;
+}
+
+.input-divider {
+    width: 1px;
+    height: 22px;
+    background: #4e5058;
+    margin: 0 2px;
+    flex-shrink: 0;
+}
+
+.chevron-mini {
+    width: 14px;
+    height: 14px;
+    color: currentColor;
+    opacity: 0.8;
 }
 
 /* mobile buttons */
@@ -627,6 +697,9 @@ svg {
     background: #313338;
     min-width: 0;
     height: 100%;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .chat-header {
@@ -728,12 +801,15 @@ svg {
 }
 
 .chat-body {
-    flex: 1;
+    flex: 1 1 0;
+    min-height: 0;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 24px 24px 0 24px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    -webkit-overflow-scrolling: touch;
 }
 
 .big-avatar {
@@ -904,7 +980,7 @@ svg {
 }
 
 .chat-input-row {
-    margin: 0 16px 24px 16px;
+    margin: 0 16px 16px 16px;
     background: #383a40;
     border-radius: 8px;
     display: flex;
@@ -912,6 +988,7 @@ svg {
     padding: 0 16px;
     gap: 12px;
     min-height: 44px;
+    height: 44px;
     flex-shrink: 0;
 }
 
@@ -1157,11 +1234,16 @@ svg {
 
 /* mobile view */
 @media (max-width: 768px) {
+    /* show top bar */
+    .mobile-top-bar {
+        display: flex;
+    }
+
     /* menu button */
     .mobile-menu-btn {
         display: flex;
-        padding: 6px;
-        margin-right: 6px;
+        padding: 4px;
+        margin-right: 4px;
         border-radius: 4px;
     }
 
@@ -1197,6 +1279,12 @@ svg {
     .chat-column {
         width: 100%;
         flex: 1;
+        height: 100%;
+        height: 100dvh;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
     }
 
     /* show sidebar when toggled */
@@ -1210,6 +1298,7 @@ svg {
         display: flex;
         flex: 1;
         width: auto;
+        min-width: 0;
     }
 
     .app.show-sidebar .chat-column {
@@ -1218,8 +1307,11 @@ svg {
 
     /* mobile header */
     .chat-header {
+        height: 48px;
+        min-height: 48px;
         padding: 0 10px;
         gap: 8px;
+        flex-shrink: 0;
     }
 
     .chat-name {
@@ -1237,7 +1329,9 @@ svg {
 
     /* mobile chat body */
     .chat-body {
-        padding: 16px 12px 0;
+        padding: 16px 12px 8px;
+        flex: 1 1 0;
+        min-height: 0;
     }
 
     .big-avatar {
@@ -1251,23 +1345,32 @@ svg {
 
     .mutual-row {
         gap: 6px;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
     }
 
-    /* mobile input */
+    /* mobile message bar - ALWAYS VISIBLE */
     .chat-input-row {
-        margin: 0 8px 12px;
+        margin: 0 8px 8px;
         padding: 0 10px;
         gap: 8px;
+        height: 44px;
+        min-height: 44px;
+        flex-shrink: 0;
     }
 
     .input-icons {
-        gap: 10px;
+        gap: 8px;
+    }
+
+    .mascot {
+        width: 90px;
+        margin: 6px 0 12px;
     }
 
     .wave-btn {
         width: 100%;
         text-align: center;
+        margin-bottom: 12px;
     }
 }
 
@@ -1278,11 +1381,15 @@ svg {
     }
 
     .chat-name {
-        max-width: 120px;
+        max-width: 180px;
     }
 
-    .input-icons span[title="Apps"],
-    .input-icons span[title="Gift"] {
-        display: none;
+    /* keep apps and emoji visible on small phone */
+    .input-icons {
+        gap: 6px;
+    }
+
+    .chat-input-row input {
+        font-size: 14px;
     }
 }

@@ -233,6 +233,9 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
 }
 
 /* chat header */
@@ -341,12 +344,15 @@
 
 /* chat feed */
 .server-body {
-    flex: 1;
+    flex: 1 1 0;
+    min-height: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 24px 16px;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* welcome message */
@@ -385,7 +391,8 @@
 /* message bar */
 .message-row {
     height: 44px;
-    margin: 0 16px 24px;
+    min-height: 44px;
+    margin: 0 16px 16px;
     padding: 0 16px;
     background: #383a40;
     border-radius: 8px;
@@ -539,10 +546,15 @@
 
 /* mobile */
 @media (max-width: 768px) {
+    /* show top bar */
+    .mobile-top-bar {
+        display: flex;
+    }
+
     .mobile-menu-btn {
         display: flex;
-        padding: 6px;
-        margin-right: 6px;
+        padding: 4px;
+        margin-right: 4px;
         border-radius: 4px;
     }
 
@@ -576,6 +588,12 @@
     .server-chat {
         width: 100%;
         flex: 1;
+        height: 100%;
+        height: 100dvh;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
     }
 
     /* show sidebar when toggled */
@@ -589,6 +607,7 @@
         display: flex;
         flex: 1;
         width: auto;
+        min-width: 0;
     }
 
     .app.show-sidebar .server-chat {
@@ -596,8 +615,11 @@
     }
 
     .server-header {
+        height: 48px;
+        min-height: 48px;
         padding: 0 10px;
         gap: 8px;
+        flex-shrink: 0;
     }
 
     .channel-name {
@@ -611,12 +633,12 @@
     .server-tools .tool-icon[title="Pinned Messages"],
     .server-tools .server-search,
     .server-tools .help {
-        display: none;
+        display: none !important;
     }
 
     /* show member list on mobile */
     .server-tools .tool-icon[title="Member List"] {
-        display: flex;
+        display: flex !important;
         color: #dbdee1;
     }
 
@@ -626,6 +648,8 @@
 
     .server-body {
         padding: 16px 12px;
+        flex: 1 1 0;
+        min-height: 0;
     }
 
     .big-hash {
@@ -639,14 +663,18 @@
         font-size: 22px;
     }
 
+    /* mobile message bar - ALWAYS VISIBLE */
     .message-row {
-        margin: 0 8px 12px 8px;
+        margin: 0 8px 8px 8px;
         padding: 0 10px;
         gap: 8px;
+        height: 44px;
+        min-height: 44px;
+        flex-shrink: 0;
     }
 
     .message-icons {
-        gap: 10px;
+        gap: 8px;
     }
 }
 
@@ -657,11 +685,14 @@
     }
 
     .channel-name {
-        max-width: 110px;
+        max-width: 170px;
     }
 
-    .message-icons .apps,
-    .message-icons .message-icon:first-child {
-        display: none;
+    .message-icons {
+        gap: 6px;
+    }
+
+    .message-row input {
+        font-size: 14px;
     }
 }
