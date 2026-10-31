@@ -21,21 +21,21 @@ function checklogin() {
 }
 
 // show password toggle
-function togglePassword() {
+function togglepassword() {
     var box = document.getElementById("login-password");
-    var link = document.getElementById("toggle");
+    var link = document.getElementById("toggle-password");
 
-    if (box.pass == "password") {
-        box.pass = "text";
+    if (box.type == "password") {
+        box.type = "text";
         link.innerHTML = "Hide password";
     } else {
-        box.pass = "password";
+        box.type = "password";
         link.innerHTML = "Show password";
     }
 }
 
 // registration system
-function checkRegister() {
+function checkregister() {
     var email = document.getElementById("reg-email").value.toLowerCase();
     var username = document.getElementById("reg-username").value.toLowerCase();
     var password = document.getElementById("reg-password").value;
