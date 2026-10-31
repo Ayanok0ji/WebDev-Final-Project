@@ -73,7 +73,7 @@ function showmessages() {
       html += '<span class="cc-time">' + list[i].time + '</span>';
       html += '</div>';
       html += '<p class="cc-text">' + list[i].text + '</p>';
-      html += '<button type="button" class="cc-like" onclick="likeMessage(' + i + ')">&#128077; ' + list[i].likes + '</button>';
+      html += '<button type="button" class="cc-like" onclick="likemessage(' + i + ')">&#128077; ' + list[i].likes + '</button>';
       html += '</div>';
       html += '</article>';
     }
