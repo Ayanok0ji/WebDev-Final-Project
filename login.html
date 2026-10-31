@@ -8,48 +8,48 @@
 </head>
 <body>
 
-    <!-- Discord logo in top left corner -->
+    <!-- discord logo -->
     <header class="header-logo">
         <a href="home.html" aria-label="Discord Home">
             <img class="logo" src="assets/logo.svg" alt="Discord Logo">
         </a>
     </header>
 
-    <!-- Main login card container -->
+    <!-- login container -->
     <main class="login-box" role="main">
 
-        <!-- Left side: Login form inputs and submit button -->
+        <!-- login form -->
         <section class="login-form" aria-labelledby="login-heading">
             <h2 id="login-heading">Welcome back!</h2>
             <p class="subtitle">We're so excited to see you again!</p>
 
             <form action="home.html" method="get">
-                <!-- Email or phone number input field -->
+                <!-- email -->
                 <div class="form-group">
                     <label for="login-email">Email or Phone Number <span class="required" aria-hidden="true">*</span></label>
                     <input id="login-email" name="email" type="text" autocomplete="username" required>
                 </div>
 
-                <!-- Password input field -->
+                <!-- password -->
                 <div class="form-group">
                     <label for="login-password">Password <span class="required" aria-hidden="true">*</span></label>
                     <input id="login-password" name="password" type="password" autocomplete="current-password" required>
                 </div>
 
-                <!-- Forgot password link -->
+                <!-- forgot password -->
                 <div class="forgot-wrapper">
                     <a href="#">Forgot your password?</a>
                 </div>
 
-                <!-- Submit login button -->
+                <!-- submit button -->
                 <button type="submit">Log In</button>
 
-                <!-- Link to registration page -->
+                <!-- register link -->
                 <p class="register">Need an account? <a href="register.html">Register</a></p>
             </form>
         </section>
 
-        <!-- Right side: QR code box for Discord mobile app -->
+        <!-- qr code box -->
         <aside class="qr-box" aria-label="QR Code Login">
             <div class="qr-code-wrapper">
                 <img class="qr-img" src="assets/images/pogi_mo_seb.png" alt="Scan QR code">

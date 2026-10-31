@@ -1,15 +1,15 @@
-/* Reset box-sizing for all elements */
+/* reset */
 * {
     box-sizing: border-box;
 }
 
-/* Custom Discord font */
+/* custom font */
 @font-face {
     font-family: gg;
     src: url("../assets/fonts/ggsans-normal.woff2");
 }
 
-/* Page body styling and background image */
+/* body background */
 body {
     margin: 0;
     min-height: 100vh;
@@ -22,7 +22,7 @@ body {
     position: relative;
 }
 
-/* Discord logo positioned in top left */
+/* top logo */
 .header-logo {
     position: absolute;
     top: 48px;
@@ -33,7 +33,7 @@ body {
     display: block;
 }
 
-/* Main dark card container holding the form and QR box */
+/* login box */
 .login-box {
     width: 100%;
     max-width: 784px;
@@ -45,7 +45,7 @@ body {
     gap: 32px;
 }
 
-/* Left column: Login form inputs */
+/* left form */
 .login-form {
     width: 416px;
     flex: 1 1 416px;
@@ -66,7 +66,7 @@ h2 {
     font-size: 16px;
 }
 
-/* Form input group and labels */
+/* form inputs */
 .form-group {
     margin-bottom: 20px;
 }
@@ -86,7 +86,6 @@ label .required {
     color: #fa777c;
 }
 
-/* Text and password inputs */
 input {
     width: 100%;
     height: 44px;
@@ -105,7 +104,7 @@ input:focus {
     border-color: #00a8fc;
 }
 
-/* Forgot password link row */
+/* forgot password */
 .forgot-wrapper {
     margin-top: 4px;
     margin-bottom: 20px;
@@ -121,7 +120,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Blue login button */
+/* login button */
 button {
     width: 100%;
     height: 44px;
@@ -144,7 +143,6 @@ button:active {
     background: #3c45a5;
 }
 
-/* Link to register page */
 .register {
     color: #949ba4;
     font-size: 14px;
@@ -152,7 +150,7 @@ button:active {
     margin-bottom: 0;
 }
 
-/* Right column: QR code login */
+/* qr code box */
 .qr-box {
     width: 240px;
     flex: 0 0 240px;
@@ -202,7 +200,7 @@ button:active {
     font-size: 14px;
 }
 
-/* Responsive styles for tablet and mobile */
+/* mobile view */
 @media (max-width: 768px) {
     body {
         flex-direction: column;
@@ -210,7 +208,6 @@ button:active {
         padding: 32px 16px;
     }
 
-    /* Move logo from absolute position to normal flow */
     .header-logo {
         position: static;
         margin-bottom: 24px;
@@ -227,13 +224,13 @@ button:active {
         flex: 1 1 100%;
     }
 
-    /* Hide QR code on mobile devices */
+    /* hide qr on mobile */
     .qr-box {
         display: none;
     }
 }
 
-/* Extra small mobile phone screens */
+/* small mobile */
 @media (max-width: 480px) {
     body {
         padding: 16px 12px;

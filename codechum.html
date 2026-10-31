@@ -12,7 +12,7 @@
 <body>
     <div class="app">
 
-        <!-- Left sidebar with server icons -->
+        <!-- server sidebar -->
         <nav class="server-rail" aria-label="Servers sidebar">
             <a href="home.html" class="server-icon home">
                 <div class="pill"></div>
@@ -42,7 +42,7 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC8oFNGxh9W2rNNyHDeCLy7Qn40Tj06kCwa6FHAkcjcjYDt1Jk2_PKx7E&s=10" alt="server">
             </div>
 
-            <!-- Add server and explore icons -->
+            <!-- add server and explore -->
             <div class="server-icon add-server">
                 <svg viewBox="0 0 24 24">
                     <path fill="currentColor"
@@ -57,17 +57,17 @@
             </div>
         </nav>
 
-        <!-- Channels sidebar for Codechum server -->
+        <!-- channel sidebar -->
         <aside class="channel-list" aria-label="Channels">
 
-            <!-- Server title dropdown header -->
+            <!-- server name header -->
             <div class="server-name">
                 <span>Codechum</span>
                 <span class="server-arrow">⌄</span>
                 <button type="button" class="sidebar-close-btn" aria-label="Close Sidebar" onclick="document.querySelector('.app').classList.remove('show-sidebar')">&times;</button>
             </div>
 
-            <!-- Text and voice channels list -->
+            <!-- channel list -->
             <div class="channels">
                 <div class="channel">
                     <svg class="channel-icon" viewBox="0 0 24 24">
@@ -99,7 +99,7 @@
                     <span>welcome</span>
                 </div>
 
-                <!-- Text channels category -->
+                <!-- text channels category -->
                 <div class="category">
                     <span>Text Channels</span>
                     <span class="category-arrow">⌄</span>
@@ -110,7 +110,7 @@
                     <span>general</span>
                 </div>
 
-                <!-- Help category -->
+                <!-- help category -->
                 <div class="category">
                     <span>Help</span>
                     <span class="category-arrow">⌄</span>
@@ -126,7 +126,7 @@
                     <span>language-discussion</span>
                 </div>
 
-                <!-- Support and feedback category -->
+                <!-- support category -->
                 <div class="category">
                     <span>Support and Feedback</span>
                     <span class="category-arrow">⌄</span>
@@ -137,7 +137,7 @@
                     <span>bug-reports</span>
                 </div>
 
-                <!-- Voice channels category -->
+                <!-- voice channels category -->
                 <div class="category">
                     <span class="category-arrow">⌄</span>
                     <span>Voice Channels</span>
@@ -151,7 +151,7 @@
                 </div>
             </div>
 
-            <!-- Logged-in user bar at bottom of channels -->
+            <!-- user bar at bottom -->
             <div class="server-user">
                 <div class="avatar-wrap">
                     <img class="avatar" src="assets/images/profile.jpg" alt="profile">
@@ -161,19 +161,19 @@
                     <span class="name">Froggy</span>
                     <span class="subtext">Idle</span>
                 </div>
-                <!-- Mic mute icon -->
+                <!-- mic -->
                 <span class="user-icon" title="Mute">
                     <svg viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/>
                     </svg>
                 </span>
-                <!-- Headphone deafen icon -->
+                <!-- deafen -->
                 <span class="user-icon" title="Deafen">
                     <svg viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 3a9 9 0 0 0-9 9v6a2 2 0 0 0 2 2h2v-8H5v-1a7 7 0 1 1 14 0v1h-2v8h2a2 2 0 0 0 2-2v-6a9 9 0 0 0-9-9z"/>
                     </svg>
                 </span>
-                <!-- User settings gear icon -->
+                <!-- settings -->
                 <span class="user-icon" title="User Settings">
                     <svg viewBox="0 0 24 24">
                         <path fill="currentColor" d="M19.14 12.94a7.14 7.14 0 0 0 .06-.94 7.14 7.14 0 0 0-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.62-.94l-.36-2.54A.5.5 0 0 0 14 2h-4a.5.5 0 0 0-.5.42l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.61 8.48a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.62-.06.94s.02.63.06.94L2.73 14.16a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.42.32.6.22l2.39-.96c.49.38 1.03.7 1.62.94l.36 2.54A.5.5 0 0 0 10 22h4a.5.5 0 0 0 .5-.42l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.24.1.5-.02.6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/>
@@ -182,19 +182,19 @@
             </div>
         </aside>
 
-        <!-- Main server chat column -->
+        <!-- chat area -->
         <main class="server-chat">
 
-            <!-- Channel header with channel title, search, and tools -->
+            <!-- channel header -->
             <header class="server-header">
-                <!-- Mobile menu hamburger button -->
+                <!-- mobile menu button -->
                 <button type="button" class="mobile-menu-btn" aria-label="Toggle navigation" onclick="document.querySelector('.app').classList.toggle('show-sidebar')">
                     <svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
                 </button>
                 <span class="header-hash">#</span>
                 <span class="channel-name">rules-and-info</span>
 
-                <!-- Utility buttons on the right side of header -->
+                <!-- header icons -->
                 <div class="server-tools">
                     <span class="tool-icon" title="Threads">
                         <svg viewBox="0 0 24 24">
@@ -220,7 +220,7 @@
                         </svg>
                     </span>
 
-                    <!-- Channel search bar -->
+                    <!-- search -->
                     <div class="server-search">
                         <input type="text" placeholder="Search Codechum" readonly>
                         <svg viewBox="0 0 24 24">
@@ -233,7 +233,7 @@
                 </div>
             </header>
 
-            <!-- Channel chat body with welcome greeting -->
+            <!-- welcome message -->
             <section class="server-body">
                 <div class="welcome">
                     <div class="big-hash">#</div>
@@ -242,39 +242,34 @@
                 </div>
             </section>
 
-            <!-- Bottom message input bar -->
+            <!-- message bar at bottom -->
             <form class="message-row" onsubmit="event.preventDefault();">
-                <!-- Add file/attachment plus button -->
+                <!-- plus button -->
                 <span class="message-plus">+</span>
                 <input type="text" placeholder="Message #rules-and-info">
 
-                <!-- Action icons inside message bar -->
+                <!-- message icons -->
                 <div class="message-icons">
-                    <!-- Gift icon -->
                     <span class="message-icon" title="Gift">
                         <svg viewBox="0 0 24 24">
                             <path fill="currentColor" d="M20 7h-2.18a3 3 0 0 0-4.32-3.9L12 4.24l-1.5-1.14A3 3 0 0 0 6.18 7H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zM11 19H6v-7h5v7zm0-9H6V9h5v1zm2-1V9h5v1h-5zm0 9v-7h5v7h-5z"/>
                         </svg>
                     </span>
 
-                    <!-- GIF badge -->
                     <span class="gif" title="GIF">GIF</span>
 
-                    <!-- Image attachment icon -->
                     <span class="message-icon" title="Upload Image">
                         <svg viewBox="0 0 24 24">
                             <path fill="currentColor" d="M19 5v14H5V5h14m0-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-4.86 8.86-3 3.87L9 13.14 6 17h12l-3.86-5.14z"/>
                         </svg>
                     </span>
 
-                    <!-- Emoji icon -->
                     <span class="message-icon" title="Emoji">
                         <svg viewBox="0 0 24 24">
                             <path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-3.5 6.5A1.5 1.5 0 1 1 8.5 12 1.5 1.5 0 0 1 8.5 8.5zm7 0A1.5 1.5 0 1 1 15.5 12a1.5 1.5 0 0 1 0-3.5zM12 18c-2.28 0-4.22-1.66-5-4h10c-.78 2.34-2.72 4-5 4z"/>
                         </svg>
                     </span>
 
-                    <!-- Apps plus button -->
                     <span class="apps" title="Apps">+</span>
                 </div>
             </form>

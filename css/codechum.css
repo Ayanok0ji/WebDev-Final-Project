@@ -1,9 +1,9 @@
-/* Server sidebar link styling */
+/* server icon */
 .server-icon {
     text-decoration: none;
 }
 
-/* Codechum server icon active white pill indicator */
+/* active server */
 .server-icon.active {
     background: #5865f2;
     border-radius: 16px;
@@ -14,7 +14,7 @@
     opacity: 1;
 }
 
-/* Channel sidebar on the left */
+/* channel sidebar */
 .channel-list {
     width: 240px;
     background: #2b2d31;
@@ -24,7 +24,7 @@
     height: 100%;
 }
 
-/* Server title bar at top of channels */
+/* server name */
 .server-name {
     height: 48px;
     padding: 0 16px;
@@ -49,14 +49,14 @@
     color: #949ba4;
 }
 
-/* Channels scrollable list */
+/* channels list */
 .channels {
     flex: 1;
     overflow-y: auto;
     padding: 8px 8px 0;
 }
 
-/* Individual channel row */
+/* channel item */
 .channel {
     height: 34px;
     padding: 0 8px;
@@ -82,7 +82,7 @@
     color: white;
 }
 
-/* Channel hash and icons */
+/* channel icon and hash */
 .channel-icon {
     width: 20px;
     height: 20px;
@@ -120,7 +120,7 @@
     background: #3f4147;
 }
 
-/* Category section titles (Text Channels, Voice Channels) */
+/* categories */
 .category {
     margin-top: 16px;
     margin-bottom: 3px;
@@ -140,7 +140,7 @@
     font-size: 12px;
 }
 
-/* Logged-in user bar at bottom */
+/* user bar at bottom */
 .server-user {
     height: 52px;
     padding: 6px 8px;
@@ -175,7 +175,7 @@
     text-overflow: ellipsis;
 }
 
-/* User buttons: mute, deafen, settings */
+/* user icons */
 .user-icon {
     padding: 4px;
     color: #b5bac1;
@@ -196,7 +196,7 @@
     height: 18px;
 }
 
-/* Main chat column on right side */
+/* chat column */
 .server-chat {
     flex: 1;
     min-width: 0;
@@ -206,7 +206,7 @@
     height: 100%;
 }
 
-/* Top header bar inside server chat */
+/* chat header */
 .server-header {
     height: 48px;
     padding: 0 16px;
@@ -234,7 +234,7 @@
     text-overflow: ellipsis;
 }
 
-/* Header utility buttons on right side */
+/* header icons */
 .server-tools {
     margin-left: auto;
     display: flex;
@@ -277,7 +277,7 @@
     background: #dbdee1;
 }
 
-/* Header search input */
+/* header search */
 .server-search {
     width: 180px;
     height: 28px;
@@ -310,7 +310,7 @@
     flex-shrink: 0;
 }
 
-/* Chat feed container */
+/* chat feed */
 .server-body {
     flex: 1;
     display: flex;
@@ -320,7 +320,7 @@
     padding: 24px 16px;
 }
 
-/* Welcome banner inside empty channel */
+/* welcome message */
 .welcome {
     margin-top: auto;
 }
@@ -353,7 +353,7 @@
     font-size: 14px;
 }
 
-/* Message input bar at bottom */
+/* message bar */
 .message-row {
     height: 44px;
     margin: 0 16px 24px;
@@ -399,7 +399,7 @@
     color: #6d6f78;
 }
 
-/* Action icons inside message row */
+/* message icons */
 .message-icons {
     display: flex;
     align-items: center;
@@ -453,7 +453,7 @@
     color: #fff;
 }
 
-/* Mobile menu toggle buttons (hidden on desktop) */
+/* mobile buttons */
 .mobile-menu-btn,
 .sidebar-close-btn {
     display: none;
@@ -463,9 +463,7 @@
     cursor: pointer;
 }
 
-/* Responsive styles */
-
-/* Tablet view */
+/* tablet */
 @media (max-width: 1024px) {
     .server-rail {
         width: 64px;
@@ -475,7 +473,6 @@
         width: 200px;
     }
 
-    /* Hide extra header icons to keep clean */
     .server-tools .tool-icon:nth-child(1),
     .server-tools .tool-icon:nth-child(3),
     .server-tools .help {
@@ -487,9 +484,8 @@
     }
 }
 
-/* Mobile phone view */
+/* mobile */
 @media (max-width: 768px) {
-    /* Show menu button in server header */
     .mobile-menu-btn {
         display: flex;
         padding: 6px;
@@ -506,7 +502,6 @@
         height: 24px;
     }
 
-    /* Close button in server title header */
     .sidebar-close-btn {
         display: flex;
         font-size: 20px;
@@ -519,7 +514,7 @@
         background: #35373c;
     }
 
-    /* On mobile, show chat by default and hide sidebar */
+    /* hide sidebars by default */
     .server-rail,
     .channel-list {
         display: none;
@@ -530,7 +525,7 @@
         flex: 1;
     }
 
-    /* When user taps mobile menu button to view channels */
+    /* show sidebar when toggled */
     .app.show-sidebar .server-rail {
         display: flex;
         width: 72px;
@@ -547,7 +542,6 @@
         display: none;
     }
 
-    /* Mobile header adjustments */
     .server-header {
         padding: 0 10px;
         gap: 6px;
@@ -567,7 +561,6 @@
         padding: 0 6px;
     }
 
-    /* Mobile chat body adjustments */
     .server-body {
         padding: 16px 12px;
     }
@@ -583,7 +576,6 @@
         font-size: 22px;
     }
 
-    /* Mobile message row input */
     .message-row {
         margin: 0 8px 12px 8px;
         padding: 0 10px;
@@ -595,7 +587,7 @@
     }
 }
 
-/* Small mobile phone view */
+/* small mobile */
 @media (max-width: 480px) {
     .server-search {
         display: none;

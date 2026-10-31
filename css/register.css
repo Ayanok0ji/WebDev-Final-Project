@@ -1,15 +1,15 @@
-/* Reset box-sizing */
+/* reset */
 * {
     box-sizing: border-box;
 }
 
-/* Custom Discord font */
+/* custom font */
 @font-face {
     font-family: gg;
     src: url("../assets/fonts/ggsans-normal.woff2");
 }
 
-/* Page background and center container */
+/* body background */
 body {
     margin: 0;
     min-height: 100vh;
@@ -22,7 +22,7 @@ body {
     position: relative;
 }
 
-/* Discord logo in upper left corner */
+/* top logo */
 .header-logo {
     position: absolute;
     top: 48px;
@@ -33,7 +33,7 @@ body {
     display: block;
 }
 
-/* Main registration card box */
+/* register box */
 .box {
     width: 100%;
     max-width: 480px;
@@ -52,7 +52,7 @@ h2 {
     font-weight: 600;
 }
 
-/* Form group rows */
+/* form inputs */
 .form-group {
     margin-bottom: 18px;
 }
@@ -72,7 +72,6 @@ label .required {
     color: #fa777c;
 }
 
-/* Text and email inputs */
 input {
     width: 100%;
     height: 40px;
@@ -91,7 +90,7 @@ input:focus {
     border-color: #00a8fc;
 }
 
-/* Date of birth 3-column dropdowns row */
+/* birthday dropdowns row */
 .birth {
     display: flex;
     gap: 10px;
@@ -123,7 +122,7 @@ select option {
     color: #dbdee1;
 }
 
-/* Blue continue button */
+/* continue button */
 button {
     width: 100%;
     height: 44px;
@@ -147,7 +146,7 @@ button:active {
     background: #3c45a5;
 }
 
-/* Terms and policy agreement text */
+/* terms and links */
 p {
     color: #949ba4;
     font-size: 12px;
@@ -165,14 +164,13 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Already have an account link */
 .already-account {
     display: inline-block;
     font-size: 14px;
     margin-top: 4px;
 }
 
-/* Responsive styles for tablet and mobile */
+/* mobile view */
 @media (max-width: 768px) {
     body {
         flex-direction: column;
@@ -180,7 +178,6 @@ a:hover {
         padding: 32px 16px;
     }
 
-    /* Move logo into standard document flow */
     .header-logo {
         position: static;
         margin-bottom: 24px;
@@ -192,7 +189,7 @@ a:hover {
     }
 }
 
-/* Small mobile phone screens */
+/* small mobile */
 @media (max-width: 480px) {
     body {
         padding: 16px 12px;

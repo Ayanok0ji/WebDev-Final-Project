@@ -1,17 +1,17 @@
-/* Reset default browser margins and set box-sizing */
+/* reset */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* Discord custom font */
+/* font */
 @font-face {
     font-family: "gg sans";
     src: url("../assets/fonts/ggsans-normal.woff2");
 }
 
-/* Body setup and dark theme background */
+/* body */
 body {
     background: #1e1f22;
     color: #dbdee1;
@@ -22,7 +22,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* Default SVG icon sizing */
+/* svg default */
 svg {
     width: 24px;
     height: 24px;
@@ -30,7 +30,7 @@ svg {
     flex-shrink: 0;
 }
 
-/* Main app container */
+/* app container */
 .app {
     display: flex;
     height: 100vh;
@@ -39,7 +39,7 @@ svg {
     overflow: hidden;
 }
 
-/* Mobile buttons (hidden on desktop & tablet) */
+/* mobile buttons */
 .mobile-menu-btn,
 .sidebar-close-btn {
     display: none;
@@ -51,7 +51,7 @@ svg {
     justify-content: center;
 }
 
-/* Left server rail sidebar */
+/* server sidebar */
 .server-rail {
     width: 72px;
     background: #1e1f22;
@@ -87,7 +87,7 @@ svg {
     transition: border-radius 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
 
-/* Avatars fill the circular icon */
+/* server avatar */
 .server-icon > img {
     width: 100%;
     height: 100%;
@@ -95,7 +95,7 @@ svg {
     border-radius: inherit;
 }
 
-/* Vector icons inside server buttons stay 24px */
+/* server icons */
 .server-icon svg {
     width: 24px;
     height: 24px;
@@ -162,7 +162,7 @@ svg {
     color: #fff;
 }
 
-/* Direct messages sidebar */
+/* dm sidebar */
 .dm-list {
     width: 240px;
     background: #2b2d31;
@@ -202,7 +202,7 @@ svg {
     padding: 0 8px 8px 8px;
 }
 
-/* Navigation tabs (Friends, Requests, Nitro, Shop, Quests) */
+/* nav tabs */
 .nav-item {
     display: flex;
     align-items: center;
@@ -274,7 +274,7 @@ svg {
     height: 16px;
 }
 
-/* Direct message friend chat rows */
+/* dm items */
 .dm-item {
     display: flex;
     align-items: center;
@@ -426,7 +426,7 @@ svg {
     transform: rotate(35deg);
 }
 
-/* Voice connected channel status box */
+/* voice panel */
 .voice-panel {
     background: #232428;
     padding: 8px 8px;
@@ -519,7 +519,7 @@ svg {
     height: 18px;
 }
 
-/* Bottom logged-in user profile bar */
+/* user bar */
 .user-panel {
     background: #232428;
     padding: 8px;
@@ -560,7 +560,7 @@ svg {
     height: 20px;
 }
 
-/* Main chat conversation column */
+/* chat column */
 .chat-column {
     flex: 1;
     display: flex;
@@ -837,7 +837,7 @@ svg {
     height: 24px;
 }
 
-/* Right side user profile panel */
+/* profile panel */
 .profile-panel {
     width: 300px;
     background: #2b2d31;
@@ -968,16 +968,14 @@ svg {
     background: #3f4147;
 }
 
-/* Responsive styles for tablet and mobile */
-
-/* Tablet view (1024px and below) */
+/* tablet view */
 @media (max-width: 1024px) {
-    /* Hide the right profile panel to give chat more room */
+    /* hide profile panel */
     .profile-panel {
         display: none !important;
     }
 
-    /* Keep sidebars visible but slightly more compact */
+    /* compact sidebars */
     .server-rail {
         width: 64px;
     }
@@ -986,7 +984,7 @@ svg {
         width: 210px;
     }
 
-    /* Hide non-essential header icons on tablet */
+    /* hide extra icons */
     .header-icons span[title="Start Video Call"],
     .header-icons span[title="Pinned Messages"],
     .header-icons span[title="Inbox"],
@@ -1000,9 +998,9 @@ svg {
     }
 }
 
-/* Mobile phone view (768px and below) */
+/* mobile view */
 @media (max-width: 768px) {
-    /* Show menu button in chat header */
+    /* menu button */
     .mobile-menu-btn {
         display: flex;
         padding: 6px;
@@ -1019,7 +1017,7 @@ svg {
         height: 24px;
     }
 
-    /* Close button inside sidebar search bar */
+    /* close button */
     .sidebar-close-btn {
         display: flex;
         font-size: 20px;
@@ -1033,7 +1031,7 @@ svg {
         background: #35373c;
     }
 
-    /* Show chat full screen by default on mobile */
+    /* hide sidebars by default */
     .server-rail,
     .dm-list {
         display: none;
@@ -1044,7 +1042,7 @@ svg {
         flex: 1;
     }
 
-    /* When mobile sidebar toggle is active */
+    /* show sidebar when toggled */
     .app.show-sidebar .server-rail {
         display: flex;
         width: 72px;
@@ -1061,7 +1059,7 @@ svg {
         display: none;
     }
 
-    /* Mobile Chat Header */
+    /* mobile header */
     .chat-header {
         padding: 0 10px;
         gap: 6px;
@@ -1080,7 +1078,7 @@ svg {
         width: 60px;
     }
 
-    /* Mobile Chat Body */
+    /* mobile chat body */
     .chat-body {
         padding: 16px 12px 0;
     }
@@ -1099,7 +1097,7 @@ svg {
         margin-bottom: 20px;
     }
 
-    /* Mobile Chat Input */
+    /* mobile input */
     .chat-input-row {
         margin: 0 8px 12px;
         padding: 0 10px;
@@ -1116,7 +1114,7 @@ svg {
     }
 }
 
-/* Small mobile screens (480px and below) */
+/* small mobile */
 @media (max-width: 480px) {
     .header-search {
         display: none;
