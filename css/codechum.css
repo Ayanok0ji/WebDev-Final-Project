@@ -202,16 +202,21 @@ img.icon,
 /* user bar at bottom */
 .server-user {
     height: 52px;
-    padding: 6px 8px;
+    padding: 0 8px;
     background: #232428;
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.server-user .avatar-wrap {
     flex-shrink: 0;
 }
 
 .user-text {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -236,13 +241,16 @@ img.icon,
 
 /* user icons */
 .user-icon {
-    padding: 4px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
     color: #b5bac1;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     border-radius: 4px;
+    flex-shrink: 0;
 }
 
 .user-icon:hover {
@@ -252,8 +260,9 @@ img.icon,
 
 .user-icon svg,
 .user-icon img {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
+    display: block;
     object-fit: contain;
 }
 

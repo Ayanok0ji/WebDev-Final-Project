@@ -699,32 +699,52 @@ img.icon,
 /* user bar */
 .user-panel {
     background: #232428;
-    padding: 8px;
+    height: 52px;
+    padding: 0 8px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
     flex-shrink: 0;
+}
+
+.user-panel .avatar-wrap {
+    flex-shrink: 0;
+}
+
+.user-panel .text-col {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
 }
 
 .user-panel .name {
     font-size: 14px;
     font-weight: 600;
     color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .user-panel .subtext {
     font-size: 12px;
     color: #949ba4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .user-panel .icon {
-    cursor: pointer;
-    color: #b5bac1;
-    padding: 4px;
-    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 4px;
+    flex-shrink: 0;
+    cursor: pointer;
+    color: #b5bac1;
 }
 
 .user-panel .icon:hover {
@@ -732,9 +752,12 @@ img.icon,
     color: #dbdee1;
 }
 
+.user-panel .icon img,
 .user-panel .icon svg {
     width: 20px;
     height: 20px;
+    display: block;
+    object-fit: contain;
 }
 
 .user-panel .icon.muted,
