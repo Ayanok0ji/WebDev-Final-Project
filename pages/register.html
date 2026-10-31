@@ -20,7 +20,7 @@
 
         <h2>Create an account</h2>
 
-        <form action="login.html" method="get">
+        <form action="login.html" method="get" onsubmit="return checkRegister()">
             <!-- email -->
             <div class="form-group">
                 <label for="reg-email">EMAIL <span class="required" aria-hidden="true">*</span></label>
@@ -145,6 +145,7 @@
             </div>
             
             <!-- continue button -->
+            <p id="register-error" class="error"></p>
             <button type="submit">Continue</button>
 
             <!-- terms notice -->
