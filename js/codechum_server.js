@@ -1,4 +1,3 @@
-// Channel lists
 var channels = [
   {
     name: "announcement",
@@ -57,7 +56,6 @@ var currentChannel = 1;
 var isMuted = true;
 var isDeafened = true;
 
-// show message on every channels
 function showmessages() {
   var list = channels[currentChannel].messages;
   var search = document.getElementById("search-input").value.toLowerCase();
@@ -87,8 +85,6 @@ function showmessages() {
 
   document.getElementById("messages").innerHTML = html;
 }
-
-// fallback real time
 function gettime() {
   var now = new Date();
   var minutes = now.getMinutes();
@@ -100,7 +96,6 @@ function gettime() {
   return now.getHours() + ":" + minutes;
 }
 
-// send message function
 function sendmessage(event) {
   event.preventDefault();
 
@@ -131,7 +126,6 @@ function sendmessage(event) {
   return false;
 }
 
-// switch channel
 function switchchannel(index) {
   currentChannel = index;
   var channelName = channels[index].name;
@@ -152,7 +146,6 @@ function switchchannel(index) {
   showmessages();
 }
 
-// react system
 function likemessage(index) {
   var message = channels[currentChannel].messages[index];
 
@@ -166,8 +159,6 @@ function likemessage(index) {
 
   showmessages();
 }
-
-// toggle state of mute button
 function togglemute() {
   var button = document.getElementById("mute-button");
   var icon = document.getElementById("mute-icon");
@@ -182,8 +173,6 @@ function togglemute() {
     icon.src = "../assets/icons/ui-mic-off-red-24x24.svg";
   }
 }
-
-// toggle state of deafen button
 function toggledeafen() {
   var button = document.getElementById("deafen-button");
   var icon = document.getElementById("deafen-icon");
@@ -198,6 +187,4 @@ function toggledeafen() {
     icon.src = "../assets/icons/ui-deafen-off-red-24x24.svg";
   }
 }
-
-// fire the function showmessages to show the messages on every channels
 showmessages();
