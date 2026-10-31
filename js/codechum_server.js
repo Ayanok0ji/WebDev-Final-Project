@@ -181,4 +181,4 @@ function toggledeafen() {
   }
 }
 
-showMessages();
+showmessages();

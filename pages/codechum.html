@@ -96,22 +96,22 @@
 
         <div class="channel-line"></div>
 
-        <div class="channel" id="channel-0" onclick="switchChannel(0)">
+        <div class="channel" id="channel-0" onclick="switchchannel(0)">
           <img src="../assets/icons/ui-announcement-megaphone-24x24.svg" alt="Announcement" class="channel-icon">
           <span>announcement</span>
         </div>
 
-        <div class="channel active" id="channel-1" onclick="switchChannel(1)">
+        <div class="channel active" id="channel-1" onclick="switchchannel(1)">
           <img src="../assets/icons/ui-check-24x24.svg" alt="Rules" class="channel-icon">
           <span>rules-and-info</span>
         </div>
 
-        <div class="channel" id="channel-2" onclick="switchChannel(2)">
+        <div class="channel" id="channel-2" onclick="switchchannel(2)">
           <span class="hash">#</span>
           <span>roles</span>
         </div>
 
-        <div class="channel" id="channel-3" onclick="switchChannel(3)">
+        <div class="channel" id="channel-3" onclick="switchchannel(3)">
           <span class="hash">#</span>
           <span>welcome</span>
         </div>
@@ -122,7 +122,7 @@
           <span class="category-arrow">⌄</span>
         </div>
 
-        <div class="channel" id="channel-4" onclick="switchChannel(4)">
+        <div class="channel" id="channel-4" onclick="switchchannel(4)">
           <span class="hash">#</span>
           <span>general</span>
         </div>
@@ -133,12 +133,12 @@
           <span class="category-arrow">⌄</span>
         </div>
 
-        <div class="channel" id="channel-5" onclick="switchChannel(5)">
+        <div class="channel" id="channel-5" onclick="switchchannel(5)">
           <span class="hash">#</span>
           <span>coding-help</span>
         </div>
 
-        <div class="channel" id="channel-6" onclick="switchChannel(6)">
+        <div class="channel" id="channel-6" onclick="switchchannel(6)">
           <span class="hash">#</span>
           <span>language-discussion</span>
         </div>
@@ -149,7 +149,7 @@
           <span class="category-arrow">⌄</span>
         </div>
 
-        <div class="channel" id="channel-7" onclick="switchChannel(7)">
+        <div class="channel" id="channel-7" onclick="switchchannel(7)">
           <span class="hash">#</span>
           <span>bug-reports</span>
         </div>
@@ -177,11 +177,11 @@
           <span class="subtext">Idle</span>
         </div>
         <!-- mic -->
-        <span class="user-icon muted" id="mute-button" title="Mute / Unmute" onclick="toggleMute()">
+        <span class="user-icon muted" id="mute-button" title="Mute / Unmute" onclick="togglemute()">
                     <img id="mute-icon" src="../assets/icons/ui-mic-off-red-24x24.svg" alt="Mute" class="icon">
                 </span>
         <!-- deafen -->
-        <span class="user-icon deafened" id="deafen-button" title="Deafen / Undeafen" onclick="toggleDeafen()">
+        <span class="user-icon deafened" id="deafen-button" title="Deafen / Undeafen" onclick="toggledeafen()">
                     <img id="deafen-icon" src="../assets/icons/ui-deafen-off-red-24x24.svg" alt="Deafen" class="icon">
                 </span>
         <!-- settings -->
@@ -239,7 +239,7 @@
 
           <!-- search -->
           <div class="server-search">
-            <input type="text" id="search-input" placeholder="Search Codechum" onkeyup="showMessages()" aria-label="Search Codechum">
+            <input type="text" id="search-input" placeholder="Search Codechum" onkeyup="showmessages()" aria-label="Search Codechum">
             <img src="../assets/icons/ui-search-24x24.svg" alt="Search" class="icon">
           </div>
 
@@ -258,7 +258,7 @@
       </section>
 
       <!-- message bar -->
-      <form class="message-row" onsubmit="sendMessage(); return false;">
+      <form class="message-row" onsubmit="sendmessage(); return false;">
         <!-- plus button -->
         <span class="message-plus" title="Add Attachment">
                     <img src="../assets/icons/ui-plus-24x24.svg" alt="Add Attachment" class="icon">
@@ -295,7 +295,7 @@
 
     </main>
   </div>
-  <script src="../js/codechum.js"></script>
+  <script src="../js/codechum_server.js"></script>
 
 </body>
 
