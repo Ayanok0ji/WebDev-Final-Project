@@ -51,4 +51,10 @@ function checkRegister() {
         error.innerHTML = "Password must be at least 8 characters.";
         return false;
     }
+
+    var thisYear = new Date().getFullYear();
+    if (thisYear - birthYear < 13) {
+        error.innerHTML = "You must be at least 13 years old.";
+        return false;
+    }
 }
