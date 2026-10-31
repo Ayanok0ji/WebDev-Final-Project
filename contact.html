@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Messages</title>
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Backdrop for mobile drawer -->
+        <div class="sidebar-backdrop" onclick="document.querySelector('.app').classList.remove('sidebar-open')" aria-hidden="true"></div>
+
+        <!-- Server List -->
+        <nav class="server-rail" aria-label="Servers sidebar">
+            <a href="home.html" class="server-icon home active" aria-label="Direct Messages">
+                <div class="pill"></div>
+                <img src="assets/images/discord-favicon.ico" alt="Discord Home">
+            </a>
+
+            <div class="rail-divider"></div>
+
+            <a href="codechum.html" class="server-icon" aria-label="Codechum Server">
+                <div class="pill"></div>
+                <img src="assets/images/codechum.png" alt="Codechum">
+            </a>
+            <div class="server-icon" aria-label="Server 2">
+                <div class="pill"></div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf1oDGqabA_FsXxIaqRWY5Y1151SkisrTnsM8NH1QIDFVqaAYvORTmsK0N&s=10" alt="server">
+            </div>
+            <div class="server-icon" aria-label="Server 3">
+                <div class="pill"></div>
+                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/500px-Roblox_%282025%29_%28App_Icon%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="Roblox">
+            </div>
+            <div class="server-icon" aria-label="Server 4">
+                <div class="pill"></div>
+                <img src="https://img.icons8.com/color/1200/valorant.jpg" alt="Valorant">
+            </div>
+            <div class="server-icon" aria-label="Server 5">
+                <div class="pill"></div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC8oFNGxh9W2rNNyHDeCLy7Qn40Tj06kCwa6FHAkcjcjYDt1Jk2_PKx7E&s=10" alt="server">
+            </div>
+
+            <div class="server-icon add-server" role="button" aria-label="Add a Server">
+                <img class="rail-icon" src="assets/icons/ui-plus-24x24.svg" alt="Add a Server">
+            </div>
+            <div class="server-icon explore" role="button" aria-label="Explore Discoverable Servers">
+                <img class="rail-icon" src="assets/icons/ui-explore-compass-24x24.svg" alt="Explore">
+            </div>
+        </nav>
+
+        <!-- DMs Sidebar -->
+        <aside class="dm-list" aria-label="Direct Messages">
+            <div class="search-bar">
+                <input type="text" placeholder="Find or start a conversation..." readonly aria-label="Search conversations">
+            </div>
+
+            <!-- Buttons -->
+            <div class="dm-scroll">
+
+                <div class="nav-item">
+                    <span class="nav-icon">
+                        <img src="assets/images/nav-friend.png" alt="Friends">
+                    </span>
+                    <span class="nav-label">Friends</span>
+                    <span class="badge">2</span>
+                </div>
+
+                <div class="nav-item">
+                    <span class="nav-icon">
+                        <img src="assets/images/nav-rqs.png" alt="Message Requests">
+                    </span>
+                    <span class="nav-label">Message Requests</span>
+                    <span class="badge">6</span>
+                </div>
+
+                <div class="nav-item">
+                    <span class="nav-icon">
+                        <img src="assets/images/nav-nitro.png" alt="Nitro">
+                    </span>
+                    <span class="nav-label">Nitro Home</span>
+                </div>
+
+                <div class="nav-item">
+                    <span class="nav-icon">
+                        <img src="assets/images/nav-shop.png" alt="Shop">
+                    </span>
+                    <span class="nav-label">Shop</span>
+                </div>
+
+                <div class="nav-item">
+                    <span class="nav-icon">
+                        <img src="assets/images/nav-quests.png" alt="Quests">
+                    </span>
+                    <span class="nav-label">Quests</span>
+                </div>
+
+                <!-- DM Add -->
+                <div class="section-header">
+                    <span>Direct Messages</span>
+                    <span class="add-icon" title="Create DM">
+                        <img class="icon" src="assets/icons/ui-new-dm-plus-24x24.svg" alt="Create DM">
+                    </span>
+                </div>
+
+                <!-- DM Contact List -->
+                <a href="home.html" class="dm-item">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/discord-logo-white-on-green-256x256.png" alt="Daryl Ashley">
+                        <span class="status online"></span>
+                    </div>
+                    <span class="name">Daryl Ashley Pangilinan Severino</span>
+                    <span class="tag">CPE</span>
+                    <img class="icon pin-icon" src="assets/icons/ui-pin-24x24.svg" alt="Pinned">
+                </a>
+
+                <a href="contact2.html" class="dm-item active">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/pf.png" alt="Eunice">
+                        <span class="status idle"></span>
+                    </div>
+                    <span class="name">Eunice</span>
+                    <span class="tag">LOVE</span>
+                </a>
+
+                <div class="dm-item two-line">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/pf5.png" alt="JayR">
+                        <span class="status dnd"></span>
+                    </div>
+                    <div class="text-col">
+                        <span class="name">JayR?<span class="tag">LOL</span></span>
+                        <span class="subtext">status message here</span>
+                    </div>
+                </div>
+
+                <div class="dm-item">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/mrb.jpg" alt="Mr. Bean">
+                        <span class="status offline"></span>
+                    </div>
+                    <span class="name">Mr. Bean</span>
+                </div>
+
+                <div class="dm-item two-line">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/pf6.png" alt="Jego">
+                        <span class="status online"></span>
+                    </div>
+                    <div class="text-col">
+                        <span class="name">Jego<span class="tag">MINE</span></span>
+                        <span class="subtext">
+                            <img class="icon voice-mini" src="assets/icons/ui-mic-24x24.svg" alt="Voice"> In voice
+                        </span>
+                    </div>
+                </div>
+
+                <div class="dm-item">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/pf2.png" alt="Free Robux"><span class="status online"></span>
+                    </div>
+                    <span class="name">Free Robux</span>
+                    <span class="tag">SCUM</span>
+                </div>
+
+                <div class="dm-item">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/jd.jpg" alt="Jarren"><span class="status idle"></span>
+                    </div>
+                    <div class="text-col">
+                        <span class="name">Jarren</span>
+                        <span class="subtext">Sa akin lang si eunice pre.</span>
+                    </div>
+                </div>
+                
+                <div class="dm-item">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/discord-logo-white-on-grey-256x256.png" alt="Deleted User"><span class="status online"></span>
+                    </div>
+                    <span class="name">Deleted User</span>
+                    <span class="tag">WALA</span>
+                </div>
+                
+                <div class="dm-item two-line">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/cat.jpg" alt="Kitty"><span class="status online"></span>
+                    </div>
+                    <div class="text-col">
+                        <span class="name">Kitty</span>
+                        <span class="subtext">now playing something</span>
+                    </div>
+                </div>
+                
+                <div class="dm-item two-line">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/smb.jpg" alt="Chaa"><span class="status dnd"></span>
+                    </div>
+                    <div class="text-col">
+                        <span class="name">Chaa</span>
+                        <span class="subtext">The one who conquers himself</span>
+                    </div>
+                </div>
+
+                <div class="dm-item two-line">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/dyno.webp" alt="Dynosure"><span class="status online"></span>
+                    </div>
+                    <div class="text-col">
+                        <span class="name">Dynosure</span>
+                        <span class="subtext">with 1,234,567 servers</span>
+                    </div>
+                </div>
+
+                <div class="dm-item two-line">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/sjw.jpg" alt="Aura Farmer"><span class="status idle"></span>
+                    </div>
+                    <div class="text-col">
+                        <span class="name">Aura Farmer<span class="tag">EHHH</span></span>
+                        <span class="subtext">idle</span>
+                    </div>
+                </div>
+
+                <div class="dm-item">
+                    <div class="avatar-wrap">
+                        <img class="avatar" src="assets/images/pf3.jpg" alt="Progamer67"><span class="status offline"></span>
+                    </div>
+                    <span class="name">Progamer67</span>
+                </div>
+            </div>
+
+            <!-- VC Panel -->
+            <div class="voice-panel">
+                <div class="voice-top">
+                    <img class="icon voice-icon" src="assets/icons/ui-voice-channel-speaker-24x24.svg" alt="Voice Connected">
+                    <div class="voice-text">
+                        <span class="voice-title">Voice Connected</span>
+                        <span class="voice-sub">General</span>
+                    </div>
+                    <span class="voice-btn" title="Video">
+                        <img class="icon" src="assets/icons/ui-video-call-24x24.svg" alt="Video">
+                    </span>
+                    <span class="voice-btn hangup" title="Disconnect">
+                        <img class="icon" src="assets/icons/ui-disconnect-phone-off-24x24.svg" alt="Disconnect">
+                    </span>
+                </div>
+
+                <div class="voice-controls">
+                    <span title="Screen Share">
+                        <img class="icon" src="assets/icons/ui-screenshare-24x24.svg" alt="Screen Share">
+                    </span>
+                    <span title="Camera">
+                        <img class="icon" src="assets/icons/ui-camera-24x24.svg" alt="Camera">
+                    </span>
+                    <span title="Activity">
+                        <img class="icon" src="assets/icons/ui-activity-gamepad-24x24.svg" alt="Activity">
+                    </span>
+                    <span title="Sound">
+                        <img class="icon" src="assets/icons/ui-headphones-24x24.svg" alt="Sound">
+                    </span>
+                </div>
+            </div>
+
+            <!-- User Panel -->
+            <div class="user-panel">
+                <div class="avatar-wrap">
+                    <img class="avatar" src="assets/images/profile.jpg" alt="Froggy">
+                    <span class="status idle"></span>
+                </div>
+                <div class="text-col">
+                    <span class="name">Froggy</span>
+                    <span class="subtext">Idle</span>
+                </div>
+                <span class="icon-wrap" title="Mute">
+                    <img class="icon" src="assets/icons/ui-mic-24x24.svg" alt="Mute">
+                </span>
+                <span class="icon-wrap" title="Deafen">
+                    <img class="icon" src="assets/icons/ui-headphones-24x24.svg" alt="Deafen">
+                </span>
+                <span class="icon-wrap" title="Settings">
+                    <img class="icon" src="assets/icons/ui-settings-gear-24x24.svg" alt="Settings">
+                </span>
+            </div>
+        </aside>
+
+        <!-- Chat Main Area -->
+        <main class="chat-column" role="main">
+            <header class="chat-header">
+                <button type="button" class="mobile-toggle-btn" aria-label="Toggle navigation" onclick="document.querySelector('.app').classList.toggle('sidebar-open')">
+                    <img class="icon" src="assets/icons/ui-forum-chat-squares-24x24.svg" alt="Menu">
+                </button>
+                <img class="icon dm-hash" src="assets/icons/ui-at-mention-24x24.svg" alt="@">
+                <span class="chat-name">Eunice</span>
+
+                <div class="header-icons">
+                    <span title="Start Voice Call">
+                        <img class="icon" src="assets/icons/ui-voice-call-phone-24x24.svg" alt="Start Voice Call">
+                    </span>
+                    <span title="Start Video Call">
+                        <img class="icon" src="assets/icons/ui-video-call-24x24.svg" alt="Start Video Call">
+                    </span>
+                    <span title="Pinned Messages">
+                        <img class="icon" src="assets/icons/ui-pin-24x24.svg" alt="Pinned Messages">
+                    </span>
+                    <span title="Add Friends to DM">
+                        <img class="icon" src="assets/icons/ui-user-plus-add-friend-24x24.svg" alt="Add Friends">
+                    </span>
+                    <span class="profile-toggle-icon" title="Toggle Profile" onclick="document.querySelector('.app').classList.toggle('profile-open')">
+                        <img class="icon" src="assets/icons/ui-user-circle-profile-24x24.svg" alt="Toggle Profile">
+                    </span>
+                    <div class="header-search">
+                        <input type="text" placeholder="Search" readonly aria-label="Search">
+                        <img class="icon" src="assets/icons/ui-search-24x24.svg" alt="Search">
+                    </div>
+                    <span class="header-divider"></span>
+                    <span title="Inbox">
+                        <img class="icon" src="assets/icons/ui-inbox-24x24.svg" alt="Inbox">
+                    </span>
+                    <span title="Help">
+                        <img class="icon" src="assets/icons/ui-help-24x24.svg" alt="Help">
+                    </span>
+                </div>
+            </header>
+
+            <section class="chat-body" aria-label="Conversation History">
+                <img class="big-avatar" src="assets/images/pf.png" alt="Eunice">
+                <h1 class="big-name">Eunice</h1>
+                <p class="big-username">prtty_eunice</p>
+                <p class="dm-start">This is the beginning of your direct message history with
+                    <strong>Eunice</strong>.
+                </p>
+                <div class="mutual-row">
+                    <span>5 Mutual Friends &middot; 1 Mutual Servers</span>
+                    <button type="button" class="btn primary">Add Friend</button>
+                    <button type="button" class="btn">Block</button>
+                    <button type="button" class="btn danger">Report Spam</button>
+                </div>
+                <img class="mascot" src="assets/images/mascot.gif" alt="mascot">
+                <button type="button" class="wave-btn">Wave to Eunice</button>
+            </section>
+
+            <form class="chat-input-row" action="#" onsubmit="event.preventDefault()">
+                <span class="plus-icon" title="Upload a file">
+                    <img class="icon" src="assets/icons/ui-plus-24x24.svg" alt="Attach">
+                </span>
+                <input type="text" placeholder="Message @Eunice" aria-label="Message @Eunice">
+                <div class="input-icons">
+                    <span title="Gift Nitro">
+                        <img class="icon" src="assets/icons/ui-gift-nitro-24x24.svg" alt="Gift Nitro">
+                    </span>
+                    <span title="GIF">
+                        <img class="icon" src="assets/icons/ui-gif-badge-24x24.svg" alt="GIF">
+                    </span>
+                    <span title="Attach Image">
+                        <img class="icon" src="assets/icons/ui-image-picture-24x24.svg" alt="Attach Image">
+                    </span>
+                    <span title="Emoji">
+                        <img class="icon" src="assets/icons/ui-emoji-smile-24x24.svg" alt="Emoji">
+                    </span>
+                    <span title="Apps">
+                        <img class="icon" src="assets/icons/ui-apps-grid-24x24.svg" alt="Apps">
+                    </span>
+                </div>
+            </form>
+        </main>
+
+        <!-- Profile View -->
+        <aside class="profile-panel" aria-label="User Profile">
+            <div class="profile-banner">
+                <span class="panel-icon" title="Edit Profile">
+                    <img class="icon" src="assets/icons/ui-edit-pencil-24x24.svg" alt="Edit">
+                </span>
+                <span class="panel-icon" title="More Options">
+                    <img class="icon" src="assets/icons/ui-more-horizontal-dots-24x24.svg" alt="More">
+                </span>
+            </div>
+            <div class="profile-avatar-wrap">
+                <img class="profile-avatar" src="assets/images/pf.png" alt="Eunice">
+                <span class="status online big"></span>
+            </div>
+            <div class="profile-info">
+                <h2>Eunice</h2>
+                <p class="profile-sub">my only one <span class="tag">JARREN</span></p>
+                <div class="profile-divider"></div>
+                <p class="mutual-line">
+                    <img class="icon" src="assets/icons/ui-friends-24x24.svg" alt="Friends">
+                    5 Mutual Friends &middot; 1 Mutual Servers
+                </p>
+                <div class="profile-divider"></div>
+                <h3>Member Since</h3>
+                <p>Feb 14, 2026</p>
+            </div>
+            <button type="button" class="view-profile-btn">View Full Profile</button>
+        </aside>
+
+    </div>
+
+</body>
+
+</html>

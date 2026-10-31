@@ -8,35 +8,47 @@
 </head>
 <body>
 
-<img class="logo" src="assets/logo.svg" alt="Discord Logo">
+<header class="header-logo">
+  <a href="home.html" aria-label="Discord Home">
+    <img class="logo" src="assets/logo.svg" alt="Discord Logo">
+  </a>
+</header>
 
-<div class="login-box">
-  <div class="login-form">
-    <h2>Welcome back!</h2>
+<main class="login-box" role="main">
+  <section class="login-form" aria-labelledby="login-heading">
+    <h2 id="login-heading">Welcome back!</h2>
     <p class="subtitle">We're so excited to see you again!</p>
 
-    <form>
-      <label>Email or Phone Number <span>*</span></label>
-      <input type="text">
+    <form action="home.html" method="get">
+      <div class="form-group">
+        <label for="login-email">Email or Phone Number <span class="required" aria-hidden="true">*</span></label>
+        <input id="login-email" name="email" type="text" autocomplete="username" required>
+      </div>
 
-      <label>Password <span>*</span></label>
-      <input type="password">
+      <div class="form-group">
+        <label for="login-password">Password <span class="required" aria-hidden="true">*</span></label>
+        <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+      </div>
 
-      <a href="#">Forgot your password?</a>
+      <div class="forgot-wrapper">
+        <a href="#">Forgot your password?</a>
+      </div>
 
-      <a href="home.html"> <button type="button">Log In</button> </a>
+      <button type="submit">Log In</button>
 
       <p class="register">Need an account? <a href="register.html">Register</a></p>
-
     </form>
-  </div>
-  <div class="qr-box">
-      <img class = "qr-box "src="assets/images/pogi_mo_seb.png" alt="qr">
-      <h2 class="meow"><b>Log in with QR Code</b></h2>
-      <p class="scan">Scan this with the <b>Discord mobile app</b> to log in instantly.</p>
-      <a class="passkey" href="#">Or, sign in with passkey</a>
-  </div>
-</div>
+  </section>
+
+  <aside class="qr-box" aria-label="QR Code Login">
+    <div class="qr-code-wrapper">
+      <img class="qr-img" src="assets/images/pogi_mo_seb.png" alt="Scan QR code">
+    </div>
+    <h2 class="meow"><b>Log in with QR Code</b></h2>
+    <p class="scan">Scan this with the <b>Discord mobile app</b> to log in instantly.</p>
+    <a class="passkey" href="#">Or, sign in with passkey</a>
+  </aside>
+</main>
   
 </body>
 </html>
