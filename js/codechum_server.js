@@ -22,7 +22,7 @@ var channels = [
   {
     name: "welcome",
     messages: [
-      { author: "Eunice", avatar: "../assets/images/pf3.jpg", text: "Hi everyone! I am new here.", time: "09:15", likes: 1, liked: false },
+      { author: "Eunice", avatar: "../assets/images/pf.jpg", text: "Hi everyone! I am new here.", time: "09:15", likes: 1, liked: false },
       { author: "Mr. Bean", avatar: "../assets/images/mrb.jpg", text: "Welcome Eunice!", time: "09:16", likes: 4, liked: false }
     ]
   },
@@ -35,20 +35,20 @@ var channels = [
   {
     name: "coding-help",
     messages: [
-      { author: "Chaa", avatar: "../assets/images/pf5.png", text: "How do I use a for loop?", time: "11:30", likes: 0, liked: false },
+      { author: "Chaa", avatar: "../assets/images/smb.png", text: "How do I use a for loop?", time: "11:30", likes: 0, liked: false },
       { author: "Dynosure", avatar: "../assets/images/dyno.webp", text: "Check W3Schools, it is very helpful!", time: "11:32", likes: 6, liked: false }
     ]
   },
   {
     name: "language-discussion",
     messages: [
-      { author: "Jarren", avatar: "../assets/images/pf4.png", text: "Python or Java for beginners?", time: "13:00", likes: 1, liked: false }
+      { author: "Jarren", avatar: "../assets/images/jd.png", text: "Python or Java for beginners?", time: "13:00", likes: 1, liked: false }
     ]
   },
   {
     name: "bug-reports",
     messages: [
-      { author: "Chaa", avatar: "../assets/images/pf5.png", text: "The submit button freezes on my phone.", time: "14:45", likes: 0, liked: false }
+      { author: "Chaa", avatar: "../assets/images/smb.png", text: "The submit button freezes on my phone.", time: "14:45", likes: 0, liked: false }
     ]
   }
 ];
@@ -105,7 +105,7 @@ function sendmessage(event) {
   var text = input.value.trim();
 
   if (text == "") {
-    return;
+    return false;
   }
 
   channels[currentChannel].messages.push({
@@ -124,6 +124,8 @@ function sendmessage(event) {
 
   var chat = document.getElementById("chat-body");
   chat.scrollTop = chat.scrollHeight;
+
+  return false;
 }
 
 function switchchannel(index) {
