@@ -27,7 +27,7 @@ function togglepassword() {
 
     if (box.type == "password") {
         box.type = "text";
-        link.innerHTML = "Hide password";
+        icon.src = "../assets/icons/"
     } else {
         box.type = "password";
         link.innerHTML = "Show password";
