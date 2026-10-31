@@ -270,4 +270,146 @@
             if (document.hidden) videos.forEach(v => v.pause());
         });
     }
+
+    function detectPlatform() {
+        const ua = navigator.userAgent || '';
+        const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+        if (/android/i.test(ua)) return 'Android';
+        if (/iphone|ipad|ipod/i.test(ua)) return 'iOS';
+        if (/mac/i.test(platform) || /Macintosh/i.test(ua)) return 'Mac';
+        if (/linux/i.test(platform) || /Linux/i.test(ua)) return 'Linux';
+        return 'Windows';
+    }
+
+    let currentPlatform = 'Windows';
+    function initDownloadButton() {
+        currentPlatform = detectPlatform();
+        const btn = $('.hero-buttons .btn-white');
+        if (!btn) return;
+
+        btn.addEventListener('click', e => {
+            e.preventDefault();
+            showToast(`Starting Discord download for ${currentPlatform}…`);
+        });
+        applyDownloadLabel(store.get('lang') || 'en-US');
+    }
+
+    function applyDownloadLabel(lang) {
+        const btn = $('.hero-buttons .btn-white');
+        if (!btn) return;
+        const label = lang === 'fil'
+            ? `I-download para sa ${currentPlatform}`
+            : `Download for ${currentPlatform}`;
+        const textNode = Array.from(btn.childNodes).find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
+        if (textNode) textNode.textContent = '\n                        ' + label + '\n                    ';
+        else btn.append(label);
+    }
+
+    const TRANSLATIONS = {
+        'en-US': {},
+        fil: {
+            '.hero-title': 'Group chat na puno ng saya at laro',
+            '.hero-subtitle': 'Magandang gamitin ang Discord para maglaro at makipag-chill kasama ang mga kaibigan, o kahit magtayo ng pandaigdigang komunidad. I-customize ang sarili mong espasyo para makipagkwentuhan, maglaro, at tumambay.',
+            '.hero-buttons .btn-dark': 'Buksan ang Discord sa browser mo',
+            '.nav-login-btn': 'Mag-login',
+            '.cta-title': 'HINDI KA NA MAKAKA-SCROLL. MAG-CHAT NA LANG.',
+            '.cta-container .btn-primary': 'Buksan ang Discord',
+            '.footer-bottom-btn': 'Mag-sign up',
+            '.footer-language label': 'Wika:'
+        }
+    };
+    const originals = new Map();
+
+    function applyLanguage(lang) {
+        const dict = TRANSLATIONS[lang] || {};
+        originals.forEach((text, el) => { el.textContent = text; });
+        Object.keys(TRANSLATIONS.fil).forEach(sel => {
+            const el = $(sel);
+            if (!el) return;
+            if (!originals.has(el)) originals.set(el, el.textContent);
+            if (dict[sel]) el.textContent = dict[sel];
+        });
+        document.documentElement.lang = lang === 'fil' ? 'fil' : 'en';
+        applyDownloadLabel(lang);
+    }
+
+    function initLanguage() {
+        const select = $('#lang-select');
+        if (!select) return;
+
+        const saved = store.get('lang');
+        if (saved && TRANSLATIONS[saved]) select.value = saved;
+        applyLanguage(select.value);
+
+        select.addEventListener('change', () => {
+            store.set('lang', select.value);
+            applyLanguage(select.value);
+            showToast(select.value === 'fil' ? 'Wika: Filipino' : 'Language: English');
+        });
+    }
+
+    function initHeroParallax() {
+        const art = $('.hero-art');
+        if (!art || prefersReducedMotion || !window.matchMedia('(hover: hover)').matches) return;
+
+        const layers = [
+            { el: $('.hero-character-boy'), depth: 10 },
+            { el: $('.hero-character-main'), depth: 6 },
+            { el: $('.hero-character-wumpus'), depth: 14 },
+            { el: $('.hero-star-1'), depth: -18 },
+            { el: $('.hero-star-2'), depth: -12 }
+        ].filter(l => l.el);
+
+        let raf = null;
+        const hero = $('.hero-section');
+
+        hero.addEventListener('mousemove', e => {
+            const rect = hero.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            if (raf) cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+                layers.forEach(({ el, depth }) => {
+                    el.style.transform = `translate(${x * depth}px, ${y * depth}px)`;
+                });
+            });
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            layers.forEach(({ el }) => {
+                el.style.transition = 'transform .4s ease';
+                el.style.transform = '';
+                setTimeout(() => { el.style.transition = ''; }, 400);
+            });
+        });
+
+        layers.forEach(({ el }) => { el.style.willChange = 'transform'; });
+    }
+
+    function initSocials() {
+        $$('.footer-social-link').forEach(link => {
+            const name = link.getAttribute('title');
+            if (name) link.setAttribute('aria-label', name);
+        });
+    }
+
+    function init() {
+        injectStyles();
+        initScrollUI();
+        initMobileMenu();
+        initLinks();
+        initActiveNav();
+        initReveal();
+        initVideos();
+        initDownloadButton();
+        initLanguage();
+        initHeroParallax();
+        initSocials();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 })();
