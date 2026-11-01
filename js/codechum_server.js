@@ -218,9 +218,9 @@ function showmessages() {
         html += '<button type="button" class="cc-add-reaction" title="Add Reaction" onclick="openReactionPicker(event, ' + i + ')">+</button>';
       }
 
-      html += '</div>'; // cc-reactions
-      html += '</div>'; // cc-content
-      html += '</div>'; // cc-msg-main
+      html += '</div>';
+      html += '</div>';
+      html += '</div>';
 
       // message hover actions
       html += '<div class="cc-actions">';
