@@ -29,36 +29,36 @@
         <img src="../assets/images/codechum.png" alt="Codechum">
       </a>
 
-      <div class="server-icon">
+      <div class="server-icon" onclick="toast('This server is currently unavailable')">
         <div class="pill"></div>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf1oDGqabA_FsXxIaqRWY5Y1151SkisrTnsM8NH1QIDFVqaAYvORTmsK0N&s=10" alt="server">
         <span class="badge-rail">6</span>
       </div>
 
-      <div class="server-icon">
+      <div class="server-icon" onclick="toast('This server is currently unavailable')">
         <div class="pill"></div>
         <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Roblox_%282025%29_%28App_Icon%29.svg/500px-Roblox_%282025%29_%28App_Icon%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail" alt="server">
         <span class="badge-rail">1</span>
       </div>
 
-      <div class="server-icon">
+      <div class="server-icon" onclick="toast('This server is currently unavailable')">
         <div class="pill"></div>
         <img src="https://img.icons8.com/color/1200/valorant.jpg" alt="server">
         <span class="badge-rail">2</span>
       </div>
 
-      <div class="server-icon">
+      <div class="server-icon" onclick="toast('This server is currently unavailable')">
         <div class="pill"></div>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQC8oFNGxh9W2rNNyHDeCLy7Qn40Tj06kCwa6FHAkcjcjYDt1Jk2_PKx7E&s=10" alt="server">
         <span class="badge-rail">54</span>
       </div>
 
       <!-- add server and explore -->
-      <div class="server-icon add-server">
+      <div class="server-icon add-server" onclick="toast('Creating servers isn\'t available yet')">
         <img src="../assets/icons/ui-add-server-green.svg" alt="Add a Server" class="icon">
       </div>
 
-      <div class="server-icon explore">
+      <div class="server-icon explore" onclick="toast('Server discovery coming soon')">
         <img src="../assets/icons/ui-explore-green.svg" alt="Explore" class="icon">
       </div>
     </nav>
@@ -74,22 +74,22 @@
         </div>
 
         <div class="top-icons">
-          <span title="Inbox">
+          <span title="Inbox" onclick="toast('Inbox isn\'t available yet')">
             <img src="../assets/icons/ui-inbox-24x24.svg" alt="Inbox" class="icon">
           </span>
 
-          <span title="Help">
+          <span title="Help" onclick="toast('Help center coming soon')">
             <img src="../assets/icons/ui-help-24x24.svg" alt="Help" class="icon">
           </span>
         </div>
       </div>
 
       <!-- server name header -->
-      <div class="server-name">
+      <div class="server-name" onclick="toast('Server settings aren\'t available yet')">
         <span>Codechum</span>
         <span class="server-arrow">⌄</span>
 
-        <span class="server-invite" title="Invite People">
+        <span class="server-invite" title="Invite People" onclick="event.stopPropagation(); toast('Server invites coming soon')">
           <img src="../assets/icons/ui-user-plus-add-friend-24x24.svg" alt="Invite" class="icon">
         </span>
 
@@ -100,7 +100,7 @@
       <!-- channel list -->
       <div class="channels">
 
-        <div class="channel">
+        <div class="channel" onclick="toast('Events aren\'t available yet')">
           <img src="../assets/icons/ui-event-calendar-24x24.svg" alt="Events" class="channel-icon">
           <span>Events</span>
         </div>
@@ -171,7 +171,7 @@
           <span>Voice Channels</span>
         </div>
 
-        <div class="channel">
+        <div class="channel" onclick="toast('Voice channels aren\'t available yet')">
           <img src="../assets/icons/ui-voice-channel-speaker-24x24.svg" alt="Voice" class="channel-icon">
           <span>General</span>
         </div>
@@ -200,7 +200,7 @@
         </span>
 
         <!-- settings -->
-        <span class="user-icon" title="User Settings">
+        <span class="user-icon" title="User Settings" onclick="toast('User settings aren\'t available yet')">
           <img src="../assets/icons/ui-settings-gear-24x24.svg" alt="Settings" class="icon">
         </span>
       </div>
@@ -217,11 +217,11 @@
         </div>
 
         <div class="top-icons">
-          <span title="Inbox">
+          <span title="Inbox" onclick="toast('Inbox isn\'t available yet')">
             <img src="../assets/icons/ui-inbox-24x24.svg" alt="Inbox" class="icon">
           </span>
 
-          <span title="Help">
+          <span title="Help" onclick="toast('Help center coming soon')">
             <img src="../assets/icons/ui-help-24x24.svg" alt="Help" class="icon">
           </span>
         </div>
