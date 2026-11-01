@@ -97,6 +97,29 @@ input:focus {
     border-color: #00a8fc;
 }
 
+/* password box */
+.password-box {
+    position: relative;
+}
+
+.password-box input {
+    padding-right: 44px;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.eye-icon:hover {
+    opacity: 1;
+}
+
 /* birthday dropdowns row */
 .birth {
     display: flex;

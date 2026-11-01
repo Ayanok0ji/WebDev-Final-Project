@@ -42,7 +42,10 @@
             <!-- password -->
             <div class="form-group">
                 <label for="reg-password">PASSWORD <span class="required" aria-hidden="true">*</span></label>
-                <input id="reg-password" name="password" type="password" autocomplete="new-password" required>
+                <div class="password-box">
+                    <input id="reg-password" name="password" type="password" autocomplete="new-password" required>
+                    <img id="reg-toggle-password" class="eye-icon" src="../assets/icons/ui-eye-show-24x24.svg" alt="Show password" onclick="togglepassword('reg-password', 'reg-toggle-password')">
+                </div>
             </div>
 
             <!-- birthday dropdowns -->

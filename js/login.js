@@ -21,9 +21,11 @@ function checklogin() {
 }
 
 // show password toggle
-function togglepassword() {
-    var box = document.getElementById("login-password");
-    var icon = document.getElementById("toggle-password");
+function togglepassword(id, iconId) {
+    var box = document.getElementById(id || "login-password");
+    var icon = document.getElementById(iconId || "toggle-password");
+
+    if (!box || !icon) return;
 
     if (box.type == "password") {
         box.type = "text";
