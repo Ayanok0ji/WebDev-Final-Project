@@ -65,7 +65,6 @@ if (savedMessages) {
   }
 }
 
-// fix member avatar paths
 for (var i = 0; i < channels.length; i++) {
   for (var j = 0; j < channels[i].messages.length; j++) {
     var msg = channels[i].messages[j];
@@ -79,7 +78,6 @@ for (var i = 0; i < channels.length; i++) {
   }
 }
 
-// convert old likes to reactions
 for (var i = 0; i < channels.length; i++) {
   for (var j = 0; j < channels[i].messages.length; j++) {
     var message = channels[i].messages[j];
@@ -160,8 +158,7 @@ function showmessages() {
   var list = channels[currentChannel].messages;
   var search = document.getElementById("search-input").value.toLowerCase();
   var html = "";
-
-  // check message history permission
+  
   if (permissions[currentChannel].history == false) {
     document.getElementById("messages").innerHTML =
       '<p class="cc-text">You do not have permission to view message history.</p>';
@@ -174,7 +171,6 @@ function showmessages() {
     if (allText.indexOf(search) != -1) {
       html += '<article class="cc-msg">';
 
-      // show replied message with curved spine
       if (list[i].replyTo) {
         html += '<div class="cc-reply">';
         html += '<span class="cc-reply-author">@' + safeText(list[i].replyTo.author) + '</span>';
@@ -195,7 +191,6 @@ function showmessages() {
 
       html += '<p class="cc-text">' + safeText(list[i].text) + '</p>';
 
-      // show reactions
       if (!list[i].reactions) {
         list[i].reactions = [];
       }
@@ -222,7 +217,6 @@ function showmessages() {
       html += '</div>';
       html += '</div>';
 
-      // message hover actions
       html += '<div class="cc-actions">';
       if (permissions[currentChannel].react) {
         html += '<button type="button" class="cc-action-btn" title="Add Reaction" onclick="openReactionPicker(event, ' + i + ')">';
@@ -275,7 +269,6 @@ function gettime() {
 function sendmessage(event) {
   event.preventDefault();
 
-  // check send permission
   if (permissions[currentChannel].send == false) {
     return false;
   }
@@ -310,7 +303,6 @@ function sendmessage(event) {
   var chat = document.getElementById("chat-body");
   chat.scrollTop = chat.scrollHeight;
 
-  // automatic reply in public channels
   if (channelNumber >= 3) {
     scheduleReply(text, channelNumber);
   }
@@ -354,8 +346,7 @@ function scheduleReply(userText, channelNumber) {
     if (token != replyToken || currentChannel != targetChannel) {
       return;
     }
-
-    // show typing indicator
+    
     var chatBody = document.getElementById("chat-body");
     var oldTyping = document.getElementById("typing-indicator");
     if (oldTyping) {
@@ -387,7 +378,6 @@ function scheduleReply(userText, channelNumber) {
         reactions: []
       };
 
-      // quote user sometimes
       if (Math.random() > 0.4) {
         newMsg.replyTo = {
           author: currentUser,
@@ -409,7 +399,6 @@ function scheduleReply(userText, channelNumber) {
 
 // switching channel system
 function switchchannel(index) {
-  // check view permission
   if (permissions[index].view == false) {
     return;
   }
@@ -417,7 +406,6 @@ function switchchannel(index) {
   currentChannel = index;
   replyToken++;
 
-  // cancel old typing indicator
   var typing = document.getElementById("typing-indicator");
   if (typing) {
     typing.remove();
@@ -440,7 +428,6 @@ function switchchannel(index) {
     composerPicker.classList.remove("open");
   }
 
-  // close sidebar on mobile screen
   var app = document.querySelector(".app");
   if (app) {
     app.classList.remove("show-sidebar");
@@ -476,7 +463,6 @@ function updatechannels() {
     }
   }
 
-  // move to another channel if current one is hidden
   if (permissions[currentChannel].view == false) {
     for (var i = 0; i < channels.length; i++) {
       if (permissions[i].view == true) {
@@ -691,7 +677,7 @@ function handleFileUpload() {
   fileInput.value = "";
 }
 
-// toast notification
+// notification
 function toast(msg) {
   var t = document.getElementById("toast");
   if (!t) {
