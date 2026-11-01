@@ -430,16 +430,30 @@ img.icon,
   min-height: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 24px 16px;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #1a1b1e transparent;
+}
+
+.server-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.server-body::-webkit-scrollbar-thumb {
+  background: #1a1b1e;
+  border-radius: 4px;
+}
+
+.server-body::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* Welcome message */
 .welcome {
-  margin-top: auto;
+  margin-top: 0;
 }
 
 .big-hash {

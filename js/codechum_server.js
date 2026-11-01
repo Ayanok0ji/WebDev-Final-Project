@@ -21,7 +21,7 @@ var channels = [
   {
     name: "welcome",
     messages: [
-      { author: "Eunice", avatar: "../assets/images/pf.jpg", text: "Hi everyone! I am new here.", time: "09:15", likes: 1, liked: false },
+      { author: "Eunice", avatar: "../assets/images/pf.png", text: "Hi everyone! I am new here.", time: "09:15", likes: 1, liked: false },
       { author: "Mr. Bean", avatar: "../assets/images/mrb.jpg", text: "Welcome Eunice!", time: "09:16", likes: 4, liked: false }
     ]
   },
@@ -34,20 +34,20 @@ var channels = [
   {
     name: "coding-help",
     messages: [
-      { author: "Chaa", avatar: "../assets/images/smb.png", text: "How do I use a for loop?", time: "11:30", likes: 0, liked: false },
+      { author: "Chaa", avatar: "../assets/images/smb.jpg", text: "How do I use a for loop?", time: "11:30", likes: 0, liked: false },
       { author: "Dynosure", avatar: "../assets/images/dyno.webp", text: "Check W3Schools, it is very helpful!", time: "11:32", likes: 6, liked: false }
     ]
   },
   {
     name: "language-discussion",
     messages: [
-      { author: "Jarren", avatar: "../assets/images/jd.png", text: "Python or Java for beginners?", time: "13:00", likes: 1, liked: false }
+      { author: "Jarren", avatar: "../assets/images/jd.jpg", text: "Python or Java for beginners?", time: "13:00", likes: 1, liked: false }
     ]
   },
   {
     name: "bug-reports",
     messages: [
-      { author: "Chaa", avatar: "../assets/images/smb.png", text: "The submit button freezes on my phone.", time: "14:45", likes: 0, liked: false }
+      { author: "Chaa", avatar: "../assets/images/smb.jpg", text: "The submit button freezes on my phone.", time: "14:45", likes: 0, liked: false }
     ]
   }
 ];
@@ -61,6 +61,20 @@ if (savedMessages) {
   for (var i = 0; i < channels.length; i++) {
     if (savedData[i]) {
       channels[i].messages = savedData[i];
+    }
+  }
+}
+
+// fix member avatar paths
+for (var i = 0; i < channels.length; i++) {
+  for (var j = 0; j < channels[i].messages.length; j++) {
+    var msg = channels[i].messages[j];
+    if (msg.author === "Chaa") {
+      msg.avatar = "../assets/images/smb.jpg";
+    } else if (msg.author === "Jarren") {
+      msg.avatar = "../assets/images/jd.jpg";
+    } else if (msg.author === "Eunice") {
+      msg.avatar = "../assets/images/pf.png";
     }
   }
 }
@@ -311,10 +325,11 @@ function scheduleReply(userText, channelNumber) {
 
   var members = [
     { author: "Kitty", avatar: "../assets/images/cat.jpg" },
-    { author: "Chaa", avatar: "../assets/images/smb.png" },
+    { author: "Chaa", avatar: "../assets/images/smb.jpg" },
     { author: "Dynosure", avatar: "../assets/images/dyno.webp" },
-    { author: "Jarren", avatar: "../assets/images/jd.png" },
-    { author: "Mr. Bean", avatar: "../assets/images/mrb.jpg" }
+    { author: "Jarren", avatar: "../assets/images/jd.jpg" },
+    { author: "Mr. Bean", avatar: "../assets/images/mrb.jpg" },
+    { author: "Eunice", avatar: "../assets/images/pf.png" }
   ];
 
   var member = members[Math.floor(Math.random() * members.length)];
@@ -827,3 +842,8 @@ setupEmojiPickers();
 updatechannels();
 showmessages();
 updatechatpermission();
+
+var chat = document.getElementById("chat-body");
+if (chat) {
+  chat.scrollTop = chat.scrollHeight;
+}
