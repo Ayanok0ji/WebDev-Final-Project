@@ -905,7 +905,7 @@ img.icon,
   padding: 10px 18px;
   border-radius: 8px;
   font-size: 14px;
-  z-index: 350;
+  z-index: 1000;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;

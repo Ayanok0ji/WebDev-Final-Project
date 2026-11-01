@@ -679,7 +679,12 @@ function handleFileUpload() {
 // toast notification
 function toast(msg) {
   var t = document.getElementById("toast");
-  if (!t) return;
+  if (!t) {
+    t = document.createElement("div");
+    t.className = "toast";
+    t.id = "toast";
+    document.body.appendChild(t);
+  }
   t.textContent = msg;
   t.classList.add("show");
   clearTimeout(toastTimer);
