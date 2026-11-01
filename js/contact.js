@@ -32,7 +32,7 @@
         style.textContent = `
             .toast { position: fixed; left: 50%; bottom: 80px; transform: translate(-50%, 16px);
                 background: #111214; color: #f2f3f5; padding: 10px 18px; border-radius: 8px;
-                font-size: 14px; z-index: 300; box-shadow: 0 8px 24px rgba(0,0,0,.5);
+                font-size: 14px; z-index: 1000; box-shadow: 0 8px 24px rgba(0,0,0,.5);
                 opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
             .toast.show { opacity: 1; transform: translate(-50%, 0); }
             .emoji-pop { position: fixed; z-index: 250; background: #2b2d31; border: 1px solid #1e1f22;
