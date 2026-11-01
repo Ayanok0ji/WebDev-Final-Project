@@ -4,42 +4,46 @@ Final Project for **Web Design and Development** (Computer Engineering, 2nd Year
 
 This is a copy of the **Discord** website. We made it with HTML, CSS, and JavaScript only.
 It has no backend and no database. All the fake data (users, channels, messages) is
-kept in JavaScript arrays and objects, and saved in the browser with `localStorage`.
+kept in JavaScript arrays and objects, and saved in the browser with `localStorage`
+(a small storage space inside the browser).
 
 ## Team Members
 
 | Name | Part in the video |
 | ---- | ----------------- |
-| [De Ala, Jarren T.] | Team introduction |
-| [Pamorada, Denisse Kashan R.] | Tour of the pages |
-| [Biding, Sebastian Mike M.] | JavaScript demo |
-| [Severino, Daryl Ashley Nicole P.] | Code walkthrough |
-| [Espino, Aaron Jhon L.] | Challenges and conclusion |
+| De Ala, Jarren T. | Team introduction |
+| Pamorada, Denisse Kashan R. | Tour of the pages |
+| Biding, Sebastian Mike M. | JavaScript demo |
+| Severino, Daryl Ashley Nicole P. | Code walkthrough |
+| Espino, Aaron Jhon L. | Challenges and conclusion |
 
 ## How to Open the Project
 
 1. Download the project folder.
-2. Open the file `pages/index.html` in your browser (Chrome, Edge, or Firefox).
+2. Open the file `pages/index.html` in your browser (Chrome, Brave, or Firefox).
 3. You do not need to install anything.
 
 ## Test Accounts (for the login page)
 
-| Email or phone number | Password |
-| ----------------- | -------- |
-| admin@discord.com | admin123 |
-| froggy@gmail.com | test |
+You can type the email or the username.
+
+| Email | Username | Password |
+| ----- | -------- | -------- |
+| admin@discord.com | admin | admin123 |
+| froggy@gmail.com | froggy | test |
 
 ## Pages
 
-| Page | File | What it shows |
-| ---- | ---- | ------------- |
-| Landing page | `pages/index.html` | The Discord home page with pictures, videos, and a footer |
-| Login | `pages/login.html` | Login form |
-| Register | `pages/register.html` | Sign-up form |
-| Direct Messages | `pages/home.html` and `pages/contact.html` | Friends list and private chats |
-| Server (Codechum) | `pages/codechum.html` | A server with channels, chat, and members |
-| Terms of Service | `pages/terms.html` | Terms page |
-| Privacy Policy | `pages/privacy.html` | Privacy page |
+| Group | Page | File | What it shows |
+| ----- | ---- | ---- | ------------- |
+| Start | Landing page | `pages/index.html` | The Discord home page with pictures, videos, and a footer |
+| Log in and sign up | Login | `pages/login.html` | Login form |
+| Log in and sign up | Register | `pages/register.html` | Sign-up form |
+| Messages and servers | Home | `pages/home.html` | Friends list and a private chat (with Daryl) |
+| Messages and servers | Contact | `pages/contact.html` | Friends list and a private chat with Eunice |
+| Messages and servers | Codechum | `pages/codechum.html` | A server with channels, chat, and members |
+| Rules | Terms of Service | `pages/terms.html` | Terms page |
+| Rules | Privacy Policy | `pages/privacy.html` | Privacy page |
 
 All pages use the same colors, fonts, and links so they look like one website.
 
@@ -69,6 +73,25 @@ assets/
   images/         Profile pictures and logos
   landing/        Pictures and videos for the landing page
 ```
+
+## CSS and JavaScript Files
+
+Each page has its own style file and its own JavaScript file. Some files are shared.
+
+| Page | CSS file | JavaScript file |
+| ---- | -------- | --------------- |
+| Landing page | `landing.css` | `index.js` |
+| Login | `login.css` | `login.js` |
+| Register | `register.css` | `login.js` |
+| Home | `home.css` | `contact.js` |
+| Contact | `home.css` | `contact.js` |
+| Codechum | `codechum.css` and `home.css` | `codechum_server.js` |
+| Terms | `terms.css` | `terms.js` |
+| Privacy | `privacy.css` | `privacy.js` |
+
+- `home.css` is used by Home, Contact, and Codechum.
+- `contact.js` is used by Home and Contact.
+- `login.js` is used by Login and Register.
 
 ## What We Used
 
