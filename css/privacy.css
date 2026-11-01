@@ -1,4 +1,4 @@
-
+/* reset */
 * {
     box-sizing: border-box;
 }
@@ -7,6 +7,7 @@ html {
     scroll-behavior: smooth;
 }
 
+/* body */
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -14,6 +15,7 @@ body {
     background: white;
 }
 
+/* header navbar */
 header {
     width: 100%;
     padding: 25px 4.5%;
@@ -29,6 +31,7 @@ header {
     gap: 25px;
 }
 
+/* logo */
 .logo {
     display: flex;
     align-items: center;
@@ -41,6 +44,7 @@ header {
     display: block;
 }
 
+/* nav links */
 .nav-links {
     display: flex;
     align-items: center;
@@ -60,6 +64,7 @@ header {
     text-decoration: underline;
 }
 
+/* login button */
 .login-button {
     text-decoration: none;
     background: black;
@@ -76,12 +81,14 @@ header {
     background: #333;
 }
 
+/* content container */
 .privacy-container {
     width: 1000px;
     max-width: 90%;
     margin: 115px auto 80px;
 }
 
+/* title and date */
 h1 {
     font-size: 76px;
     line-height: 0.96;
@@ -98,6 +105,7 @@ h1 {
     line-height: 1.4;
 }
 
+/* table of contents */
 .contents {
     margin-top: 40px;
     margin-bottom: 60px;
@@ -121,6 +129,7 @@ h1 {
     font-weight: bold;
 }
 
+/* policy sections */
 section {
     margin-top: 55px;
     scroll-margin-top: 30px;
@@ -147,6 +156,7 @@ section a {
     color: #5865f2;
 }
 
+/* footer */
 footer {
     background: #23272a;
     color: white;
@@ -177,6 +187,7 @@ footer {
     text-decoration: underline;
 }
 
+/* back to top button */
 .back-to-top {
     position: fixed;
     bottom: 30px;
@@ -201,8 +212,8 @@ footer {
     background: #4752c4;
 }
 
+/* tablet screen */
 @media (max-width: 1200px) {
-
     .nav-links {
         gap: 18px;
     }
@@ -221,8 +232,8 @@ footer {
     }
 }
 
+/* mobile screen */
 @media (max-width: 900px) {
-
     .nav-links {
         display: none;
     }
@@ -248,8 +259,8 @@ footer {
     }
 }
 
+/* small mobile */
 @media (max-width: 500px) {
-
     header {
         padding: 15px 20px;
     }
