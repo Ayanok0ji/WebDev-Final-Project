@@ -113,7 +113,6 @@
         since: ($('.profile-info p:last-of-type') || {}).textContent || '',
         bio: ($('.profile-sub') ? $('.profile-sub').childNodes[0].textContent.trim() : ''),
         bioTag: ($('.profile-sub .tag') || {}).textContent || '',
-        intro: ($('.chat-divider span') || {}).textContent || '',
         mascot: $('.mascot') ? $('.mascot').getAttribute('src') : ''
     };
 

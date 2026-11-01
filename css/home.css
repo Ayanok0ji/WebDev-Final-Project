@@ -1102,6 +1102,15 @@ img.icon,
     word-break: break-word;
 }
 
+.msg-sticker {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-top: 6px;
+    display: block;
+}
+
 .chat-input-row {
     margin: 0 16px 16px 16px;
     background: #383a40;
