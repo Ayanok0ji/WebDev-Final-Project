@@ -7,6 +7,10 @@ It has no backend and no database. All the fake data (users, channels, messages)
 kept in JavaScript arrays and objects, and saved in the browser with `localStorage`
 (a small storage space inside the browser).
 
+## Links
+
+- **GitHub repository:** https://github.com/Ayanok0ji/WebDev-Final-Project
+
 ## Team Members
 
 | Name | Part in the video |
