@@ -205,12 +205,6 @@
         row.append(add, block);
         chatBody.append(row);
 
-        if (initialExtras.intro) {
-            const d = el('div', 'chat-divider');
-            d.append(el('span', null, initialExtras.intro));
-            chatBody.append(d);
-        }
-
         if (!c.messages.length && !c.blocked) {
             if (initialExtras.mascot) {
                 const m = el('img', 'mascot');
@@ -243,18 +237,27 @@
         const body = el('div', 'msg-body');
         const head = el('div', 'msg-header');
         head.append(el('span', 'msg-name', mine ? me.name : current.name), el('span', 'msg-time', `Today at ${m.time}`));
-        body.append(head, el('div', 'msg-text', m.text));
+
+        if (m.image || m.text === '👋') {
+            const img = el('img', 'msg-sticker');
+            img.src = m.image || '../assets/images/mascot2.gif';
+            img.alt = 'wave';
+            body.append(head, img);
+        } else {
+            body.append(head, el('div', 'msg-text', m.text));
+        }
+
         wrap.append(av, body);
         chatBody.append(wrap);
     }
 
     /* ---------- sending ---------- */
-    function sendMessage(text, from = 'me') {
-        text = text.trim();
-        if (!text) return;
+    function sendMessage(text, from = 'me', image = null) {
+        text = (text || '').trim();
+        if (!text && !image) return;
         const c = conv(current.name);
         const hadMessages = c.messages.length > 0;
-        const m = { from, text, time: timeNow() };
+        const m = { from, text, image, time: timeNow() };
         c.messages.push(m);
         store.write(state);
         if (!hadMessages) renderChat(); else { appendMessage(m); scrollToBottom(); }
@@ -321,7 +324,7 @@
                 applyBlockState();
                 break;
             case 'wave':
-                sendMessage('\ud83d\udc4b');
+                sendMessage('', 'me', '../assets/images/mascot2.gif');
                 break;
         }
         store.write(state);
