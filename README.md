@@ -24,10 +24,10 @@ kept in JavaScript arrays and objects, and saved in the browser with `localStora
 
 ## Test Accounts (for the login page)
 
-| Email or username | Password |
+| Email or phone number | Password |
 | ----------------- | -------- |
-| admin | admin123 |
-| froggy | test |
+| admin@discord.com | admin123 |
+| froggy@gmail.com | test |
 
 ## Pages
 
